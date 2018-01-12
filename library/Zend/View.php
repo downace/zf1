@@ -151,6 +151,7 @@ class Zend_View extends Zend_View_Abstract
      */
     protected function _run()
     {
+		extract($this->getVars(), EXTR_OVERWRITE | EXTR_REFS);
         if ($this->_useViewStream && $this->useStreamWrapper()) {
             include 'zend.view://' . func_get_arg(0);
         } else {
