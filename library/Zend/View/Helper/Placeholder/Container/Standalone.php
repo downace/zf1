@@ -33,6 +33,26 @@ require_once 'Zend/View/Helper/Abstract.php';
  * @subpackage Helper
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * ===== Methods from Zend_View_Helper_Placeholder_Container_Abstract =====
+ * ===== (delegated by __call())                                      =====
+ *
+ * @method void set($value)
+ * @method void prepend($value)
+ * @method mixed getValue()
+ * @method $this setPrefix(string $prefix)
+ * @method string getPrefix()
+ * @method $this setPostfix(string $postfix)
+ * @method string getPostfix()
+ * @method $this setSeparator(string $separator)
+ * @method string getSeparator()
+ * @method $this setIndent(string $indent)
+ * @method string getIndent()
+ * @method string getWhitespace(int|string $indent)
+ * @method void captureStart(int|string $type, string $key = null)
+ * @method void captureEnd()
+ * @method string[] getKeys()
+ * @method int nextIndex()
  */
 abstract class Zend_View_Helper_Placeholder_Container_Standalone extends Zend_View_Helper_Abstract implements IteratorAggregate, Countable, ArrayAccess
 {
