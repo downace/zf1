@@ -743,7 +743,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param string $controller
      * @param string $module
      * @param array $params
-     * @return void
+     * @return null
      */
     final public function forward($action, $controller = null, $module = null, array $params = null)
     {
@@ -764,6 +764,8 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
 
         $request->setActionName($action)
                 ->setDispatched(false);
+
+        return null;
     }
 
     /**
@@ -789,10 +791,11 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @param string $url
      * @param array $options Options to be used when redirecting
-     * @return void
+     * @return null
      */
     public function redirect($url, array $options = array())
     {
         $this->_helper->redirector->gotoUrl($url, $options);
+        return null;
     }
 }
