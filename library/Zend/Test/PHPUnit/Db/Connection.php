@@ -20,6 +20,10 @@
  * @version    $Id$
  */
 
+use PHPUnit\DbUnit\Database\DefaultConnection;
+use PHPUnit\DbUnit\Database\Metadata\Metadata;
+use PHPUnit\DbUnit\DataSet\ITable;
+
 /**
  * @see Zend_Test_PHPUnit_Db_DataSet_QueryTable
  */
@@ -34,14 +38,14 @@ require_once "Zend/Test/PHPUnit/Db/Metadata/Generic.php";
  * Generic Abstraction of Zend_Db Connections in the PHPUnit Database Extension context.
  *
  * @uses       Zend_Db_Adapter_Abstract
- * @uses       PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection
+ * @uses       DefaultConnection
  * @category   Zend
  * @package    Zend_Test
  * @subpackage PHPUnit
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Test_PHPUnit_Db_Connection extends PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection
+class Zend_Test_PHPUnit_Db_Connection extends DefaultConnection
 {
     /**
      * Zend_Db_Adapter_Abstract
@@ -60,7 +64,7 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit_Extensions_Database_DB_Def
     /**
      * Metadata
      *
-     * @param PHPUnit_Extensions_Database_DB_IMetaData $db
+     * @param Metadata $db
      */
     protected $_metaData;
 
@@ -81,7 +85,7 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit_Extensions_Database_DB_Def
      *
      * @return void
      */
-    public function close()
+    public function close(): void
     {
         $this->_connection->closeConnection();
     }
@@ -91,7 +95,7 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit_Extensions_Database_DB_Def
      *
      * @param string $resultName
      * @param string $sql
-     * @return PHPUnit_Extensions_Database_DataSet_ITable
+     * @return ITable
      */
     public function createQueryTable($resultName, $sql)
     {
@@ -112,7 +116,7 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit_Extensions_Database_DB_Def
      * Returns a database metadata object that can be used to retrieve table
      * meta data from the database.
      *
-     * @return PHPUnit_Extensions_Database_DB_IMetaData
+     * @return Metadata
      */
     public function getMetaData()
     {

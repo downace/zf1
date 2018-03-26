@@ -292,8 +292,6 @@ class Zend_Http_Client
         if ($config !== null) {
             $this->setConfig($config);
         }
-
-        $this->_queryBracketsEscaped = version_compare(phpversion(), '5.1.3', '>=');
     }
 
     /**

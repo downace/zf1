@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @see Zend_Tool_Project_Context_Filesystem_File
  */
@@ -86,7 +88,7 @@ class Zend_Tool_Project_Context_Zf_TestLibraryFile extends Zend_Tool_Project_Con
             'classes' => array(
                 new Zend_CodeGenerator_Php_Class(array(
                     'name' => $className,
-                    'extendedClass' => 'PHPUnit_Framework_TestCase',
+                    'extendedClass' => TestCase::class,
                     'methods' => array(
                         new Zend_CodeGenerator_Php_Method(array(
                             'name' => 'setUp',
