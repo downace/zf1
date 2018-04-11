@@ -31,5 +31,14 @@ require_once 'Zend/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Controller_Exception extends Zend_Exception
-{}
-
+{
+    /**
+     * @param string         $message
+     * @param string         $code
+     * @param Throwable|null $previous
+     */
+    public function __construct(string $message = '', $code = 0, Throwable $previous = null) {
+        parent::__construct($message, 0, $previous);
+        $this->code = $code;
+    }
+}
