@@ -1,5 +1,5 @@
 {
-    "name": "zendframework/zendframework1",
+    "name": "vast-ru/zf1",
     "description": "Zend Framework 1",
     "type": "library",
     "keywords": [
@@ -10,6 +10,9 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=7.1.0"
+    },
+    "replace": {
+        "zendframework/zendframework1": "1.12.20"
     },
     "autoload": {
         "psr-0": {
