@@ -20,6 +20,11 @@
  * @version    $Id$
  */
 
+use PHPUnit\DbUnit\Operation\Composite;
+use PHPUnit\DbUnit\Operation\Factory;
+use PHPUnit\DbUnit\Operation\Operation;
+use PHPUnit\DbUnit\TestCase;
+
 /**
  * @see Zend_Test_PHPUnit_Db_Operation_Truncate
  */
@@ -48,14 +53,14 @@ require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
 /**
  * Generic Testcase for Zend Framework related DbUnit Testing with PHPUnit
  *
- * @uses       PHPUnit_Extensions_Database_TestCase
+ * @uses       TestCase
  * @category   Zend
  * @package    Zend_Test
  * @subpackage PHPUnit
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Database_TestCase
+abstract class Zend_Test_PHPUnit_DatabaseTestCase extends TestCase
 {
     /**
      * Creates a new Zend Database Connection using the given Adapter and database schema name.
@@ -82,11 +87,11 @@ abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Dat
     /**
      * Returns the database operation executed in test setup.
      *
-     * @return PHPUnit_Extensions_Database_Operation_DatabaseOperation
+     * @return Operation
      */
     protected function getSetUpOperation()
     {
-        return new PHPUnit_Extensions_Database_Operation_Composite(array(
+        return new Composite(array(
             new Zend_Test_PHPUnit_Db_Operation_Truncate(),
             new Zend_Test_PHPUnit_Db_Operation_Insert(),
         ));
@@ -95,11 +100,11 @@ abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Dat
     /**
      * Returns the database operation executed in test cleanup.
      *
-     * @return PHPUnit_Extensions_Database_Operation_DatabaseOperation
+     * @return Operation
      */
     protected function getTearDownOperation()
     {
-        return PHPUnit_Extensions_Database_Operation_Factory::NONE();
+        return Factory::NONE();
     }
 
     /**

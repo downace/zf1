@@ -20,6 +20,9 @@
  * @version    $Id$
  */
 
+use PHPUnit\DbUnit\DataSet\DefaultTableMetadata;
+use PHPUnit\DbUnit\DataSet\QueryTable;
+
 /**
  * @see Zend_Db_Table_Abstract
  */
@@ -28,14 +31,14 @@ require_once "Zend/Db/Table/Abstract.php";
 /**
  * Use a Zend_Db_Table for assertions with other PHPUnit Database Extension table types.
  *
- * @uses       PHPUnit_Extensions_Database_DataSet_QueryTable
+ * @uses       QueryTable
  * @category   Zend
  * @package    Zend_Test
  * @subpackage PHPUnit
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit_Extensions_Database_DataSet_QueryTable
+class Zend_Test_PHPUnit_Db_DataSet_DbTable extends QueryTable
 {
     /**
      * Zend_Db_Table object
@@ -95,7 +98,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit_Extensions_Database_D
      *
      * @return void
      */
-    protected function loadData()
+    protected function loadData(): void
     {
         if ($this->data === null) {
             $this->data = $this->_table->fetchAll(
@@ -110,11 +113,11 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit_Extensions_Database_D
     /**
      * Create Table Metadata object
      */
-    protected function createTableMetaData()
+    protected function createTableMetaData(): void
     {
         if ($this->tableMetaData === NULL) {
             $this->loadData();
-            $this->tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData($this->tableName, $this->_columns);
+            $this->tableMetaData = new DefaultTableMetadata($this->tableName, $this->_columns);
         }
     }
 }

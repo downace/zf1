@@ -20,6 +20,11 @@
  * @version    $Id$
  */
 
+use PHPUnit\DbUnit\Database\Table;
+use PHPUnit\DbUnit\Database\TableIterator;
+use PHPUnit\DbUnit\DataSet\AbstractDataSet;
+use PHPUnit\DbUnit\DataSet\DefaultTableIterator;
+
 /**
  * @see Zend_Test_PHPUnit_Db_DataSet_DbTable
  */
@@ -35,7 +40,7 @@ require_once "Zend/Test/PHPUnit/Db/DataSet/DbTable.php";
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet
+class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends AbstractDataSet
 {
     /**
      * @var array
@@ -64,18 +69,18 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends PHPUnit_Extensions_Dat
      * true a reverse iterator will be returned.
      *
      * @param bool $reverse
-     * @return PHPUnit_Extensions_Database_DB_TableIterator
+     * @return TableIterator
      */
     protected function createIterator($reverse = FALSE)
     {
-        return new PHPUnit_Extensions_Database_DataSet_DefaultTableIterator($this->tables, $reverse);
+        return new DefaultTableIterator($this->tables, $reverse);
     }
 
     /**
      * Returns a table object for the given table.
      *
      * @param string $tableName
-     * @return PHPUnit_Extensions_Database_DB_Table
+     * @return Table
      */
     public function getTable($tableName)
     {

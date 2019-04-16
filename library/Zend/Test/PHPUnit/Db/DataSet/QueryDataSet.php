@@ -20,6 +20,9 @@
  * @version    $Id$
  */
 
+use PHPUnit\DbUnit\Database\Connection;
+use PHPUnit\DbUnit\DataSet\QueryDataSet;
+
 /**
  * @see Zend_Test_PHPUnit_Db_DataSet_QueryTable
  */
@@ -33,21 +36,21 @@ require_once "Zend/Db/Select.php";
 /**
  * Uses several query strings or Zend_Db_Select objects to form a dataset of tables for assertion with other datasets.
  *
- * @uses       PHPUnit_Extensions_Database_DataSet_QueryDataSet
+ * @uses       QueryDataSet
  * @category   Zend
  * @package    Zend_Test
  * @subpackage PHPUnit
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Test_PHPUnit_Db_DataSet_QueryDataSet extends PHPUnit_Extensions_Database_DataSet_QueryDataSet
+class Zend_Test_PHPUnit_Db_DataSet_QueryDataSet extends QueryDataSet
 {
     /**
      * Creates a new dataset using the given database connection.
      *
-     * @param PHPUnit_Extensions_Database_DB_IDatabaseConnection $databaseConnection
+     * @param Connection $databaseConnection
      */
-    public function __construct(PHPUnit_Extensions_Database_DB_IDatabaseConnection $databaseConnection)
+    public function __construct(Connection $databaseConnection)
     {
         if( !($databaseConnection instanceof Zend_Test_PHPUnit_Db_Connection) ) {
             require_once "Zend/Test/PHPUnit/Db/Exception.php";
@@ -64,7 +67,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSet extends PHPUnit_Extensions_Datab
      * @param string                $tableName
      * @param string|Zend_Db_Select $query
      */
-    public function addTable($tableName, $query = NULL)
+    public function addTable($tableName, $query = NULL): void
     {
         if ($query === NULL) {
             $query = $this->databaseConnection->getConnection()->select();

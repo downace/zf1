@@ -740,6 +740,26 @@ abstract class Zend_Db_Adapter_Abstract
     }
 
     /**
+     * Return a generator which yields fetched SQL result rows.
+     * Uses the current fetchMode for the adapter.
+     *
+     * @param string|Zend_Db_Select $sql  An SQL SELECT statement.
+     * @param mixed                 $bind Data to bind into SELECT placeholders.
+     * @param mixed                 $fetchMode Override current fetch mode.
+     * @return \Generator
+     */
+    public function fetchAllLazy($sql, $bind = array(), $fetchMode = null)
+    {
+        if ($fetchMode === null) {
+            $fetchMode = $this->_fetchMode;
+        }
+        $stmt = $this->query($sql, $bind);
+        while ($row = $stmt->fetch($fetchMode)) {
+            yield $row;
+        }
+    }
+
+    /**
      * Fetches the first row of the SQL result.
      * Uses the current fetchMode for the adapter.
      *
