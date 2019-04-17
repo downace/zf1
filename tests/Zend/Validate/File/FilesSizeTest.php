@@ -38,7 +38,7 @@ require_once 'Zend/Validate/File/FilesSize.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_FilesSizeTest extends \PHPUnit\Framework\TestCase
 {
     public function setUp()
     {

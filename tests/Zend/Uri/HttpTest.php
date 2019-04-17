@@ -39,7 +39,7 @@ require_once 'Zend/Uri/Http.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Uri
  */
-class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
+class Zend_Uri_HttpTest extends \PHPUnit\Framework\TestCase
 {
 
     public function setup()

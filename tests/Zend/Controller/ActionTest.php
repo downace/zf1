@@ -41,7 +41,7 @@ require_once 'Zend/Controller/Response/Cli.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Action
  */
-class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_ActionTest extends \PHPUnit\Framework\TestCase
 {
 
     public function setUp()

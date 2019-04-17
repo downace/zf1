@@ -42,7 +42,7 @@ require_once 'Zend/Controller/Request/Http.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_Helper_UrlTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_Helper_UrlTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

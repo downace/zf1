@@ -33,7 +33,7 @@ require_once 'Zend/Translate/Adapter/Tbx.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Translate
  */
-class Zend_Translate_Adapter_TbxTest extends PHPUnit_Framework_TestCase
+class Zend_Translate_Adapter_TbxTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {

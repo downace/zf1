@@ -62,7 +62,7 @@ require_once 'Zend/Application/Bootstrap/Bootstrap.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Bootstrap_BootstrapAbstractTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framework\TestCase
 {
     public function setUp()
     {

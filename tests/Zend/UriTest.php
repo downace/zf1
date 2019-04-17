@@ -42,7 +42,7 @@ require_once 'Zend/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Uri
  */
-class Zend_UriTest extends PHPUnit_Framework_TestCase
+class Zend_UriTest extends \PHPUnit\Framework\TestCase
 {
 
     public function setUp()

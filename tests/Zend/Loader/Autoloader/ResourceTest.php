@@ -50,7 +50,7 @@ require_once 'Zend/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Loader
  */
-class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
+class Zend_Loader_Autoloader_ResourceTest extends \PHPUnit\Framework\TestCase
 {
     public function setUp()
     {

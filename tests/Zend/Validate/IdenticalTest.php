@@ -39,7 +39,7 @@ require_once 'Zend/Validate/Identical.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_IdenticalTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_IdenticalTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Zend_Validate_Identical

@@ -33,7 +33,7 @@ require_once "Zend/Test/PHPUnit/Db/Exception.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Db_SimpleTesterTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetConnection()
     {
@@ -60,7 +60,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit_Framework_TestCase
 
         $databaseTester = new Zend_Test_PHPUnit_Db_SimpleTester($connection);
 
-        $dataSet = $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+        $dataSet = $this->getMock('\PHPUnit\DbUnit\DataSet\IDataSet');
         $dataSet->expects($this->any())
                 ->method('getIterator')
                 ->will($this->returnValue($this->getMock('Iterator')));
@@ -74,7 +74,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit_Framework_TestCase
     {
         $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
 
-        $connection = $this->getMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
+        $connection = $this->getMock('\PHPUnit\DbUnit\Database\Connection');
 
         $databaseTester = new Zend_Test_PHPUnit_Db_SimpleTester($connection);
     }
