@@ -71,18 +71,6 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
      */
     public $response;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_Helper_FlashMessengerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $savePath = ini_get('session.save_path');

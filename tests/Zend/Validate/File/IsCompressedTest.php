@@ -43,17 +43,6 @@ require_once 'Zend/Validate/File/IsCompressed.php';
 class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_IsCompressedTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Ensures that the validator follows expected behavior
      *
      * @return void
@@ -74,7 +63,7 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('mime_content_type function is not available.');
         }
 
-        // Sometimes mime_content_type() gives application/zip and sometimes 
+        // Sometimes mime_content_type() gives application/zip and sometimes
         // application/x-zip ...
         $expectedMimeType = mime_content_type(dirname(__FILE__) . '/_files/test.zip');
         if (!in_array($expectedMimeType, array('application/zip', 'application/x-zip'))) {

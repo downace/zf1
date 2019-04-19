@@ -71,19 +71,6 @@ require_once 'Zend/Config.php';
  */
 class Zend_Controller_Router_Route_ChainTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Router_Route_ChainTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function testChaining()
     {
         $request = new Zend_Controller_Router_ChainTest_Request('http://localhost/foo/bar');

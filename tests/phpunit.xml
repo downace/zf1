@@ -1,4 +1,6 @@
-<phpunit bootstrap="./TestHelper.php">
+<phpunit bootstrap="./TestHelper.php"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+>
     <testsuite name="Zend Framework - Testsuite">
         <directory>./</directory>
     </testsuite>
@@ -10,4 +12,7 @@
         </whitelist>
     </filter>
     -->
+    <php>
+        <ini name="memory_limit" value="-1"/>
+    </php>
 </phpunit>

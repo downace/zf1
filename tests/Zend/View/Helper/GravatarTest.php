@@ -57,15 +57,6 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     protected $_view;
 
     /**
-     * Main
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_GravatarTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Prepares the environment before running a test.
      */
     protected function setUp()

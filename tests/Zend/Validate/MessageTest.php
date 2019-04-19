@@ -48,12 +48,6 @@ class Zend_Validate_MessageTest extends PHPUnit_Framework_TestCase
      */
     protected $_validator;
 
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Creates a new Zend_Validate_StringLength object for each test method
      *

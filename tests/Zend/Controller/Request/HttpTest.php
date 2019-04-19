@@ -49,18 +49,6 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
      */
     protected $_origServer;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Request_HttpTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $this->_origServer = $_SERVER;
@@ -979,7 +967,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals( '/module/controller/action', $pathInfo, $pathInfo);
     }
-    
+
     /**
      * @group ZF-3527
      * @group ZF-10964
@@ -990,7 +978,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         $request = new Zend_Controller_Request_Http();
         $_SERVER['REQUEST_URI'] = '/module/controller/action/param/escaped%2Fstring';
         $pathInfo = $request->getPathInfo();
-    
+
         $this->assertEquals( '/module/controller/action/param/escaped%2Fstring', $pathInfo, $pathInfo);
     }
 

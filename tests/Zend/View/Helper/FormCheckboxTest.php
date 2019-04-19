@@ -44,18 +44,6 @@ require_once 'Zend/Registry.php';
  */
 class Zend_View_Helper_FormCheckboxTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormCheckboxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {

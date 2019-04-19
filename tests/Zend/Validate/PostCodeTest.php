@@ -47,17 +47,6 @@ class Zend_Validate_PostCodeTest extends PHPUnit_Framework_TestCase
     protected $_validator;
 
     /**
-     * Runs this test suite
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_PostCodeTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Creates a new Zend_Validate_PostCode object for each test method
      *
      * @return void

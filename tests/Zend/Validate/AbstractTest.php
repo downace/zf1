@@ -43,17 +43,6 @@ require_once 'Zend/Registry.php';
  */
 class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * Runs this test suite
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_AbstractTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function clearRegistry()
     {
         if (Zend_Registry::isRegistered('Zend_Translate')) {

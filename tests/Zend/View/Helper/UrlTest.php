@@ -49,19 +49,6 @@ require_once 'Zend/Controller/Request/Http.php';
 class Zend_View_Helper_UrlTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_UrlTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *

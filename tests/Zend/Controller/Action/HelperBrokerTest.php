@@ -50,19 +50,6 @@ class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
      */
     protected $front;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_HelperBrokerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $this->front = Zend_Controller_Front::getInstance();

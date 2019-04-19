@@ -49,19 +49,6 @@ class Zend_Rest_RouteTest extends PHPUnit_Framework_TestCase
     protected $_request;
     protected $_dispatcher;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Rest_RouteTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $this->_front = Zend_Controller_Front::getInstance();

@@ -42,17 +42,6 @@ require_once 'Zend/View.php';
 class Zend_View_Helper_FormSelectTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormSelectTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *
@@ -338,7 +327,7 @@ class Zend_View_Helper_FormSelectTest extends PHPUnit_Framework_TestCase
         $this->assertNotRegexp('/<select[^>]*?(multiple="multiple")/', $html, $html);
     }
 
-    /** 
+    /**
      * @group ZF-8252
      */
     public function testOptGroupHasAnId()
@@ -356,7 +345,7 @@ class Zend_View_Helper_FormSelectTest extends PHPUnit_Framework_TestCase
         ));
         $this->assertRegexp('/<optgroup[^>]*?id="baz-optgroup-bar"[^>]*?"bar"[^>]*?/', $html, $html);
     }
- 
+
     public function testCanApplyOptionClasses()
     {
         $html = $this->helper->formSelect(array(

@@ -40,17 +40,6 @@ require_once 'Zend/Validate/Callback.php';
 class Zend_Validate_CallbackTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Runs this test suite
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_CallbackTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Ensures that the validator follows expected behavior
      *
      * @return void

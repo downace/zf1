@@ -51,17 +51,6 @@ require_once 'Zend/Controller/Action.php';
 class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Test_PHPUnit_ControllerTestCaseTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *
@@ -779,7 +768,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
                : gettype($boot);
         $this->assertTrue($boot === $this->testCase->bootstrap->getBootstrap(), $type);
     }
-    
+
     /**
      * @group ZF-7496
      * @dataProvider providerRedirectWorksAsExpectedFromHookMethodsInActionController
@@ -791,7 +780,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
         $this->testCase->assertRedirectTo('/login');
         $this->assertNotEquals('action body', $this->testCase->getResponse()->getBody());
     }
-    
+
     /**
      * Data provider for testRedirectWorksAsExpectedFromHookMethodsInActionController
      * @return array
@@ -803,7 +792,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
             array('/zend-test-redirect-from-pre-dispatch/baz')
         );
     }
-    
+
     /**
      * @group ZF-7496
      * @dataProvider providerRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin
@@ -812,7 +801,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     {
         require_once dirname(__FILE__) . "/_files/application/plugins/RedirectFrom{$pluginName}.php";
         $className = "Application_Plugin_RedirectFrom{$pluginName}";
-        
+
         $fc = $this->testCase->getFrontController();
         $fc->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers')
            ->registerPlugin(new $className());
@@ -852,7 +841,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
             'Expires', '#^[a-z-]+/[a-z-]+$#i'
         );
     }
-    
+
     /**
      * Data provider for testRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin
      * @return array

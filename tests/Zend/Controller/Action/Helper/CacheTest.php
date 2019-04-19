@@ -21,17 +21,6 @@ class Zend_Controller_Action_Helper_CacheTest extends PHPUnit_Framework_TestCase
 
     protected $_requestUriOld;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_Helper_CacheTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $this->_requestUriOld =

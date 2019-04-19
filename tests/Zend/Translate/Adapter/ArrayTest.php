@@ -46,17 +46,6 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
      */
     protected $_errorOccurred = false;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Translate_Adapter_ArrayTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         if (Zend_Translate_Adapter_Array::hasCache()) {

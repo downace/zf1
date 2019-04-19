@@ -44,12 +44,6 @@ require_once 'Zend/Loader/Autoloader/Interface.php';
  */
 class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 {
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         // Store original autoloaders

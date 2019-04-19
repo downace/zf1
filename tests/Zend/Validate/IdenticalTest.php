@@ -46,12 +46,6 @@ class Zend_Validate_IdenticalTest extends PHPUnit_Framework_TestCase
      */
     private $validator;
 
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_IdenticalTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $this->validator = new Zend_Validate_Identical;

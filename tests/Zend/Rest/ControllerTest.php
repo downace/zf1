@@ -88,19 +88,6 @@ class Zend_Rest_ControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $_testController;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Rest_ControllerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         $request = new Zend_Controller_Request_HttpTestCase();

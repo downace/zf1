@@ -42,18 +42,6 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     protected $_includeCache;
 
     /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Loader_PluginLoaderTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
-    /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *

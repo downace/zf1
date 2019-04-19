@@ -62,19 +62,6 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
 {
     protected $_router;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Router_RewriteTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp() {
         $this->_router = new Zend_Controller_Router_Rewrite();
         $front = Zend_Controller_Front::getInstance();
@@ -756,7 +743,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
             $this->_router->assemble($params)
         );
     }
-    
+
     /**
      * @group ZF-11393
      * @expectedException Zend_Controller_Router_Exception

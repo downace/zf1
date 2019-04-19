@@ -58,18 +58,6 @@ class Zend_View_Helper_TranslateTest extends PHPUnit_Framework_TestCase
      */
     public $basePath;
 
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_TranslateTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function clearRegistry()
     {
         $regKey = 'Zend_Translate';
