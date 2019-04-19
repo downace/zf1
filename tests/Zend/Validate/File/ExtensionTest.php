@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_ExtensionTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_ExtensionTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Extension
  */
@@ -193,9 +188,4 @@ class Zend_Validate_File_ExtensionTest extends \PHPUnit\Framework\TestCase
         $validator->addExtension('');
         $this->assertEquals(array('mo', 'gif', 'jpg', 'to', 'zip', 'ti'), $validator->getExtension());
     }
-}
-
-// Call Zend_Validate_File_ExtensionTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_ExtensionTest::main") {
-    Zend_Validate_File_ExtensionTest::main();
 }

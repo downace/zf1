@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/Form.php';
 
@@ -165,9 +160,4 @@ class Zend_View_Helper_FormTest extends \PHPUnit\Framework\TestCase
         $form = $this->helper->form('');
         $this->assertNotRegexp('/<form[^>]*(action="")/', $form);
     }
-}
-
-// Call Zend_View_Helper_FormTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormTest::main") {
-    Zend_View_Helper_FormTest::main();
 }

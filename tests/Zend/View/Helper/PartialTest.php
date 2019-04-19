@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_PartialTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_PartialTest::main");
-}
-
 /** Zend_View_Helper_Partial */
 require_once 'Zend/View/Helper/Partial.php';
 
@@ -277,9 +272,4 @@ class Zend_View_Helper_PartialTest_Aggregate
     {
         return $this->vars;
     }
-}
-
-// Call Zend_View_Helper_PartialTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_PartialTest::main") {
-    Zend_View_Helper_PartialTest::main();
 }

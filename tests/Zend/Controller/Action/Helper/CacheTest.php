@@ -1,9 +1,5 @@
 <?php
 
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_CacheTest::main");
-}
-
 require_once 'Zend/Controller/Action/Helper/Cache.php';
 require_once 'Zend/Controller/Action/HelperBroker.php';
 require_once 'Zend/Controller/Front.php';
@@ -280,7 +276,3 @@ class Mock_Zend_Cache_Page_TestingEncodedCacheId extends Zend_Cache_Core
     public function start() {}
     public function end() {$this->res = 'verified';}
 }**/
-
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_CacheTest::main") {
-    Zend_Controller_Action_Helper_CacheTest::main();
-}

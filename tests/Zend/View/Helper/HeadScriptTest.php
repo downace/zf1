@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_HeadScriptTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HeadScriptTest::main");
-}
-
 /** Zend_View_Helper_HeadScript */
 require_once 'Zend/View/Helper/HeadScript.php';
 
@@ -523,9 +518,4 @@ document.write(bar.strlen());');
         $this->assertContains('<!--[if !IE]><!--><', $test);
         $this->assertContains('<!--<![endif]-->', $test);
     }
-}
-
-// Call Zend_View_Helper_HeadScriptTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadScriptTest::main") {
-    Zend_View_Helper_HeadScriptTest::main();
 }

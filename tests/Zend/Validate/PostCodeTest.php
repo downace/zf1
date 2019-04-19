@@ -20,10 +20,6 @@
  * @version    $Id: PostCodeTest.php 17798 2009-08-24 20:07:53Z thomas $
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_PostCodeTest::main');
-}
-
 /**
  * @see Zend_Validate_PostCode
  */
@@ -168,8 +164,4 @@ class Zend_Validate_PostCodeTest extends \PHPUnit\Framework\TestCase
         $message = $this->_validator->getMessages();
         $this->assertContains('not appear to be a postal code', $message['postcodeNoMatch']);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_PostCodeTest::main') {
-    Zend_Validate_PostCodeTest::main();
 }

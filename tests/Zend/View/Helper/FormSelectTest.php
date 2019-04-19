@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormSelectTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormSelectTest::main");
-}
-
 require_once 'Zend/View/Helper/FormSelect.php';
 require_once 'Zend/View.php';
 
@@ -365,9 +360,4 @@ class Zend_View_Helper_FormSelectTest extends \PHPUnit\Framework\TestCase
         $this->assertRegexp('/.*<option[^>]*?(value="foo")?(class="fooClass").*/', $html, $html);
         $this->assertRegexp('/.*<option[^>]*?(value="bar")?(class="barClass").*/', $html, $html);
     }
-}
-
-// Call Zend_View_Helper_FormSelectTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormSelectTest::main") {
-    Zend_View_Helper_FormSelectTest::main();
 }

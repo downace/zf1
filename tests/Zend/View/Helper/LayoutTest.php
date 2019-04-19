@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_LayoutTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_LayoutTest::main");
-}
-
 require_once 'Zend/View/Helper/Layout.php';
 require_once 'Zend/Layout.php';
 require_once 'Zend/Controller/Front.php';
@@ -118,9 +113,4 @@ class Zend_View_Helper_LayoutTest_Layout extends Zend_Layout
     {
         self::$_mvcInstance = null;
     }
-}
-
-// Call Zend_View_Helper_LayoutTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_LayoutTest::main") {
-    Zend_View_Helper_LayoutTest::main();
 }

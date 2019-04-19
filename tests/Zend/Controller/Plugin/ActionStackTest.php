@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Plugin_ActionStackTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_ActionStackTest::main");
-}
-
-
 require_once 'Zend/Controller/Plugin/ActionStack.php';
 require_once 'Zend/Controller/Request/Simple.php';
 require_once 'Zend/Registry.php';
@@ -379,9 +373,4 @@ class Zend_Controller_Plugin_ActionStackTest extends \PHPUnit\Framework\TestCase
 class Zend_Controller_Plugin_ActionStack_Registry extends Zend_Registry
 {
     protected static $_registryClassName = 'Zend_Controller_Plugin_ActionStack_Registry';
-}
-
-// Call Zend_Controller_Plugin_ActionStackTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_ActionStackTest::main") {
-    Zend_Controller_Plugin_ActionStackTest::main();
 }

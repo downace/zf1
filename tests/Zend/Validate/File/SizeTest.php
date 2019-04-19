@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_SizeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_SizeTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Size
  */
@@ -200,9 +195,4 @@ class Zend_Validate_File_SizeTest extends \PHPUnit\Framework\TestCase
         $this->assertContains('9999', current($validator->getMessages()));
         $this->assertContains('794', current($validator->getMessages()));
     }
-}
-
-// Call Zend_Validate_File_SizeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_SizeTest::main") {
-    Zend_Validate_File_SizeTest::main();
 }

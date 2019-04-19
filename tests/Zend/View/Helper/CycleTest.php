@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_CycleTest::main() if this source file is executed directly.
-if (! defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_CycleTest::main");
-}
-
 /** Zend_View_Helper_Cycle */
 require_once 'Zend/View/Helper/Cycle.php';
 
@@ -151,8 +146,3 @@ class Zend_View_Helper_CycleTest extends \PHPUnit\Framework\TestCase
     }
 
 }
-// Call Zend_View_Helper_CycleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_CycleTest::main") {
-    Zend_View_Helper_CycleTest::main();
-}
-

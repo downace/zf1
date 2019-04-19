@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_LoaderTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_LoaderTest::main');
-}
-
 /**
  * Zend_Loader
  */
@@ -559,9 +554,4 @@ class Zend_LoaderTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(empty($output));
     }
      */
-}
-
-// Call Zend_LoaderTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === 'Zend_LoaderTest::main') {
-    Zend_LoaderTest::main();
 }

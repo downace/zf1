@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_LocaleTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -177,8 +173,4 @@ class Zend_Application_Resource_LocaleTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(Zend_Locale::hasCache());
         Zend_Locale::removeCache();
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_LocaleTest::main') {
-    Zend_Application_Resource_LocaleTest::main();
 }

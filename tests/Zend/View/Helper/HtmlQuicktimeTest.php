@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_HtmlQuicktimeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HtmlQuicktimeTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/HtmlQuicktime.php';
 
@@ -74,9 +69,4 @@ class Zend_View_Helper_HtmlQuicktimeTest extends \PHPUnit\Framework\TestCase
         $this->assertContains($objectStartElement, $htmlQuicktime);
         $this->assertContains('</object>', $htmlQuicktime);
     }
-}
-
-// Call Zend_View_Helper_HtmlQuicktimeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HtmlQuicktimeTest::main") {
-    Zend_View_Helper_HtmlQuicktimeTest::main();
 }

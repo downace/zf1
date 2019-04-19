@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_ActionTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_ActionTest::main");
-}
-
 /** Zend_View_Helper_Action */
 require_once 'Zend/View/Helper/Action.php';
 
@@ -320,9 +315,4 @@ class Zend_View_Helper_ActionTest extends \PHPUnit\Framework\TestCase
         $value = $this->helper->action('bar-one', 'baz', 'foo');
         $this->assertRegexp('/Baz-Three-View-Script\s+Baz-Two-View-Script\s+Baz-One-View-Script/s', $value);
     }
-}
-
-// Call Zend_View_Helper_ActionTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_ActionTest::main") {
-    Zend_View_Helper_ActionTest::main();
 }

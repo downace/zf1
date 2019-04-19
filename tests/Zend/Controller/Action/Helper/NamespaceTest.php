@@ -21,11 +21,6 @@
  * @version    $Id:$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Controller_Action_Helper_NamespaceTest::main');
-}
-
-
 /**
  * Test class for Zend_Controller_Action_Helper_Abstract.
  *
@@ -55,9 +50,4 @@ class Zend_Controller_Action_Helper_NamespaceTest extends \PHPUnit\Framework\Tes
         $helper = new $className;
         $this->assertEquals('NamespacedHelper', $helper->getName());
     }
-}
-
-// Call Zend_Controller_Action_Helper_NamespaceTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_Controller_Action_Helper_NamespaceTest::main') {
-    Zend_Controller_Action_Helper_NamespaceTest::main();
 }

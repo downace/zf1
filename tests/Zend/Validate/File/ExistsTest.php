@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_ExistsTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_ExistsTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Size
  */
@@ -187,9 +182,4 @@ class Zend_Validate_File_ExistsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('temp,gif,jpg,to,zip,ti', $validator->getDirectory());
         $this->assertEquals(array('temp', 'gif', 'jpg', 'to', 'zip', 'ti'), $validator->getDirectory(true));
     }
-}
-
-// Call Zend_Validate_File_ExistsTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_ExistsTest::main") {
-    Zend_Validate_File_ExistsTest::main();
 }

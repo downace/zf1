@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Response_HttpTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Controller_Response_HttpTest::main');
-}
-
 require_once 'Zend/Controller/Response/Http.php';
 require_once 'Zend/Controller/Response/Exception.php';
 
@@ -634,8 +629,3 @@ class Zend_Controller_Response_HttpTest extends \PHPUnit\Framework\TestCase
 require_once 'Zend/Controller/Action.php';
 class Zend_Controller_Response_HttpTest_Action extends Zend_Controller_Action
 {}
-
-// Call Zend_Controller_Response_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Response_HttpTest::main") {
-    Zend_Controller_Response_HttpTest::main();
-}

@@ -20,10 +20,6 @@
  * @version    $Id $
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_UriTest::main');
-}
-
 /**
  * Zend_Uri
  */
@@ -223,9 +219,4 @@ class Zend_Uri_ExceptionCausing extends Zend_Uri
 }
 class Fake_Zend_Uri
 {
-}
-
-// Call Zend_UriTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_UriTest::main") {
-    Zend_UriTest::main();
 }

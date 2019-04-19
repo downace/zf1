@@ -26,11 +26,6 @@ require_once 'Zend/Controller/Router/Route/Module.php';
 /** Zend_Controller_Front */
 require_once 'Zend/Controller/Front.php';
 
-// Call Zend_Controller_Router_Route_ModuleTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Router_Route_ModuleTest::main");
-}
-
 /**
  * @category   Zend
  * @package    Zend_Controller
@@ -470,9 +465,4 @@ class Zend_Controller_Router_Route_ModuleTest extends \PHPUnit\Framework\TestCas
         $url = $this->route->assemble($params);
         $this->assertNotContains('"><script>alert(11639)<', $url);
     }
-}
-
-// Call Zend_Controller_Router_Route_ModuleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_Route_ModuleTest::main") {
-    Zend_Controller_Router_Route_ModuleTest::main();
 }

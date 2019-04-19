@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_FieldsetTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FieldsetTest::main");
-}
-
 require_once 'Zend/View/Helper/Fieldset.php';
 require_once 'Zend/View.php';
 
@@ -99,9 +94,4 @@ class Zend_View_Helper_FieldsetTest extends \PHPUnit\Framework\TestCase
         $html = $this->helper->fieldset('foo', 'foobar', array('legend' => '<b>Great Scott!</b>', 'escape' => false));
         $this->assertRegexp('#<legend><b>Great Scott!</b></legend>#', $html, $html);
     }
-}
-
-// Call Zend_View_Helper_FieldsetTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FieldsetTest::main") {
-    Zend_View_Helper_FieldsetTest::main();
 }

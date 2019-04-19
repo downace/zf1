@@ -19,10 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_AutoloaderFactoryTest::main');
-}
-
 /*
  * Preload a number of classes to ensure they're available once we've disabled
  * other autoloaders.
@@ -220,8 +216,4 @@ class Zend_Loader_AutoloaderFactoryTest extends \PHPUnit\Framework\TestCase
         }
         $this->assertTrue($found, 'StandardAutoloader not registered with spl_autoload');
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_AutoloaderFactoryTest::main') {
-    Zend_Loader_AutoloaderFactoryTest::main();
 }

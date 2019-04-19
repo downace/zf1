@@ -264,8 +264,3 @@ class Zend_Translate_Adapter_TmxTest extends \PHPUnit\Framework\TestCase
         $this->_errorOccurred = true;
     }
 }
-
-// Call Zend_Translate_Adapter_TmxTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_TmxTest::main") {
-    Zend_Translate_Adapter_TmxTest::main();
-}

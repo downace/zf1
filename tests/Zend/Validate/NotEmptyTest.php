@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_NotEmptyTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_NotEmptyTest::main");
-}
-
 /**
  * @see Zend_Validate_NotEmpty
  */
@@ -608,9 +603,4 @@ class ClassTest3
     {
         return '';
     }
-}
-
-// Call Zend_Validate_NotEmptyTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_NotEmptyTest::main") {
-    Zend_Validate_NotEmptyTest::main();
 }

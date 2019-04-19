@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_ClassMapAutoloaderTest::main');
-}
-
 require_once 'Zend/Loader/ClassMapAutoloader.php';
 
 /**
@@ -219,8 +215,4 @@ class Zend_Loader_ClassMapAutoloaderTest extends \PHPUnit\Framework\TestCase
         $this->loader->autoload('some\namespacedclass');
         $this->assertTrue(class_exists('some\namespacedclass', false));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_ClassMapAutoloaderTest::main') {
-    Zend_Loader_ClassMapAutoloaderTest::main();
 }

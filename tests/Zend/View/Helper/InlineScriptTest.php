@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_InlineScriptTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_InlineScriptTest::main");
-}
-
 /** Zend_View_Helper_InlineScript */
 require_once 'Zend/View/Helper/InlineScript.php';
 
@@ -101,9 +96,4 @@ class Zend_View_Helper_InlineScriptTest extends \PHPUnit\Framework\TestCase
         $placeholder = $this->helper->inlineScript();
         $this->assertTrue($placeholder instanceof Zend_View_Helper_InlineScript);
     }
-}
-
-// Call Zend_View_Helper_InlineScriptTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_InlineScriptTest::main") {
-    Zend_View_Helper_InlineScriptTest::main();
 }

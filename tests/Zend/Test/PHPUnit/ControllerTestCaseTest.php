@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Test_PHPUnit_ControllerTestCaseTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Test_PHPUnit_ControllerTestCaseTest::main");
-}
-
 /** Zend_Test_PHPUnit_ControllerTestCase */
 require_once 'Zend/Test/PHPUnit/ControllerTestCase.php';
 
@@ -860,9 +855,4 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
 // Concrete test case class for testing purposes
 class Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete extends Zend_Test_PHPUnit_ControllerTestCase
 {
-}
-
-// Call Zend_Test_PHPUnit_ControllerTestCaseTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Test_PHPUnit_ControllerTestCaseTest::main") {
-    Zend_Test_PHPUnit_ControllerTestCaseTest::main();
 }

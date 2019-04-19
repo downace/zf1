@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Plugin_PutHandlerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_PutHandlerTest::main");
-}
-
 require_once 'Zend/Controller/Plugin/PutHandler.php';
 require_once 'Zend/Controller/Request/HttpTestCase.php';
 require_once 'Zend/Controller/Front.php';
@@ -80,9 +75,3 @@ class Zend_Controller_Plugin_PutHandlerTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('value2', $this->request->getParam('param2'));
     }
 }
-
-// Call Zend_Controller_Plugin_PutHandlerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_PutHandlerTest::main") {
-    Zend_Controller_Plugin_PutHandlerTest::main();
-}
-

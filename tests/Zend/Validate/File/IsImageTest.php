@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_IsImageTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_IsImageTest::main");
-}
-
 /**
  * @see Zend_Validate_File_IsImage
  */
@@ -183,9 +178,4 @@ class Zend_Validate_File_IsImageTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($validator->getHeaderCheck());
         $this->assertEquals('image/gif,image/jpg', $validator->getMimeType());
     }
-}
-
-// Call Zend_Validate_File_IsImage::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_IsImage::main") {
-    Zend_Validate_File_IsImage::main();
 }

@@ -19,10 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main');
-}
-
 require_once 'Zend/Loader/AutoloaderFactory.php';
 
 /**
@@ -100,8 +96,4 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends \PHPUnit\Framework
         $this->assertTrue(is_array($map));
         $this->assertEquals(2, count($map));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main') {
-    Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main();
 }

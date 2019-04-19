@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_HeadTitleTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HeadTitleTest::main");
-}
-
 /** Zend_View_Helper_HeadTitle */
 require_once 'Zend/View/Helper/HeadTitle.php';
 
@@ -234,9 +229,4 @@ class Zend_View_Helper_HeadTitleTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($this->helper->setDefaultAttachOrder('PREPEND') instanceof  Zend_View_Helper_HeadTitle);
         $this->assertEquals('PREPEND', $this->helper->getDefaultAttachOrder());
     }
-}
-
-// Call Zend_View_Helper_HeadTitleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadTitleTest::main") {
-    Zend_View_Helper_HeadTitleTest::main();
 }

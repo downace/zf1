@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_RouterTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -122,8 +118,4 @@ class Zend_Application_Resource_RouterTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($route instanceof Zend_Controller_Router_Route);
         $this->assertEquals($options['routes']['archive']['defaults'], $route->getDefaults());
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_RouterTest::main') {
-    Zend_Application_Resource_RouterTest::main();
 }

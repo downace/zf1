@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Translate_Adapter_ArrayTest::main');
-}
-
 /**
  * Zend_Translate_Adapter_Array
  */
@@ -334,9 +330,4 @@ class Zend_Translate_Adapter_ArrayTest extends \PHPUnit\Framework\TestCase
     {
         $this->_errorOccurred = true;
     }
-}
-
-// Call Zend_Translate_Adapter_ArrayTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_ArrayTest::main") {
-    Zend_Translate_Adapter_ArrayTest::main();
 }

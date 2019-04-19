@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_View_Helper_BaseUrlTest::main');
-}
-
 /**
  * @see Zend_View_Helper_BaseUrl
  */
@@ -195,9 +190,4 @@ class Zend_View_Helper_BaseUrlTest extends \PHPUnit\Framework\TestCase
         $helper = new Zend_View_Helper_BaseUrl();
         $this->assertEquals('/mybar', $helper->getBaseUrl());
     }
-}
-
-// Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_View_Helper_BaseUrlTest::main') {
-    Zend_View_Helper_BaseUrlTest::main();
 }

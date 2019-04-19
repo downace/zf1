@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_MultidbTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -236,8 +232,4 @@ class Zend_Application_Resource_MultidbTest extends \PHPUnit\Framework\TestCase
         $resource->init();
         $this->assertTrue(Zend_Db_Table::getDefaultMetadataCache() instanceof Zend_Cache_Core);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_MultidbTest::main') {
-    Zend_Application_Resource_MultidbTest::main();
 }

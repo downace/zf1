@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_UploadTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_UploadTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Upload
  */
@@ -289,9 +284,4 @@ class Zend_Validate_File_UploadTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-}
-
-// Call Zend_Validate_File_UploadTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_UploadTest::main") {
-    Zend_Validate_File_UploadTest::main();
 }

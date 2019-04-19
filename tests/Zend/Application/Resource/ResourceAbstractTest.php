@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_ResourceAbstractTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -183,8 +179,4 @@ class Zend_Application_Resource_ResourceAbstractTest extends \PHPUnit\Framework\
         $stored   = $resource->getOptions();
         $this->assertSame($options, $stored);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_ResourceAbstractTest::main') {
-    Zend_Application_Resource_ResourceAbstractTest::main();
 }

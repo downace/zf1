@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Action_Helper_ActionStackTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_ActionStackTest::main");
-}
-
-
 require_once 'Zend/Controller/Action/Helper/ActionStack.php';
 require_once 'Zend/Controller/Front.php';
 require_once 'Zend/Controller/Request/Simple.php';
@@ -181,9 +175,4 @@ class Zend_Controller_Action_Helper_ActionStackTest extends \PHPUnit\Framework\T
         $this->assertEquals('baz', $next->getActionName());
         $this->assertFalse($next->isDispatched());
     }
-}
-
-// Call Zend_Controller_Action_Helper_ActionStackTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_ActionStackTest::main") {
-    Zend_Controller_Action_Helper_ActionStackTest::main();
 }

@@ -20,10 +20,6 @@
  * @version    $Id $
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_ViewTest::main');
-}
-
 /**
  * Zend_View
  */
@@ -1165,9 +1161,4 @@ class Zend_ViewTest_Extension extends Zend_View
         $this->assign('foo', 'bar');
         $this->setScriptPath(dirname(__FILE__) . '/View/_templates');
     }
-}
-
-// Call Zend_ViewTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_ViewTest::main") {
-    Zend_ViewTest::main();
 }

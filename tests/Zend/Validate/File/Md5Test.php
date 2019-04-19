@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_Md5Test::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_Md5Test::main");
-}
-
 /**
  * @see Zend_Validate_File_Md5
  */
@@ -189,9 +184,4 @@ class Zend_Validate_File_Md5Test extends \PHPUnit\Framework\TestCase
         $validator->addHash(array('12321', '12121'));
         $this->assertEquals(array('12345' => 'md5', '12344' => 'md5', '12321' => 'md5', '12121' => 'md5'), $validator->getMd5());
     }
-}
-
-// Call Zend_Validate_File_Md5Test::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_Md5Test::main") {
-    Zend_Validate_File_Md5Test::main();
 }

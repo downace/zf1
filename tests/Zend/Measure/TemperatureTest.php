@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Measure_TemperatureTest::main');
-}
-
 /**
  * Zend_Measure_Temperature
  */
@@ -434,8 +430,4 @@ class Zend_Measure_TemperatureTest extends \PHPUnit\Framework\TestCase
         $unit= new Zend_Measure_Temperature(100, Zend_Measure_Temperature::FAHRENHEIT, 'de');
         $this->assertSame('311 °K', $unit->convertTo(Zend_Measure_Temperature::KELVIN, 0));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Measure_TemperatureTest::main') {
-    Zend_Measure_TemperatureTest::main();
 }

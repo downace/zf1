@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_DoctypeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_DoctypeTest::main");
-}
-
 /** Zend_View_Helper_Doctype */
 require_once 'Zend/View/Helper/Doctype.php';
 
@@ -204,9 +199,4 @@ class Zend_View_Helper_DoctypeTest extends \PHPUnit\Framework\TestCase
         $registry = Zend_Registry::get('Zend_View_Helper_Doctype');
         $this->assertEquals($registry['doctypes']['XHTML1_STRICT'], $string);
     }
-}
-
-// Call Zend_View_Helper_DoctypeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_DoctypeTest::main") {
-    Zend_View_Helper_DoctypeTest::main();
 }

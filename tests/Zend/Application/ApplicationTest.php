@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_ApplicationTest::main');
-}
-
 /** Zend_Loader_Autoloader */
 require_once 'Zend/Loader/Autoloader.php';
 
@@ -513,8 +509,4 @@ class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals('baz', $application->getOption('foo'));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_ApplicationTest::main') {
-    Zend_Application_ApplicationTest::main();
 }

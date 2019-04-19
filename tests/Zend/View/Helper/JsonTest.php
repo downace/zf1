@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_JsonTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_JsonTest::main");
-}
-
 require_once 'Zend/View/Helper/Json.php';
 require_once 'Zend/Controller/Front.php';
 require_once 'Zend/Controller/Response/Http.php';
@@ -180,9 +175,4 @@ class Zend_View_Helper_JsonTest_Layout extends Zend_Layout
     {
         self::$_mvcInstance = null;
     }
-}
-
-// Call Zend_View_Helper_JsonTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_JsonTest::main") {
-    Zend_View_Helper_JsonTest::main();
 }

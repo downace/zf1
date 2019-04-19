@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_NavigationTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -202,8 +198,4 @@ class Zend_Application_Resource_NavigationTest extends \PHPUnit\Framework\TestCa
         $this->assertEquals(array(true,true,true,false),$results);
         $this->bootstrap->unregisterPluginResource('view');
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_NavigationTest::main') {
-    Zend_Application_Resource_NavigationTest::main();
 }

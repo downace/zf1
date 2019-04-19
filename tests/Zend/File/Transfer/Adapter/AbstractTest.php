@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_File_Transfer_Adapter_AbstractTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_File_Transfer_Adapter_AbstractTest::main");
-}
-
 require_once 'Zend/File/Transfer/Adapter/Abstract.php';
 require_once 'Zend/Filter/BaseName.php';
 require_once 'Zend/Filter/StringToLower.php';
@@ -1002,9 +997,4 @@ class Zend_File_Transfer_Adapter_AbstractTest_MockAdapter extends Zend_File_Tran
             )
         );
     }
-}
-
-// Call Zend_File_Transfer_Adapter_AbstractTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_File_Transfer_Adapter_AbstractTest::main") {
-    Zend_File_Transfer_Adapter_AbstractTest::main();
 }

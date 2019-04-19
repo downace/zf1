@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_CacheManagerTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -244,8 +240,4 @@ class Zend_Cache_Backend_Custom_Naming extends Zend_Cache_Backend
 
 class Zend_Cache_Frontend_CustomNaming extends Zend_Cache_Core
 {
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_CacheManagerTest::main') {
-    Zend_Application_Resource_CacheManagerTest::main();
 }

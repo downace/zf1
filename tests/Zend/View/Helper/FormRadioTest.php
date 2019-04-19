@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormRadioTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormRadioTest::main");
-}
-
 require_once 'Zend/View/Helper/FormRadio.php';
 require_once 'Zend/View.php';
 
@@ -502,9 +497,3 @@ class Zend_View_Helper_FormRadioTest extends \PHPUnit\Framework\TestCase
      }
 
 }
-
-// Call Zend_View_Helper_FormRadioTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormRadioTest::main") {
-    Zend_View_Helper_FormRadioTest::main();
-}
-

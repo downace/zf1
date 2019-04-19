@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_EmailAddressTest::main');
-}
-
 /**
  * @see Zend_Validate_EmailAddress
  */
@@ -626,8 +622,4 @@ class Zend_Validate_EmailAddressTest extends \PHPUnit\Framework\TestCase
         $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_IP);
         $this->assertTrue($validator->isValid('bob@192.162.33.24'));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_EmailAddressTest::main') {
-    Zend_Validate_EmailAddressTest::main();
 }

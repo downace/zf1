@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_PartialLoopTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_PartialLoopTest::main");
-}
-
 /** Zend_View_Helper_PartialLoop */
 require_once 'Zend/View/Helper/PartialLoop.php';
 
@@ -544,9 +539,4 @@ class Zend_View_Helper_PartialLoop_IteratorWithToArrayTestContainer
     {
         return $this->_info;
     }
-}
-
-// Call Zend_View_Helper_PartialLoopTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_PartialLoopTest::main") {
-    Zend_View_Helper_PartialLoopTest::main();
 }

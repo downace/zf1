@@ -20,11 +20,6 @@
  * @version $Id$
  */
 
-// Call Zend_View_Helper_UrlTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_UrlTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/Url.php';
 
@@ -76,9 +71,4 @@ class Zend_View_Helper_UrlTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('/ctrl/act', $url);
     }
 
-}
-
-// Call Zend_View_Helper_UrlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_UrlTest::main") {
-    Zend_View_Helper_UrlTest::main();
 }

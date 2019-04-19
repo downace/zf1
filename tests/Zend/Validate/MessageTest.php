@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_MessageTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_MessageTest::main');
-}
-
 /**
  * @see Zend_Validate_StringLength
  */
@@ -302,9 +297,4 @@ class Zend_Validate_MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('variables: %notvar% 4 8 ', current($messages));
     }
 
-}
-
-// Call Zend_Validate_MessageTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_MessageTest::main') {
-    Zend_Validate_MessageTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Layout_LayoutTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Layout_LayoutTest::main");
-}
-
 require_once 'Zend/Layout.php';
 require_once 'Zend/Layout/Controller/Plugin/Layout.php';
 require_once 'Zend/Layout/Controller/Action/Helper/Layout.php';
@@ -562,9 +557,4 @@ class Zend_Layout_LayoutTest_Controller_Plugin_Layout extends Zend_Layout_Contro
 
 class Zend_Layout_LayoutTest_Controller_Action_Helper_Layout extends Zend_Layout_Controller_Action_Helper_Layout
 {
-}
-
-// Call Zend_Layout_LayoutTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Layout_LayoutTest::main") {
-    Zend_Layout_LayoutTest::main();
 }

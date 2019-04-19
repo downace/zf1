@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Request_HttpTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Request_HttpTest::main");
-}
-
 require_once 'Zend/Controller/Request/Http.php';
 
 /**
@@ -991,9 +986,4 @@ class Zend_Controller_Request_HttpTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('', $request->getHttpHost(), 'HttpHost should be :');
     }
 
-}
-
-// Call Zend_Controller_Request_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_HttpTest::main") {
-    Zend_Controller_Request_HttpTest::main();
 }

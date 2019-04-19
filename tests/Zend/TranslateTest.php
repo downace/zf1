@@ -910,8 +910,3 @@ class Zend_TranslateTest extends \PHPUnit\Framework\TestCase
         return 1;
     }
 }
-
-// Call Zend_TranslateTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_TranslateTest::main") {
-    Zend_TranslateTest::main();
-}

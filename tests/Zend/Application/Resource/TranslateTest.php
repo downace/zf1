@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_TranslateTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -256,8 +252,4 @@ class Zend_Application_Resource_TranslateTest extends \PHPUnit\Framework\TestCas
             $event['message']
         );
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_TranslateTest::main') {
-    Zend_Application_Resource_TranslateTest::main();
 }

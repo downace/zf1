@@ -20,19 +20,13 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_FrontTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_FrontTest::main");
+$basePath = realpath(dirname(__FILE__) . str_repeat(DIRECTORY_SEPARATOR . '..', 3));
 
-    $basePath = realpath(dirname(__FILE__) . str_repeat(DIRECTORY_SEPARATOR . '..', 3));
-
-    set_include_path(
-        $basePath . DIRECTORY_SEPARATOR . 'tests'
-        . PATH_SEPARATOR . $basePath . DIRECTORY_SEPARATOR . 'library'
-        . PATH_SEPARATOR . get_include_path()
-    );
-}
-
+set_include_path(
+    $basePath . DIRECTORY_SEPARATOR . 'tests'
+    . PATH_SEPARATOR . $basePath . DIRECTORY_SEPARATOR . 'library'
+    . PATH_SEPARATOR . get_include_path()
+);
 
 require_once 'Zend/Controller/Front.php';
 require_once 'Zend/Controller/Request/Http.php';
@@ -692,9 +686,4 @@ class Zend_Controller_FrontTest extends \PHPUnit\Framework\TestCase
 
         $this->assertFalse(Zend_Controller_Action_HelperBroker::hasHelper('viewRenderer'));
     }
-}
-
-// Call Zend_Controller_FrontTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_FrontTest::main") {
-    Zend_Controller_FrontTest::main();
 }

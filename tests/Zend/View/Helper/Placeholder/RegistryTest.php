@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_Placeholder_RegistryTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_Placeholder_RegistryTest::main");
-}
-
 /** Zend_View_Helper_Placeholder_Registry */
 require_once 'Zend/View/Helper/Placeholder/Registry.php';
 
@@ -222,9 +217,4 @@ class Zend_View_Helper_Placeholder_RegistryTest_Container extends Zend_View_Help
 
 class Zend_View_Helper_Placeholder_RegistryTest_BogusContainer
 {
-}
-
-// Call Zend_View_Helper_Placeholder_RegistryTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_Placeholder_RegistryTest::main") {
-    Zend_View_Helper_Placeholder_RegistryTest::main();
 }

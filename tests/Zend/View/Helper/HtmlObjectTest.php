@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_HtmlObjectTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HtmlObjectTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/HtmlObject.php';
 
@@ -132,9 +127,4 @@ class Zend_View_Helper_HtmlObjectTest extends \PHPUnit\Framework\TestCase
         $this->assertContains('testcontent', $htmlObject);
         $this->assertContains('</object>', $htmlObject);
     }
-}
-
-// Call Zend_View_Helper_HtmlObjectTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HtmlObjectTest::main") {
-    Zend_View_Helper_HtmlObjectTest::main();
 }

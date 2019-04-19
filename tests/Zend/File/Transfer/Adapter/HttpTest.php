@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_File_Transfer_Adapter_HttpTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_File_Transfer_Adapter_HttpTest::main");
-}
-
 require_once 'Zend/File/Transfer/Adapter/Http.php';
 require_once 'Zend/Filter/BaseName.php';
 require_once 'Zend/Filter/StringToLower.php';
@@ -240,9 +235,4 @@ class Zend_File_Transfer_Adapter_HttpTest_MockAdapter extends Zend_File_Transfer
         return parent::isValid($files);
     }
 
-}
-
-// Call Zend_File_Transfer_Adapter_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_File_Transfer_Adapter_HttpTest::main") {
-    Zend_File_Transfer_Adapter_HttpTest::main();
 }

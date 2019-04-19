@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Loader_PluginLoaderTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_PluginLoaderTest::main');
-}
-
 require_once 'Zend/Loader/PluginLoader.php';
 
 /**
@@ -539,9 +534,4 @@ class Zend_Loader_PluginLoaderTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals('Zfns\Foo_Demo', $className);
     }
-}
-
-// Call Zend_Loader_PluginLoaderTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === 'Zend_Loader_PluginLoaderTest::main') {
-    Zend_Loader_PluginLoaderTest::main();
 }

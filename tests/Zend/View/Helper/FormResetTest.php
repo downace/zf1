@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormResetTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormResetTest::main");
-}
-
 require_once 'Zend/View/Helper/FormReset.php';
 require_once 'Zend/View.php';
 require_once 'Zend/Registry.php';
@@ -104,9 +99,4 @@ class Zend_View_Helper_FormResetTest extends \PHPUnit\Framework\TestCase
         $test = $this->helper->formReset('foo', 'bar');
         $this->assertContains(' />', $test);
     }
-}
-
-// Call Zend_View_Helper_FormResetTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormResetTest::main") {
-    Zend_View_Helper_FormResetTest::main();
 }

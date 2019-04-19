@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_FormMultiCheckboxTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormMultiCheckboxTest::main");
-}
-
 require_once 'Zend/View/Helper/FormMultiCheckbox.php';
 require_once 'Zend/View.php';
 require_once 'Zend/Registry.php';
@@ -137,9 +132,4 @@ class Zend_View_Helper_FormMultiCheckboxTest extends \PHPUnit\Framework\TestCase
             $this->assertContains(' />', $matches[1]);
         }
     }
-}
-
-// Call Zend_View_Helper_FormMultiCheckboxTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormMultiCheckboxTest::main") {
-    Zend_View_Helper_FormMultiCheckboxTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_MimeTypeTest::main");
-}
-
 /**
  * @see Zend_Validate_File_MimeType
  */
@@ -278,9 +273,4 @@ class Zend_Validate_File_MimeTypeTest extends \PHPUnit\Framework\TestCase
             $this->assertTrue($validator->isValid($filetest, $files));
         }
     }
-}
-
-// Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_MimeTypeTest::main") {
-    Zend_Validate_File_MimeTypeTest::main();
 }

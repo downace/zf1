@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_IsCompressedTest::main");
-}
-
 /**
  * @see Zend_Validate_File_IsCompressed
  */
@@ -204,9 +199,4 @@ class Zend_Validate_File_IsCompressedTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($validator->getHeaderCheck());
         $this->assertEquals('image/gif,image/jpg', $validator->getMimeType());
     }
-}
-
-// Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_IsCompressedTest::main") {
-    Zend_Validate_File_IsCompressedTest::main();
 }

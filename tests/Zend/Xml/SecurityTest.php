@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Xml_SecurityTest::main');
-}
-
 /**
  * @see Zend_Xml_Security
  */
@@ -157,8 +153,4 @@ XML;
 XML;
 
     }
-}
-
-if (PHPUnit_MAIN_METHOD == "Zend_Xml_SecurityTest::main") {
-    Zend_Xml_SecurityTest::main();
 }

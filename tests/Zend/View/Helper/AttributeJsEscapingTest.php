@@ -20,11 +20,6 @@
  * @version    $Id: FormSubmitTest.php 23772 2011-02-28 21:35:29Z ralph $
  */
 
-// Call Zend_View_Helper_FormSubmitTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormSubmitTest::main");
-}
-
 require_once 'Zend/View/Helper/FormSubmit.php';
 require_once 'Zend/View.php';
 require_once 'Zend/Registry.php';
@@ -83,9 +78,4 @@ class Zend_View_Helper_AttributeJsEscapingTest extends \PHPUnit\Framework\TestCa
         ));
         $this->assertEquals('<input type="submit" name="foo" id="foo" value="Submit!" onsubmit=\'["foo","&#39;bar&#39;",10]\'>', $html);
     }
-}
-
-// Call Zend_View_Helper_FormSubmitTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormSubmitTest::main") {
-    Zend_View_Helper_FormSubmitTest::main();
 }

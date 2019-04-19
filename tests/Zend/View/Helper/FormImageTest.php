@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormImageTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormImageTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/FormImage.php';
 
@@ -105,9 +100,4 @@ class Zend_View_Helper_FormImageTest extends \PHPUnit\Framework\TestCase
         ));
         $this->assertContains(' />', $test);
     }
-}
-
-// Call Zend_View_Helper_FormImageTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormImageTest::main") {
-    Zend_View_Helper_FormImageTest::main();
 }

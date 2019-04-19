@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_ViewTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -235,9 +231,4 @@ class Zend_Application_Resource_ViewTest extends \PHPUnit\Framework\TestCase
 
         $this->assertSame($view, $viewRenderer->view);
     }
-}
-
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_ViewTest::main') {
-    Zend_Application_Resource_ViewTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_FilesSizeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_FilesSizeTest::main");
-}
-
 /**
  * @see Zend_Validate_File_FilesSize
  */
@@ -211,9 +206,4 @@ class Zend_Validate_File_FilesSizeTest extends \PHPUnit\Framework\TestCase
             $this->multipleOptionsDetected = true;
         }
     }
-}
-
-// Call Zend_Validate_File_FilesSizeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_FilesSizeTest::main") {
-    Zend_Validate_File_FilesSizeTest::main();
 }

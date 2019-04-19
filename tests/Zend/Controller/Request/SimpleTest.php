@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Request_SimpleTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Request_SimpleTest::main");
-}
-
-
 require_once 'Zend/Controller/Request/Simple.php';
 
 /**
@@ -69,9 +63,4 @@ class Zend_Controller_Request_SimpleTest extends \PHPUnit\Framework\TestCase
         $this->assertNull($request->getParam('key'));
     }
 
-}
-
-// Call Zend_Controller_Request_SimpleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_SimpleTest::main") {
-    Zend_Controller_Request_SimpleTest::main();
 }

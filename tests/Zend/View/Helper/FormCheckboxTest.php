@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormCheckboxTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormCheckboxTest::main");
-}
-
 require_once 'Zend/View/Helper/FormCheckbox.php';
 require_once 'Zend/View.php';
 require_once 'Zend/Registry.php';
@@ -331,9 +326,3 @@ class Zend_View_Helper_FormCheckboxTest extends \PHPUnit\Framework\TestCase
         );
     }
 }
-
-// Call Zend_View_Helper_FormCheckboxTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormCheckboxTest::main") {
-    Zend_View_Helper_FormCheckboxTest::main();
-}
-

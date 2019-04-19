@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormLabelTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormLabelTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/FormLabel.php';
 
@@ -127,9 +122,4 @@ class Zend_View_Helper_FormLabelTest extends \PHPUnit\Framework\TestCase
         $label = $this->helper->formLabel('foo', 'bar', array('disableFor' => true));
         $this->assertNotContains('disableFor=', $label, 'Output contains disableFor attribute!');
     }
-}
-
-// Call Zend_View_Helper_FormLabelTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormLabelTest::main") {
-    Zend_View_Helper_FormLabelTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Dispatcher_StandardTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Dispatcher_StandardTest::main");
-}
-
 require_once 'Zend/Controller/Dispatcher/Standard.php';
 require_once 'Zend/Controller/Action/HelperBroker.php';
 require_once 'Zend/Controller/Front.php';
@@ -686,9 +681,4 @@ class Zend_Controller_Dispatcher_StandardTest extends \PHPUnit\Framework\TestCas
             $this->assertContains('No default module', $e->getMessage());
         }
     }
-}
-
-// Call Zend_Controller_Dispatcher_StandardTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Dispatcher_StandardTest::main") {
-    Zend_Controller_Dispatcher_StandardTest::main();
 }

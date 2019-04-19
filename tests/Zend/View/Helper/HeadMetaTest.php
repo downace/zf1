@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_HeadMetaTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HeadMetaTest::main");
-}
-
 /** Zend_View_Helper_HeadMeta */
 require_once 'Zend/View/Helper/HeadMeta.php';
 
@@ -552,9 +547,4 @@ class Zend_View_Helper_HeadMetaTest extends \PHPUnit\Framework\TestCase
         $this->assertContains('<!--[if ! IE]><!--><', $html);
         $this->assertContains('<!--<![endif]-->', $html);
     }
-}
-
-// Call Zend_View_Helper_HeadMetaTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadMetaTest::main") {
-    Zend_View_Helper_HeadMetaTest::main();
 }

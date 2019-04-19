@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_ActionTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_ActionTest::main");
-}
-
-
 require_once 'Zend/Controller/Action.php';
 require_once 'Zend/Controller/Action/Helper/Redirector.php';
 require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
@@ -533,9 +527,4 @@ class Zend_Controller_ActionTest_TestController extends Zend_Controller_Action
     {
         $this->getResponse()->setBody("Should never see this\n");
     }
-}
-
-// Call Zend_Controller_ActionTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_ActionTest::main") {
-    Zend_Controller_ActionTest::main();
 }

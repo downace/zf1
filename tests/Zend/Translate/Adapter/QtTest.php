@@ -234,8 +234,3 @@ class Zend_Translate_Adapter_QtTest extends \PHPUnit\Framework\TestCase
         $this->_errorOccurred = true;
     }
 }
-
-// Call Zend_Translate_Adapter_QtTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_QtTest::main") {
-    Zend_Translate_Adapter_QtTest::main();
-}

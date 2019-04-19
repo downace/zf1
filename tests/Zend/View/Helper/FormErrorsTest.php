@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_FormErrorsTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormErrorsTest::main");
-}
-
 require_once 'Zend/View/Helper/FormErrors.php';
 require_once 'Zend/View.php';
 
@@ -178,9 +173,4 @@ class Zend_View_Helper_FormErrorsTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals('<p>foo<br>bar<br>baz</p>', $actual);
     }
-}
-
-// Call Zend_View_Helper_FormErrorsTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormErrorsTest::main") {
-    Zend_View_Helper_FormErrorsTest::main();
 }

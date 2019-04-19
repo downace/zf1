@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormFileTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormFileTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/FormFile.php';
 require_once 'Zend/Registry.php';
@@ -132,9 +127,4 @@ class Zend_View_Helper_FormFileTest extends \PHPUnit\Framework\TestCase
             $test
         );
     }
-}
-
-// Call Zend_View_Helper_FormFileTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormFileTest::main") {
-    Zend_View_Helper_FormFileTest::main();
 }

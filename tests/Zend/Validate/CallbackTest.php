@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_CallbackTest::main');
-}
-
 /**
  * @see Zend_Validate_Callback
  */
@@ -113,8 +109,4 @@ class Zend_Validate_CallbackTest extends \PHPUnit\Framework\TestCase
         $this->assertContains('something', $args);
         return $args;
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_CallbackTest::main') {
-    Zend_Validate_CallbackTest::main();
 }

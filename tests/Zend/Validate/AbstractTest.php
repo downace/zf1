@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_AbstractTest::main');
-}
-
 /** Zend_Validate_Abstract */
 require_once 'Zend/Validate/Abstract.php';
 
@@ -295,8 +291,4 @@ class Zend_Validate_AbstractTest_Concrete extends Zend_Validate_Abstract
         $this->_error(self::FOO_MESSAGE);
         return false;
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_AbstractTest::main') {
-    Zend_Validate_AbstractTest::main();
 }

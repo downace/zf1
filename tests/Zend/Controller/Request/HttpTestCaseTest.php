@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Request_HttpTestCaseTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Request_HttpTestCaseTest::main");
-}
-
 /** Zend_Controller_Request_HttpTestCase */
 require_once 'Zend/Controller/Request/HttpTestCase.php';
 
@@ -299,9 +294,4 @@ class Zend_Controller_Request_HttpTestCaseTest extends \PHPUnit\Framework\TestCa
         $this->request->setMethod('PATCH');
         $this->assertTrue($this->request->isPatch());
     }
-}
-
-// Call Zend_Controller_Request_HttpTestCaseTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_HttpTestCaseTest::main") {
-    Zend_Controller_Request_HttpTestCaseTest::main();
 }

@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Module_AutoloaderTest::main');
-}
-
 /**
  * @see Zend_Loader_Autoloader
  */
@@ -177,8 +173,4 @@ class Zend_Application_Module_AutoloaderTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals('model', $this->loader->getDefaultResourceType());
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Module_AutoloaderTest::main') {
-    Zend_Application_Module_AutoloaderTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_CountTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_CountTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Count
  */
@@ -159,9 +154,4 @@ class Zend_Validate_File_CountTest extends \PHPUnit\Framework\TestCase
         $validator->setMin(100);
         $this->assertEquals(1000000, $validator->getMax());
     }
-}
-
-// Call Zend_Validate_File_CountTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_CountTest::main") {
-    Zend_Validate_File_CountTest::main();
 }

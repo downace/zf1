@@ -205,8 +205,3 @@ class Zend_Translate_Adapter_IniTest extends \PHPUnit\Framework\TestCase
         $this->_errorOccurred = true;
     }
 }
-
-// Call Zend_Translate_Adapter_IniTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_IniTest::main") {
-    Zend_Translate_Adapter_IniTest::main();
-}

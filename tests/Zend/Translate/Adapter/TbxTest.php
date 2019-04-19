@@ -238,8 +238,3 @@ class Zend_Translate_Adapter_TbxTest extends \PHPUnit\Framework\TestCase
         $this->_errorOccurred = true;
     }
 }
-
-// Call Zend_Translate_Adapter_TbxTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_TbxTest::main") {
-    Zend_Translate_Adapter_TbxTest::main();
-}

@@ -20,11 +20,6 @@
  * @version    $Id: BaseUrlTest.php 20096 2010-01-06 02:05:09Z bkarwin $
  */
 
-// Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_View_Helper_GravatarTest::main');
-}
-
 /**
  * @see Zend_View_Helper_Gravatar
  */
@@ -274,9 +269,4 @@ class Zend_View_Helper_GravatarTest extends \PHPUnit\Framework\TestCase
         );
         $this->_object->gravatar()->setOptions($options);
     }
-}
-
-// Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_View_Helper_BaseUrlTest::main') {
-    Zend_View_Helper_BaseUrlTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_DeclareVarsTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_DeclareVarsTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/DeclareVars.php';
 
@@ -96,9 +91,4 @@ class Zend_View_Helper_DeclareVarsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('myValue', $this->view->varName3);
         $this->assertEquals('additionalValue', $this->view->varName5);
     }
-}
-
-// Call Zend_View_Helper_DeclareVarsTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_DeclareVarsTest::main") {
-    Zend_View_Helper_DeclareVarsTest::main();
 }

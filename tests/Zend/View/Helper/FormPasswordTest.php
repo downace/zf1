@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_FormPasswordTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormPasswordTest::main");
-}
-
 require_once 'Zend/View.php';
 require_once 'Zend/View/Helper/FormPassword.php';
 require_once 'Zend/Registry.php';
@@ -127,9 +122,4 @@ class Zend_View_Helper_FormPasswordTest extends \PHPUnit\Framework\TestCase
         $test = $this->helper->formPassword('foo', 'bar', array('renderPassword' => false));
         $this->assertNotContains('renderPassword', $test);
     }
-}
-
-// Call Zend_View_Helper_FormPasswordTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormPasswordTest::main") {
-    Zend_View_Helper_FormPasswordTest::main();
 }

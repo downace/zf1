@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_HeadLinkTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HeadLinkTest::main");
-}
-
 /** Zend_View_Helper_HeadLink */
 require_once 'Zend/View/Helper/HeadLink.php';
 
@@ -514,9 +509,4 @@ class Zend_View_Helper_HeadLinkTest extends \PHPUnit\Framework\TestCase
         $this->assertContains('<!--[if ! IE]><!--><', $string);
         $this->assertContains('<!--<![endif]-->', $string);
     }
-}
-
-// Call Zend_View_Helper_HeadLinkTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadLinkTest::main") {
-    Zend_View_Helper_HeadLinkTest::main();
 }

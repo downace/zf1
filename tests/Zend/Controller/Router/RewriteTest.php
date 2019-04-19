@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Controller_Router_RewriteTest::main');
-}
-
 /** Zend_Controller_Router_Rewrite */
 require_once 'Zend/Controller/Router/Rewrite.php';
 
@@ -853,8 +849,4 @@ class Zend_Controller_Router_Route_Interface_Mockup implements Zend_Controller_R
     public function getRequest() {
         return $this->_request;
     }
-}
-
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_RewriteTest::main") {
-    Zend_Controller_Router_RewriteTest::main();
 }

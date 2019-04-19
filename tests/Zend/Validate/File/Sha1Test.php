@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_Sha1Test::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_Sha1Test::main");
-}
-
 /**
  * @see Zend_Validate_File_Sha1
  */
@@ -189,9 +184,4 @@ class Zend_Validate_File_Sha1Test extends \PHPUnit\Framework\TestCase
         $validator->addHash(array('12321', '12121'));
         $this->assertEquals(array('12345' => 'sha1', '12344' => 'sha1', '12321' => 'sha1', '12121' => 'sha1'), $validator->getSha1());
     }
-}
-
-// Call Zend_Validate_File_Sha1Test::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_Sha1Test::main") {
-    Zend_Validate_File_Sha1Test::main();
 }

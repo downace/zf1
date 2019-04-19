@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_Autoloader_ResourceTest::main');
-}
-
 /**
  * @see Zend_Loader_Autoloader
  */
@@ -460,8 +456,4 @@ class Zend_Loader_Autoloader_ResourceTest extends \PHPUnit\Framework\TestCase
         $path = $this->loader->getClassPath('Foo_Bar_Model_Baz');
         $this->assertEquals(dirname(__FILE__) . '/_files/models/Baz.php', $path, var_export($path, 1));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_Autoloader_ResourceTest::main') {
-    Zend_Loader_Autoloader_ResourceTest::main();
 }

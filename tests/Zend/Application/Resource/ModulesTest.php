@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_ModulesTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -204,8 +200,4 @@ class ZendTest_Application_Resource_ModulesHalf
         array_pop($bootstraps);
         return parent::bootstrapBootstraps($bootstraps);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_ModulesTest::main') {
-    Zend_Application_Resource_ModulesTest::main();
 }

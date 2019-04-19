@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Application_Resource_LogTest::main');
-}
-
 /**
  * Zend_Loader_Autoloader
  */
@@ -177,8 +173,4 @@ class Zend_Application_Resource_LogTest extends \PHPUnit\Framework\TestCase
         $this->assertStringEndsWith($message, $contents);
         $this->assertRegexp('/\d\d:\d\d:\d\d/', $contents);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_LogTest::main') {
-    Zend_Application_Resource_LogTest::main();
 }

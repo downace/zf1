@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Action_Helper_ViewRendererTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_ViewRendererTest::main");
-}
-
 require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
 require_once 'Zend/Controller/Front.php';
 require_once 'Zend/Controller/Request/Http.php';
@@ -964,9 +959,3 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends \PHPUnit\Framework\
         $this->assertEquals('controller/action.phtml', $scriptName);
     }
 }
-
-// Call Zend_Controller_Action_Helper_ViewRendererTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_ViewRendererTest::main") {
-    Zend_Controller_Action_Helper_ViewRendererTest::main();
-}
-

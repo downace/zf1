@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_Placeholder_StandaloneContainerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_Placeholder_StandaloneContainerTest::main");
-}
-
 /** Zend_View_Helper_Placeholder_Container_Standalone */
 require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
 
@@ -104,9 +99,4 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest extends \PHPUnit\Fram
 class Zend_View_Helper_Placeholder_StandaloneContainerTest_Foo extends Zend_View_Helper_Placeholder_Container_Standalone
 {
     protected $_regKey = 'foo';
-}
-
-// Call Zend_View_Helper_Placeholder_StandaloneContainerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_Placeholder_StandaloneContainerTest::main") {
-    Zend_View_Helper_Placeholder_StandaloneContainerTest::main();
 }

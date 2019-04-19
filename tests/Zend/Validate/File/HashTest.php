@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_HashTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_HashTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Hash
  */
@@ -161,9 +156,4 @@ class Zend_Validate_File_HashTest extends \PHPUnit\Framework\TestCase
         $validator->addHash(array('12321', '12121'));
         $this->assertEquals(array('12345' => 'crc32', '12344' => 'crc32', '12321' => 'crc32', '12121' => 'crc32'), $validator->getHash());
     }
-}
-
-// Call Zend_Validate_File_HashTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_HashTest::main") {
-    Zend_Validate_File_HashTest::main();
 }
