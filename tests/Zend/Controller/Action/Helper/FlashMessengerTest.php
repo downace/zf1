@@ -38,6 +38,9 @@ require_once dirname(dirname(dirname(__FILE__))) . '/_files/HelperFlashMessenger
  * @group      Zend_Controller
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
+ *
+ * Backup $_SESSION
+ * @backupGlobals enabled
  */
 class Zend_Controller_Action_Helper_FlashMessengerTest extends \PHPUnit\Framework\TestCase
 {
@@ -68,18 +71,6 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends \PHPUnit\Framewor
 
     public function setUp()
     {
-        $savePath = ini_get('session.save_path');
-        if (strpos($savePath, ';')) {
-            $savePath = explode(';', $savePath);
-            $savePath = array_pop($savePath);
-        }
-        if (empty($savePath)) {
-            $this->markTestSkipped('Cannot test FlashMessenger due to unavailable session save path');
-        }
-
-        if (headers_sent()) {
-            $this->markTestSkipped('Cannot test FlashMessenger: cannot start session because headers already sent');
-        }
         Zend_Session::start();
 
         $this->front      = Zend_Controller_Front::getInstance();
@@ -87,6 +78,7 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends \PHPUnit\Framewor
         $this->front->setControllerDirectory(dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . '_files');
         $this->front->returnResponse(true);
         $this->request    = new Zend_Controller_Request_Http();
+        $this->request->setPathInfo('helper-flash-messenger');
         $this->request->setControllerName('helper-flash-messenger');
         $this->response   = new Zend_Controller_Response_Cli();
         $this->controller = new HelperFlashMessengerController($this->request, $this->response, array());
@@ -95,16 +87,15 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends \PHPUnit\Framewor
 
     public function testLoadFlashMessenger()
     {
-        $this->markTestSkipped();
         $response = $this->front->dispatch($this->request);
         $this->assertEquals('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
     }
 
     public function testClearMessages()
     {
-        $this->markTestSkipped();
         $this->helper->addMessage('foo');
         $this->helper->addMessage('bar');
+        $this->helper->populate();
         $this->assertTrue($this->helper->hasMessages());
         $this->assertEquals(2, count($this->helper));
 
@@ -115,8 +106,8 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends \PHPUnit\Framewor
 
     public function testDirectProxiesToAddMessage()
     {
-        $this->markTestSkipped();
         $this->helper->direct('foo');
+        $this->helper->populate();
         $this->assertTrue($this->helper->hasMessages());
         $this->assertEquals(1, count($this->helper));
     }
