@@ -326,12 +326,6 @@ class Zend_Validate_EmailAddressTest extends \PHPUnit\Framework\TestCase
     {
         $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS, true);
 
-        // Are MX checks supported by this system?
-        if (!$validator->validateMxSupported()) {
-            $this->markTestSkipped('Testing MX records is not supported with this configuration');
-            return;
-        }
-
         $valuesExpected = array(
             array(true, array('Bob.Jones@zend.com', 'Bob.Jones@php.net')),
             array(false, array('Bob.Jones@bad.example.com', 'Bob.Jones@anotherbad.example.com'))

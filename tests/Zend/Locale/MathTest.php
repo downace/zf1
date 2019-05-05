@@ -1334,19 +1334,9 @@ class Zend_Locale_MathTest extends \PHPUnit\Framework\TestCase
             '40.49'         =>  -2, '691.776'       =>  -2, '0.66820'       => -10, '1373687051'    =>  -6,
             '184194.472342' =>   1, '800.551'       =>  -4, '0.210012'      =>  10, '1640724691'    =>  10
         );
-        if (!Zend_Locale_Math::isBcmathDisabled()) {
-            // If no BCMath extension, the round below falls through to PHP's round(),
-            // which actually produces incorrect results, and fails these tests.
-            // There are many such examples ...
-            $this->assertEquals('56055.1812', Zend_Locale_Math::round('56055.18115', 4));
-            $this->assertEquals(    '639.80', Zend_Locale_Math::round('639.795',     2));
-            $this->assertEquals(    '267.84', Zend_Locale_Math::round('267.835',     2));
-            $this->assertEquals(   '0.30252', Zend_Locale_Math::round('0.302515',    5));
-            $this->assertEquals(    '0.3667', Zend_Locale_Math::round('0.36665',     4));
-        }
 
         foreach ($rounder as $val => $precision) {
-//            $this->assertEquals((string) round($val, $precision), (string)Zend_Locale_Math::round($val, $precision));
+            $this->assertEquals((string) round($val, $precision), (string)Zend_Locale_Math::round($val, $precision));
         }
     }
 

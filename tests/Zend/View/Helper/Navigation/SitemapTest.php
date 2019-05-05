@@ -280,8 +280,6 @@ class Zend_View_Helper_Navigation_SitemapTest
 
     public function testUseSchemaValidation()
     {
-        $this->markTestSkipped('Skipped because it fetches XSD from web');
-        return;
         $nav = clone $this->_nav2;
         $this->_helper->setUseSitemapValidators(false);
         $this->_helper->setUseSchemaValidation(true);
