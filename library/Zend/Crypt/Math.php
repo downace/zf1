@@ -79,33 +79,7 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
         if ($length <= 0) {
             return false;
         }
-        if (function_exists('random_bytes')) { // available in PHP 7
-            return random_bytes($length);
-        }
-        if (function_exists('mcrypt_create_iv')) {
-            $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-            if ($bytes !== false && strlen($bytes) === $length) {
-                return $bytes;
-            }
-        }
-        if (file_exists('/dev/urandom') && is_readable('/dev/urandom')) {
-            $frandom = fopen('/dev/urandom', 'r');
-            if ($frandom !== false) {
-                return fread($frandom, $length);
-            }
-        }
-        if (true === $strong) {
-            require_once 'Zend/Crypt/Exception.php';
-            throw new Zend_Crypt_Exception(
-                'This PHP environment doesn\'t support secure random number generation. ' .
-                'Please consider installing the OpenSSL and/or Mcrypt extensions'
-            );
-        }
-        $rand = '';
-        for ($i = 0; $i < $length; $i++) {
-            $rand .= chr(mt_rand(0, 255));
-        }
-        return $rand;
+        return random_bytes($length);
     }
 
     /**

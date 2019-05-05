@@ -351,19 +351,6 @@ class Zend_LoaderTest extends \PHPUnit\Framework\TestCase
         spl_autoload_unregister($function);
     }
 
-    public function testLoaderRegisterAutoloadFailsWithoutSplAutoload()
-    {
-        if (function_exists('spl_autoload_register')) {
-            $this->markTestSkipped("spl_autoload() is installed on this PHP installation; cannot test for failure");
-        }
-
-        try {
-            Zend_Loader::registerAutoload();
-            $this->fail('registerAutoload should fail without spl_autoload');
-        } catch (Zend_Exception $e) {
-        }
-    }
-
     public function testLoaderRegisterAutoloadInvalidClass()
     {
         if (!function_exists('spl_autoload_register')) {
