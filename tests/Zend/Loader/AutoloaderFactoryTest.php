@@ -46,6 +46,13 @@ class Zend_Loader_AutoloaderFactoryTest extends \PHPUnit\Framework\TestCase
             $this->loaders = array();
         }
 
+        // Pre-load some classes that will be used during tests.
+        new \PHPUnit\Framework\Constraint\IsTrue();
+        new \PHPUnit\Framework\Constraint\IsNull();
+        new \PHPUnit\Framework\Constraint\IsEqual(0);
+        new \PHPUnit\Framework\Exception('');
+        new \PHPUnit\Framework\Constraint\Exception('');
+
         // Clear out other autoloaders to ensure those being tested are at the
         // top of the stack
         foreach ($this->loaders as $loader) {
