@@ -423,10 +423,6 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
 
     public function testDisableOutputBuffering()
     {
-        if (!defined('TESTS_ZEND_CONTROLLER_DISPATCHER_OB') || !TESTS_ZEND_CONTROLLER_DISPATCHER_OB) {
-            $this->markTestSkipped('Skipping output buffer disabling in Zend_Controller_Dispatcher_Standard');
-        }
-
         $request = new Zend_Controller_Request_Http();
         $request->setControllerName('ob');
         $request->setActionName('index');

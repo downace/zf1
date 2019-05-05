@@ -339,13 +339,6 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      */
     public function testMXRecords()
     {
-        if (!defined('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('Testing MX records only works when a valid internet connection is available');
-            return;
-        }
-
         $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS, true);
 
         // Are MX checks supported by this system?

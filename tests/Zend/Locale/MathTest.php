@@ -95,11 +95,6 @@ class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
      */
     public function testRound2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $rounder = array(
             '0.477051'      => -12, '513695.36425'  =>   1, '89.85'         =>   4, '533.506'       =>   3,
             '0.376139'      =>  -2, '1784212419'    =>  -9, '447878.429296' => -11, '79.31'         =>  -2,

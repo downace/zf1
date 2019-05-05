@@ -21,20 +21,6 @@
  */
 
 /**
- * These const values control some testing behavior.
- * They may be defined here or in TestConfiguration.php.
- */
-if (!defined('TESTS_ZEND_LOCALE_BCMATH_ENABLED')) {
-    // Set to false to disable usage of bcmath extension by Zend_Date
-    define('TESTS_ZEND_LOCALE_BCMATH_ENABLED', true);
-}
-if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE')) {
-    // Set to true to run full Zend_Date unit tests.
-    // Set to false to run a good subset of Zend_Date unit tests.
-    define('TESTS_ZEND_I18N_EXTENDED_COVERAGE', true);
-}
-
-/**
  * Zend_Date
  */
 require_once 'Zend/Loader.php';
@@ -844,11 +830,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testGet2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(-62362925370,null,$locale);
         $this->assertSame('v. Chr.', $date->get(Zend_Date::ERA));
@@ -912,11 +893,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testSet2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(0,null,$locale);
         $d2   = new Zend_Date(1010101010,null,$locale);
@@ -2458,11 +2434,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testAdd2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(0,null,$locale);
         $d2   = new Zend_Date(1010101010,null,$locale);
@@ -2827,11 +2798,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testSub2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(0,null,$locale);
         $d2   = new Zend_Date(1010101010,null,$locale);
@@ -3473,11 +3439,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testAddDate()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,null,$locale);
         $d2   = new Zend_Date(1234567899,null,$locale);
@@ -3504,11 +3465,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testSubDate()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,null,$locale);
         $d2   = new Zend_Date(1234567899,null,$locale);
@@ -3535,11 +3491,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testCompareDate()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,$locale);
         $d2   = new Zend_Date(1234567899,$locale);
@@ -3601,11 +3552,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testAddIso2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,$locale);
         $d2   = new Zend_Date(1234567899,$locale);
@@ -3641,11 +3587,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testSubIso2()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,null,$locale);
         $d2   = new Zend_Date(1234567899,null,$locale);
@@ -3666,11 +3607,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testCompareIso()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,null,$locale);
         $d2   = new Zend_Date(1234567899,null,$locale);
@@ -3719,11 +3655,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testAddArpa()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,$locale);
         $d2   = new Zend_Date(1234567899,$locale);
@@ -3750,11 +3681,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testSubArpa()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,$locale);
         $d2   = new Zend_Date(1234567899,$locale);
@@ -3777,11 +3703,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testCompareArpa()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
         $date = new Zend_Date(1234567890,$locale);
         $d2   = new Zend_Date(1234567899,$locale);
@@ -4121,11 +4042,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testAddYear()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
 
         $date = new Zend_Date(1577833200,$locale);
@@ -4183,11 +4099,6 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testSubYear()
     {
-        if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || TESTS_ZEND_I18N_EXTENDED_COVERAGE == false) {
-            $this->markTestSkipped('Extended I18N test skipped');
-            return;
-        }
-
         $locale = new Zend_Locale('de_AT');
 
         $date = new Zend_Date(1577833200,$locale);
