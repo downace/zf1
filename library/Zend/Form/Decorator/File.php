@@ -113,12 +113,6 @@ class Zend_Form_Decorator_File
             $markup[] = $view->formHidden('MAX_FILE_SIZE', $size);
         }
 
-        if (Zend_File_Transfer_Adapter_Http::isApcAvailable()) {
-            $markup[] = $view->formHidden(ini_get('apc.rfc1867_name'), uniqid(), array('id' => 'progress_key'));
-        } else if (Zend_File_Transfer_Adapter_Http::isUploadProgressAvailable()) {
-            $markup[] = $view->formHidden('UPLOAD_IDENTIFIER', uniqid(), array('id' => 'progress_key'));
-        }
-
         $helper = $element->helper;
         if ($element->isArray()) {
             $name .= "[]";

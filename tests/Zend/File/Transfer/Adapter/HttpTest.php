@@ -228,84 +228,6 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
             $adapter->getFileName('exe', false));
     }
 
-    public function testNoUploadInProgress()
-    {
-        if (!(ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable('apc_fetch')) &&
-            !is_callable('uploadprogress_get_info')) {
-            $this->markTestSkipped('Whether APC nor UploadExtension available');
-            return;
-        }
-
-        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
-        $this->assertContains('No upload in progress', $status);
-    }
-
-    public function testUploadProgressFailure()
-    {
-        if (!(ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable('apc_fetch')) &&
-            !is_callable('uploadprogress_get_info')) {
-            $this->markTestSkipped('Whether APC nor UploadExtension available');
-            return;
-        }
-
-        $_GET['progress_key'] = 'mykey';
-        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
-        $this->assertEquals(array(
-            'total'   => 100,
-            'current' => 100,
-            'rate'    => 10,
-            'id'      => 'mykey',
-            'done'    => false,
-            'message' => '100B - 100B'), $status);
-
-        $this->adapter->switchApcToUP();
-        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
-        $this->assertEquals(array(
-            'total'          => 100,
-            'bytes_total'    => 100,
-            'current'        => 100,
-            'bytes_uploaded' => 100,
-            'rate'           => 10,
-            'speed_average'  => 10,
-            'cancel_upload'  => true,
-            'message'        => 'The upload has been canceled',
-            'done'           => true,
-            'id'      => 'mykey'), $status);
-
-    }
-
-    public function testUploadProgressAdapter()
-    {
-        if (!(ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable('apc_fetch')) &&
-            !is_callable('uploadprogress_get_info')) {
-            $this->markTestSkipped('Whether APC nor UploadExtension available');
-            return;
-        }
-
-        $_GET['progress_key'] = 'mykey';
-        require_once 'Zend/ProgressBar/Adapter/Console.php';
-        $adapter = new Zend_ProgressBar_Adapter_Console();
-        $status = array('progress' => $adapter, 'session' => 'upload');
-        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
-        $this->assertTrue(array_key_exists('total', $status));
-        $this->assertTrue(array_key_exists('current', $status));
-        $this->assertTrue(array_key_exists('rate', $status));
-        $this->assertTrue(array_key_exists('id', $status));
-        $this->assertTrue(array_key_exists('message', $status));
-        $this->assertTrue(array_key_exists('progress', $status));
-        $this->assertTrue($status['progress'] instanceof Zend_ProgressBar);
-
-        $this->adapter->switchApcToUP();
-        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
-        $this->assertTrue(array_key_exists('total', $status));
-        $this->assertTrue(array_key_exists('current', $status));
-        $this->assertTrue(array_key_exists('rate', $status));
-        $this->assertTrue(array_key_exists('id', $status));
-        $this->assertTrue(array_key_exists('message', $status));
-        $this->assertTrue(array_key_exists('progress', $status));
-        $this->assertTrue($status['progress'] instanceof Zend_ProgressBar);
-    }
-
     public function testValidationOfPhpExtendsFormError()
     {
         $_SERVER['CONTENT_LENGTH'] = 10;
@@ -319,12 +241,6 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
 
 class Zend_File_Transfer_Adapter_HttpTest_MockAdapter extends Zend_File_Transfer_Adapter_Http
 {
-    public function __construct()
-    {
-        self::$_callbackApc = array('Zend_File_Transfer_Adapter_HttpTest_MockAdapter', 'apcTest');
-        parent::__construct();
-    }
-
     public function isValid($files = null)
     {
         return true;
@@ -335,26 +251,6 @@ class Zend_File_Transfer_Adapter_HttpTest_MockAdapter extends Zend_File_Transfer
         return parent::isValid($files);
     }
 
-    public static function isApcAvailable()
-    {
-        return true;
-    }
-
-    public static function apcTest($id)
-    {
-        return array('total' => 100, 'current' => 100, 'rate' => 10);
-    }
-
-    public static function uPTest($id)
-    {
-        return array('bytes_total' => 100, 'bytes_uploaded' => 100, 'speed_average' => 10, 'cancel_upload' => true);
-    }
-
-    public function switchApcToUP()
-    {
-        self::$_callbackApc = null;
-        self::$_callbackUploadProgress = array('Zend_File_Transfer_Adapter_HttpTest_MockAdapter', 'uPTest');
-    }
 }
 
 // Call Zend_File_Transfer_Adapter_HttpTest::main() if this source file is executed directly.
