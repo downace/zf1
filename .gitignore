@@ -12,3 +12,4 @@ tests/TestConfiguration.php
 vendor/*
 bin/dbunit
 bin/phpunit
+docker-compose.override.yml

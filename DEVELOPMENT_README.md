@@ -1,63 +1,78 @@
-# Development using a virtual machine
+# Development using a Docker Compose
 
-You can set up a development virtual machine for ZF1 unit testing and library 
+You can set up a development environment for ZF1 unit testing and library 
 development following these simple instructions.
 
-### 1. Install requirements for VM. (Note: these are not required by ZF1 itself)
+### 1. Install requirements. (Note: these are not required by ZF1 itself)
 
-- VirtualBox (https://www.virtualbox.org/)
-- Ruby (http://www.ruby-lang.org/)
-- Vagrant (http://vagrantup.com/)
+- Docker (https://docs.docker.com/install/)
+- Docker Compose (https://docs.docker.com/compose/install/)
 
 ### 2. Checkout repository to any location
 
-    git clone git://github.com/zendframework/zf1.git zf1-dev
-    cd zf1-dev
+    git clone git@github.com:vast-ru/zf1.git
+    cd zf1
 
-### 3. Start the process by running Vagrant.
+### 3. (Optional) Change host user id
 
-    vagrant up
+If your current UID:GID is not 1000:1000, you can create `docker-compose.override.yml` file in project root
+and specify your UID:GID there:
 
-This will take a long while as it has to download a VM image and then 
-provision it. Once it has finished, it will exit and leave you back at the
-command prompt.
+    version: "3"
 
-### 4. SSH into the VM
+    services:
+      php71:
+        build:
+          args:
+            HOST_USER: 33:33 # here
+      php72:
+        build:
+          args:
+            HOST_USER: 33:33 # and here
 
-    vagrant ssh
+### 4. Build containers
 
-### 5. Build a version of PHP.
+    docker-compose build
 
-    php-build.sh 5.3.11
+> This will take a while as it has to download images and install required dependencies.
+> Once it has finished, it will exit and leave you back at the command prompt.
 
-This also takes a while as it compiles PHP for you!
-   
-### 6. Select PHP to use:
+### 5. Enter container interactive shell
 
-    pe 5.3.11
+    docker-compose run --rm php71 bash # for PHP 7.1
+    docker-compose run --rm php72 bash # for PHP 7.2
 
-### 7. Run tests
+> PHP 7.0 is not supported
 
-    cd /vagrant/tests
-    phpunit --stderr -d memory_limit=-1 Zend/Acl/AclTest.php
-    phpunit --stderr -d memory_limit=-1 Zend/Amf/AllTests.php
+### 6. Run tests
+
+    ./bin/phpunit --stderr --configuration tests/phpunit.xml tests/Zend/Locale
+    ./bin/phpunit --stderr --configuration tests/phpunit.xml tests/Zend/Measure/AngleTest.php
     (etc...)
 
-Note that you can repeat items 5 and 6 to create any version if PHP.
+> `--stderr` flag is needed to avoid `"Session must be started before any output has been
+  sent to the browser"` error,
+> because PHPUnit always outputs its version
 
-## Notes:
+## Using PhpStorm IDE for running tests
 
-- The VM will be running in the background as VBoxHeadless
-- HTTP and SSH ports on the VM are forwarded to localhost (22 -> 2222, 80 -> 8081)
-- The zf1-dev directory you checked out will be mounted inside the VM at /vagrant
-- You can develop by editing the files you cloned in the IDE of you choice.
+### 1. Add PHP interpreter
 
-To stop the VM do one of the following:
+1. Go to `Settings` -> `Languages & Frameworks` -> `PHP`
+2. Click `...` next to `CLI Interpreter`, then `+`,
+   select `From Docker, Vagrant, VM, Remote...`
+3. Select `Docker Compose`, then `php71` or `php72` as `Service`
 
-    vagrant suspend   # if you plan on running it later
-    vagrant halt      # if you wish to turn off the VM, but keep it around
-    vagrant destroy   # if you wish to delete the VM completely
-    
-Also, when any of of the Puppet manifests change (.pp files), it is a good idea to rerun them:
+### 2. Add test framework
 
-    vagrant provision
+1. Go to `Settings` -> `Languages & Frameworks` -> `PHP` -> `Test Frameworks`
+2. Click `+`, select `PHPUnit by Remote Interpreter`, then select interpreter
+3. Tick `Default configuration file`, enter `/www-data/zf1/tests/phpunit.xml`
+
+### 3. Configure template
+
+1. Go to `Run` -> `Edit Configurations`, select `Templates` -> `PHPUnit`
+2. Enter `--stderr` into `Test Runner options` field
+
+After these steps you can run and debug any test by selecting `Run` or `Debug` in
+context menu 
