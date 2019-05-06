@@ -1532,11 +1532,6 @@ class Zend_Locale_MathTest extends \PHPUnit\Framework\TestCase
 
     public function testExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('1000', Zend_Locale_Math::exponent('1e3'));
         $this->assertEquals('10320', Zend_Locale_Math::exponent('1.032e4'));
         $this->assertEquals('10320', Zend_Locale_Math::exponent('10.32e3'));
@@ -1548,83 +1543,43 @@ class Zend_Locale_MathTest extends \PHPUnit\Framework\TestCase
 
     public function testAddingWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('1300', Zend_Locale_Math::Add('1e3', 300));
         $this->assertEquals('1300', Zend_Locale_Math::Add(300, '1e3'));
     }
 
     public function testSubbingWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('700', Zend_Locale_Math::Sub(1000, '0.3e3'));
     }
 
     public function testPowerWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('1000000', Zend_Locale_Math::Pow('1e3', 2));
     }
 
     public function testMultiplyingWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('2000', Zend_Locale_Math::Mul('1e3', 2));
         $this->assertEquals('2000', Zend_Locale_Math::Mul(2, '1e3'));
     }
 
     public function testDivisionWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('500', Zend_Locale_Math::Div('1e3', 2));
     }
 
     public function testSqrtWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('31.62', Zend_Locale_Math::Sqrt('1e3', 2));
     }
 
     public function testModuloWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('0', Zend_Locale_Math::Mod('1e3', 2));
     }
 
     public function testComparisonWithBCMathAndExponent()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('BCMath extension not loaded, test skipped');
-            return;
-        }
-
         $this->assertEquals('1', Zend_Locale_Math::Comp('1e3', 2));
         $this->assertEquals('-1', Zend_Locale_Math::Comp(2, '1e3'));
         $this->assertEquals('0', Zend_Locale_Math::Comp('1e3', '1e3'));

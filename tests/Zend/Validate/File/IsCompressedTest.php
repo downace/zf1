@@ -44,15 +44,6 @@ class Zend_Validate_File_IsCompressedTest extends \PHPUnit\Framework\TestCase
      */
     public function testBasic()
     {
-        if (!extension_loaded('fileinfo') &&
-            function_exists('mime_content_type') && ini_get('mime_magic.magicfile') &&
-            (mime_content_type(dirname(__FILE__) . '/_files/test.zip') == 'text/plain')
-            ) {
-            $this->markTestSkipped('This PHP Version has no finfo, has mime_content_type, '
-                . ' but mime_content_type exhibits buggy behavior on this system.'
-                );
-        }
-
         // Prevent error in the next check
         if (!function_exists('mime_content_type')) {
             $this->markTestSkipped('mime_content_type function is not available.');
@@ -179,15 +170,7 @@ class Zend_Validate_File_IsCompressedTest extends \PHPUnit\Framework\TestCase
 
     public function testOptionsAtConstructor()
     {
-        if (!extension_loaded('fileinfo')) {
-            $this->markTestSkipped('This PHP Version has no finfo installed');
-        }
-
-        if (version_compare(PHP_VERSION, '5.3', '>=')) {
-            $magicFile = dirname(__FILE__) . '/_files/magic-php53.mime';
-        } else {
-            $magicFile = dirname(__FILE__) . '/_files/magic.mime';
-        }
+        $magicFile = dirname(__FILE__) . '/_files/magic.mime';
 
         $validator = new Zend_Validate_File_IsCompressed(array(
             'image/gif',

@@ -93,10 +93,6 @@ class Zend_Loader_AutoloaderFactoryTest extends \PHPUnit\Framework\TestCase
      */
     public function testFactoryCatchesInvalidClasses()
     {
-        if (!version_compare(PHP_VERSION, '5.3.7', '>=')) {
-            $this->markTestSkipped('Cannot test invalid interface loader with versions less than 5.3.7');
-        }
-
         include dirname(__FILE__) . '/_files/InvalidInterfaceAutoloader.php';
         $this->expectException(Zend_Loader_Exception_InvalidArgumentException::class);
         Zend_Loader_AutoloaderFactory::factory(array(
