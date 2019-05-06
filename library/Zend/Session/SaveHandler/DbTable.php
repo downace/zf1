@@ -48,10 +48,12 @@ require_once 'Zend/Config.php';
  * @subpackage SaveHandler
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-session instead
  */
 class Zend_Session_SaveHandler_DbTable
     extends Zend_Db_Table_Abstract
-    implements Zend_Session_SaveHandler_Interface
+    implements SessionHandlerInterface
 {
     const PRIMARY_ASSIGNMENT                   = 'primaryAssignment';
     const PRIMARY_ASSIGNMENT_SESSION_SAVE_PATH = 'sessionSavePath';

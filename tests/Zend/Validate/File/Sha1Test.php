@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_Sha1Test::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_Sha1Test::main");
-}
-
 /**
  * @see Zend_Validate_File_Sha1
  */
@@ -40,19 +35,8 @@ require_once 'Zend/Validate/File/Sha1.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_Sha1Test extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_Sha1Test extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_Sha1Test");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Ensures that the validator follows expected behavior
      *
@@ -200,9 +184,4 @@ class Zend_Validate_File_Sha1Test extends PHPUnit_Framework_TestCase
         $validator->addHash(array('12321', '12121'));
         $this->assertEquals(array('12345' => 'sha1', '12344' => 'sha1', '12321' => 'sha1', '12121' => 'sha1'), $validator->getSha1());
     }
-}
-
-// Call Zend_Validate_File_Sha1Test::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_Sha1Test::main") {
-    Zend_Validate_File_Sha1Test::main();
 }

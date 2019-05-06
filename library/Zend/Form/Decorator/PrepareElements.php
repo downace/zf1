@@ -38,6 +38,8 @@ require_once 'Zend/Form/Decorator/FormElements.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-form instead
  */
 class Zend_Form_Decorator_PrepareElements extends Zend_Form_Decorator_FormElements
 {

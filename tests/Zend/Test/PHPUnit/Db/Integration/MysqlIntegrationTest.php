@@ -34,11 +34,6 @@ class Zend_Test_PHPUnit_Db_Integration_MysqlIntegrationTest extends Zend_Test_PH
 {
     public function setUp()
     {
-        if (!TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED) {
-            $this->markTestSkipped('Database tests are not enabled.');
-            return;
-        }
-
         if (!extension_loaded('pdo')) {
             $this->markTestSkipped('PDO is required for this test.');
             return;
@@ -50,10 +45,10 @@ class Zend_Test_PHPUnit_Db_Integration_MysqlIntegrationTest extends Zend_Test_PH
         }
 
         $params = array(
-            'host'     => TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME,
-            'username' => TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME,
-            'password' => TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD,
-            'dbname'   => TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE,
+            'host'     => 'mysql',
+            'username' => 'zend',
+            'password' => 'secret',
+            'dbname'   => 'zend_db',
         );
 
         $this->dbAdapter = Zend_Db::factory('pdo_mysql', $params);

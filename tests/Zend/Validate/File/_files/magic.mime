@@ -1,12 +1,14 @@
 # Magic file
 
 #JPEG
-4       string/B        jP              JPEG 2000 image
+0	beshort		0xffd8		image/jpeg
 
 ## GIF
-0       string          GIF8            GIF image data
+0	string		GIF		image/gif
 
 # TIFF
-0       string          MM\x00\x2a      TIFF image data, big-endian
-0       string          II\x2a\x00      TIFF image data, little-endian
+#					TIFF file, big-endian
+0	string		MM		image/tiff
+#					TIFF file, little-endian
+0	string		II		image/tiff
 

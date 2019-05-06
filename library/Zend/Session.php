@@ -33,18 +33,14 @@ require_once 'Zend/Session/Abstract.php';
 require_once 'Zend/Session/Namespace.php';
 
 /**
- * @see Zend_Session_SaveHandler_Interface
- */
-require_once 'Zend/Session/SaveHandler/Interface.php';
-
-
-/**
  * Zend_Session
  *
  * @category   Zend
  * @package    Zend_Session
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-session instead
  */
 class Zend_Session extends Zend_Session_Abstract
 {
@@ -176,7 +172,7 @@ class Zend_Session extends Zend_Session_Abstract
     /**
      * A reference to the set session save handler
      *
-     * @var Zend_Session_SaveHandler_Interface
+     * @var SessionHandlerInterface
      */
     private static $_saveHandler = null;
 
@@ -258,11 +254,11 @@ class Zend_Session extends Zend_Session_Abstract
     /**
      * setSaveHandler() - Session Save Handler assignment
      *
-     * @param Zend_Session_SaveHandler_Interface $interface
+     * @param SessionHandlerInterface $interface
      * @throws Zend_Session_Exception When the session_set_save_handler call fails
      * @return void
      */
-    public static function setSaveHandler(Zend_Session_SaveHandler_Interface $saveHandler)
+    public static function setSaveHandler(SessionHandlerInterface $saveHandler)
     {
         self::$_saveHandler = $saveHandler;
 
@@ -288,7 +284,7 @@ class Zend_Session extends Zend_Session_Abstract
     /**
      * getSaveHandler() - Get the session Save Handler
      *
-     * @return Zend_Session_SaveHandler_Interface
+     * @return SessionHandlerInterface
      */
     public static function getSaveHandler()
     {

@@ -1419,7 +1419,6 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _checkExtraField($result)
     {
         // Check that extra field ZEND_DB_ROWNUM isn't present
-        // (particulary with Db2 & Oracle)
         $this->assertArrayNotHasKey('zend_db_rownum', $result);
         $this->assertArrayNotHasKey('ZEND_DB_ROWNUM', $result);
     }
@@ -1611,19 +1610,19 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
 
     /**
      * @group ZF-4772
-     * @expectedException Zend_Db_Select_Exception
      */
     public function testSelectUnionNoArrayThrowsException()
     {
+        $this->expectException(Zend_Db_Select_Exception::class);
         $this->_db->select()->union('string');
     }
 
     /**
      * @group ZF-4772
-     * @expectedException Zend_Db_Select_Exception
      */
     public function testSelectUnionInvalidUnionTypeThrowsException()
     {
+        $this->expectException(Zend_Db_Select_Exception::class);
         $this->_db->select()->union(array(), 'foo');
     }
 

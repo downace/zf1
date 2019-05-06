@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_FieldsetTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FieldsetTest::main");
-}
-
 require_once 'Zend/View/Helper/Fieldset.php';
 require_once 'Zend/View.php';
 
@@ -39,20 +34,8 @@ require_once 'Zend/View.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_FieldsetTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_FieldsetTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FieldsetTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
@@ -111,9 +94,4 @@ class Zend_View_Helper_FieldsetTest extends PHPUnit_Framework_TestCase
         $html = $this->helper->fieldset('foo', 'foobar', array('legend' => '<b>Great Scott!</b>', 'escape' => false));
         $this->assertRegexp('#<legend><b>Great Scott!</b></legend>#', $html, $html);
     }
-}
-
-// Call Zend_View_Helper_FieldsetTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FieldsetTest::main") {
-    Zend_View_Helper_FieldsetTest::main();
 }

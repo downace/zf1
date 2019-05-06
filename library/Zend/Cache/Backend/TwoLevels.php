@@ -37,8 +37,9 @@ require_once 'Zend/Cache/Backend.php';
  * @subpackage Zend_Cache_Backend
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-cache instead
  */
-
 class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
 {
     /**
@@ -74,9 +75,9 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
      *
      * =====> (boolean) auto_fill_fast_cache
      * - If true, automatically fill the fast cache when a cache record was not found in fast cache, but did
-     *   exist in slow cache. This can be usefull when a non-persistent cache like APC or Memcached got
+     *   exist in slow cache. This can be usefull when a non-persistent cache like APCu or Memcached got
      *   purged for whatever reason.
-     * 
+     *
      * =====> (boolean) auto_refresh_fast_cache
      * - If true, auto refresh the fast cache when a cache record is hit
      *
@@ -84,7 +85,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
      */
     protected $_options = array(
         'slow_backend' => 'File',
-        'fast_backend' => 'Apc',
+        'fast_backend' => 'Apcu',
         'slow_backend_options' => array(),
         'fast_backend_options' => array(),
         'stats_update_factor' => 10,
@@ -238,7 +239,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
             }
         }
         $array = $resultFast !== false ? unserialize($resultFast) : unserialize($resultSlow);
-        
+
         //In case no cache entry was found in the FastCache and auto-filling is enabled, copy data to FastCache
         if ($resultFast === false && $this->_options['auto_fill_fast_cache']) {
             $preparedData = $this->_prepareData($array['data'], $array['lifetime'], $array['priority']);

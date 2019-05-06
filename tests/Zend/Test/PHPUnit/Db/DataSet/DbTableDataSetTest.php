@@ -31,13 +31,13 @@ require_once "Zend/Test/PHPUnit/Db/DataSet/DbTableDataSet.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends \PHPUnit\Framework\TestCase
 {
     public function testAddTableAppendedToTableNames()
     {
         $fixtureTable = "foo";
 
-        $table = $this->getMock('Zend_Db_Table', array(), array(), '', false);
+        $table = $this->createMock('Zend_Db_Table');
         $table->expects($this->at(0))->method('info')->with('name')->will($this->returnValue($fixtureTable));
         $table->expects($this->at(1))->method('info')->with('name')->will($this->returnValue($fixtureTable));
         $table->expects($this->at(2))->method('info')->with('cols')->will($this->returnValue(array()));
@@ -52,7 +52,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends PHPUnit_Framework_
     {
         $fixtureTable = "foo";
 
-        $table = $this->getMock('Zend_Db_Table', array(), array(), '', false);
+        $table = $this->createMock('Zend_Db_Table');
         $table->expects($this->at(0))->method('info')->with('name')->will($this->returnValue($fixtureTable));
         $table->expects($this->at(1))->method('info')->with('name')->will($this->returnValue($fixtureTable));
         $table->expects($this->at(2))->method('info')->with('cols')->will($this->returnValue(array()));
@@ -65,7 +65,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends PHPUnit_Framework_
 
     public function testGetUnknownTableThrowsException()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $dataSet = new Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet();
         $dataSet->getTable('unknown');
     }

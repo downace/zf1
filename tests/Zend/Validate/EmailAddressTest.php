@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_EmailAddressTest::main');
-}
-
 /**
  * @see Zend_Validate_EmailAddress
  */
@@ -37,7 +33,7 @@ require_once 'Zend/Validate/EmailAddress.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_EmailAddressTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Default instance created for all test methods
@@ -45,17 +41,6 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      * @var Zend_Validate_EmailAddress
      */
     protected $_validator;
-
-    /**
-     * Runs this test suite
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     /**
      * Creates a new Zend_Validate_EmailAddress object for each test method
@@ -339,20 +324,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      */
     public function testMXRecords()
     {
-        if (!defined('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('Testing MX records only works when a valid internet connection is available');
-            return;
-        }
-
         $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_DNS, true);
-
-        // Are MX checks supported by this system?
-        if (!$validator->validateMxSupported()) {
-            $this->markTestSkipped('Testing MX records is not supported with this configuration');
-            return;
-        }
 
         $valuesExpected = array(
             array(true, array('Bob.Jones@zend.com', 'Bob.Jones@php.net')),
@@ -628,9 +600,6 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      */
     public function testIdnHostnameInEmaillAddress()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('idn_to_ascii() is available in intl in PHP 5.3.0+');
-        }
         $validator = new Zend_Validate_EmailAddress();
         $validator->setValidateMx(true);
         $this->assertTrue($validator->isValid('testmail@faß.de'));
@@ -644,8 +613,4 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_IP);
         $this->assertTrue($validator->isValid('bob@192.162.33.24'));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_EmailAddressTest::main') {
-    Zend_Validate_EmailAddressTest::main();
 }

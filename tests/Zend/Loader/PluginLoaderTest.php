@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Loader_PluginLoaderTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_PluginLoaderTest::main');
-}
-
 require_once 'Zend/Loader/PluginLoader.php';
 
 /**
@@ -37,21 +32,9 @@ require_once 'Zend/Loader/PluginLoader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Loader
  */
-class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
+class Zend_Loader_PluginLoaderTest extends \PHPUnit\Framework\TestCase
 {
     protected $_includeCache;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Loader_PluginLoaderTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -405,18 +388,20 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-4670
-     * @expectedException Zend_Loader_PluginLoader_Exception
      */
     public function testPluginLoaderShouldThrowExceptionWhenPathDoesNotExist()
     {
         $cacheFile = dirname(__FILE__) . '/_filesDoNotExist/includeCache.inc.php';
         $this->testIncludeCacheShouldBeNullByDefault();
+        $this->expectException(Zend_Loader_PluginLoader_Exception::class);
         Zend_Loader_PluginLoader::setIncludeFileCache($cacheFile);
-        $this->fail('Should not allow specifying invalid cache file path');
     }
 
     /**
      * @group ZF-4670
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testPluginLoaderShouldAppendIncludeCacheWhenClassIsFound()
     {
@@ -479,10 +464,6 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testPrefixesEndingInBackslashDenoteNamespacedClasses()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(__CLASS__ . '::' . __METHOD__ . ' requires PHP 5.3.0 or greater');
-            return;
-        }
         $loader = new Zend_Loader_PluginLoader(array());
         $loader->addPrefixPath('Zfns\\', dirname(__FILE__) . '/_files/Zfns');
         try {
@@ -516,10 +497,6 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadClassesWithBackslashInName()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(__CLASS__ . '::' . __METHOD__ . ' requires PHP 5.3.0 or greater');
-            return;
-        }
         $loader = new Zend_Loader_PluginLoader(array());
         $loader->addPrefixPath('Zfns\\', dirname(__FILE__) . '/_files/Zfns');
         try {
@@ -535,11 +512,6 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadClassesWithBackslashAndUnderscoreInName()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(__CLASS__ . '::' . __METHOD__ . ' requires PHP 5.3.0 or greater');
-            return;
-        }
-
         $loader = new Zend_Loader_PluginLoader(array());
         $loader->addPrefixPath('Zfns\\Foo_', dirname(__FILE__) . '/_files/Zfns/Foo');
 
@@ -551,9 +523,4 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('Zfns\Foo_Demo', $className);
     }
-}
-
-// Call Zend_Loader_PluginLoaderTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === 'Zend_Loader_PluginLoaderTest::main') {
-    Zend_Loader_PluginLoaderTest::main();
 }

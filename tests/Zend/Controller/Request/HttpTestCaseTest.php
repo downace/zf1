@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Request_HttpTestCaseTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Request_HttpTestCaseTest::main");
-}
-
 /** Zend_Controller_Request_HttpTestCase */
 require_once 'Zend/Controller/Request/HttpTestCase.php';
 
@@ -39,19 +34,8 @@ require_once 'Zend/Controller/Request/HttpTestCase.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Request
  */
-class Zend_Controller_Request_HttpTestCaseTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Request_HttpTestCaseTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Request_HttpTestCaseTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
@@ -310,9 +294,4 @@ class Zend_Controller_Request_HttpTestCaseTest extends PHPUnit_Framework_TestCas
         $this->request->setMethod('PATCH');
         $this->assertTrue($this->request->isPatch());
     }
-}
-
-// Call Zend_Controller_Request_HttpTestCaseTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_HttpTestCaseTest::main") {
-    Zend_Controller_Request_HttpTestCaseTest::main();
 }

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_ExtensionTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_ExtensionTest::main");
-}
-
 /**
  * @see Zend_Validate_File_Extension
  */
@@ -40,19 +35,8 @@ require_once 'Zend/Validate/File/Extension.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_ExtensionTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_ExtensionTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_ExtensionTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Ensures that the validator follows expected behavior
      *
@@ -204,9 +188,4 @@ class Zend_Validate_File_ExtensionTest extends PHPUnit_Framework_TestCase
         $validator->addExtension('');
         $this->assertEquals(array('mo', 'gif', 'jpg', 'to', 'zip', 'ti'), $validator->getExtension());
     }
-}
-
-// Call Zend_Validate_File_ExtensionTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_ExtensionTest::main") {
-    Zend_Validate_File_ExtensionTest::main();
 }

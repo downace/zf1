@@ -39,6 +39,8 @@ if (extension_loaded('soap')) {
  * @category   Zend
  * @package    Zend_Soap
  * @subpackage Client
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-soap instead
  */
 class Zend_Soap_Client_Local extends Zend_Soap_Client
 {
@@ -84,7 +86,7 @@ class Zend_Soap_Client_Local extends Zend_Soap_Client
         ob_start();
         $this->_server->handle($request);
         $response = ob_get_clean();
- 
+
         if ($response === null || $response === '') {
             $serverResponse = $this->server->getResponse();
             if ($serverResponse !== null) {

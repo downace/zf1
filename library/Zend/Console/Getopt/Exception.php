@@ -31,6 +31,8 @@ require_once 'Zend/Exception.php';
  * @package    Zend_Console_Getopt
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-console instead
  */
 class Zend_Console_Getopt_Exception extends Zend_Exception
 {

@@ -39,7 +39,7 @@ require_once 'Zend/Uri/Http.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Uri
  */
-class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
+class Zend_Uri_HttpTest extends \PHPUnit\Framework\TestCase
 {
 
     public function setup()
@@ -80,11 +80,10 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
      * non-HTTP scheme
      *
      * @group ZF-4395
-     *
-     * @expectedException Zend_Uri_Exception
      */
     public function testFromStringInvalidScheme()
     {
+        $this->expectException(Zend_Uri_Exception::class);
         Zend_Uri_Http::fromString('ftp://example.com/file');
     }
 
@@ -95,7 +94,7 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
      */
     public function testFromStringWithInvalidVariableType()
     {
-        $this->setExpectedException('Zend_Uri_Exception');
+        $this->expectException(Zend_Uri_Exception::class);
         Zend_Uri_Http::fromString(0);
     }
 
@@ -220,7 +219,7 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
 
          // Second, make sure the query string was properly encoded
          $parts = parse_url($uri->getUri());
-         $this->assertEquals('id=123&url=http%3A%2F%2Fexample.com%2F%3Fbar%3Dfoo+baz', $parts['query']);
+         $this->assertEquals('id=123&url=http://example.com/?bar=foo baz', $parts['query']);
     }
 
     /**
@@ -229,6 +228,7 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
      */
     public function testExceptionUnwiseQueryString()
     {
+        $this->markTestSkipped('Query string validation is disabled, see \Zend_Uri_Http::validateQuery');
         $unwise = array(
             'http://example.com/?q={',
             'http://example.com/?q=}',
@@ -276,9 +276,6 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
      */
     public function testVeryLongUriZF3712()
     {
-        if(!defined('TESTS_ZEND_URI_CRASH_TEST_ENABLED') || constant('TESTS_ZEND_URI_CRASH_TEST_ENABLED') == false) {
-            $this->markTestSkipped('The constant TESTS_ZEND_URI_CRASH_TEST_ENABLED has to be defined and true to allow the test to work.');
-        }
         $uri = file_get_contents(dirname(realpath(__FILE__)) . DIRECTORY_SEPARATOR .
            '_files' . DIRECTORY_SEPARATOR . 'testVeryLongUriZF3712.txt');
 
@@ -362,14 +359,14 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
     public function testSetInvalidUsername()
     {
         $uri = Zend_Uri::factory('http://example.com');
-        $this->setExpectedException('Zend_Uri_Exception');
+        $this->expectException(Zend_Uri_Exception::class);
         $uri->setUsername('alice?');
     }
 
     public function testSetInvalidPassword()
     {
         $uri = Zend_Uri::factory('http://example.com');
-        $this->setExpectedException('Zend_Uri_Exception');
+        $this->expectException(Zend_Uri_Exception::class);
         $uri->setUsername('alice');
         $uri->setPassword('secret?');
     }
@@ -378,7 +375,7 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
     {
         $uri = Zend_Uri::factory('http://example.com');
         $host = '';
-        $this->setExpectedException('Zend_Uri_Exception');
+        $this->expectException(Zend_Uri_Exception::class);
         $uri->setHost($host);
     }
 
@@ -386,7 +383,7 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
     {
         $uri = Zend_Uri::factory('http://example.com');
         $host = 'example§com';
-        $this->setExpectedException('Zend_Uri_Exception');
+        $this->expectException(Zend_Uri_Exception::class);
         $uri->setHost($host);
     }
 

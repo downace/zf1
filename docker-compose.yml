@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  php71:
+    build:
+      context: ./docker/php
+      args:
+        PHP_VERSION: 7.1
+        HOST_USER: 1000:1000
+    depends_on:
+      - mysql
+      - postgres
+    volumes:
+      - .:/www-data/zf1
+    working_dir: /www-data/zf1
+  php72:
+    build:
+      context: ./docker/php
+      args:
+        PHP_VERSION: 7.2
+        HOST_USER: 1000:1000
+    depends_on:
+      - mysql
+      - postgres
+    volumes:
+      - .:/www-data/zf1
+    working_dir: /www-data/zf1
+  mysql:
+    image: mysql:5
+    environment:
+      MYSQL_USER: zend
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: zend_db
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+  postgres:
+    image: postgres:9-alpine
+    environment:
+      POSTGRES_USER: zend
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: zend_db

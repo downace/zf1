@@ -30,6 +30,8 @@ require_once 'Zend/Filter/PregReplace.php';
  * @uses       Zend_Filter_PregReplace
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-filter instead
  */
 abstract class Zend_Filter_Word_Separator_Abstract extends Zend_Filter_PregReplace
 {

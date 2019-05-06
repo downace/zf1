@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Request_Apache404Test::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Request_Apache404Test::main");
-}
-
-
 require_once 'Zend/Controller/Request/Apache404.php';
 
 /**
@@ -40,26 +34,13 @@ require_once 'Zend/Controller/Request/Apache404.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Request
  */
-class Zend_Controller_Request_Apache404Test extends PHPUnit_Framework_TestCase
+class Zend_Controller_Request_Apache404Test extends \PHPUnit\Framework\TestCase
 {
     /**
      * Copy of $_SERVER
      * @var array
      */
     protected $_server;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Request_Apache404Test");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function setUp()
     {
@@ -96,9 +77,4 @@ class Zend_Controller_Request_Apache404Test extends PHPUnit_Framework_TestCase
         $this->assertEquals('/foo/bar', $requestUri);
         $this->assertSame(array('baz' => 'bat', 'bat' => 'delta'), $request->getQuery());
     }
-}
-
-// Call Zend_Controller_Request_Apache404Test::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_Apache404Test::main") {
-    Zend_Controller_Request_Apache404Test::main();
 }

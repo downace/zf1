@@ -20,10 +20,6 @@
  * @version    $Id $
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_LocaleTest::main');
-}
-
 // define('TESTS_ZEND_LOCALE_BCMATH_ENABLED', false); // uncomment to disable use of bcmath extension by Zend_Date
 
 /**
@@ -40,19 +36,8 @@ require_once 'Zend/Cache.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Locale
  */
-class Zend_LocaleTest extends PHPUnit_Framework_TestCase
+class Zend_LocaleTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_LocaleTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     private $_cache  = null;
     private $_locale = null;
 
@@ -911,10 +896,6 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
 
     public function testEachDataFileShouldPresentAsLocaleData()
     {
-        if (version_compare(PHP_VERSION, '5.3.2', 'lt')) {
-            $this->markTestSkipped('ReflectionMethod::setAccessible can only be run under 5.3.2 or later');
-        }
-
         $dir = new DirectoryIterator(
             dirname(__FILE__) . '/../../library/Zend/Locale/Data'
         );
@@ -980,9 +961,4 @@ class Zend_LocaleTestHelper extends Zend_Locale
         self::$_environment = null;
         self::$_browser     = null;
     }
-}
-
-// Call Zend_LocaleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_LocaleTest::main") {
-    Zend_LocaleTest::main();
 }

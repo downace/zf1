@@ -36,6 +36,8 @@
  * @method notice(string $message, $extras = null)
  * @method info(string $message, $extras = null)
  * @method debug(string $message, $extras = null)
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-log instead
  */
 class Zend_Log
 {

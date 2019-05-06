@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Test_PHPUnit_ControllerTestCaseTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Test_PHPUnit_ControllerTestCaseTest::main");
-}
-
 /** Zend_Test_PHPUnit_ControllerTestCase */
 require_once 'Zend/Test/PHPUnit/ControllerTestCase.php';
 
@@ -48,19 +43,8 @@ require_once 'Zend/Controller/Action.php';
  * @group      Zend_Test
  * @group      Zend_Test_PHPUnit
  */
-class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Test_PHPUnit_ControllerTestCaseTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
@@ -70,7 +54,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     public function setUp()
     {
         $_SESSION = array();
-        $this->setExpectedException(null);
         $this->testCase = new Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete();
         $this->testCase->reset();
         $this->testCase->bootstrap = array($this, 'bootstrap');
@@ -548,7 +531,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
-        $this->setExpectedException('PHPUnit_Framework_AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertModule('zend-test-php-unit-foo');
         $this->testCase->assertNotModule('default');
     }
@@ -565,7 +548,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
-        $this->setExpectedException('PHPUnit_Framework_AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertController('baz');
         $this->testCase->assertNotController('zend-test-php-unit-foo');
     }
@@ -582,7 +565,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/foo/baz');
-        $this->setExpectedException('PHPUnit_Framework_AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertAction('foo');
         $this->testCase->assertNotAction('baz');
     }
@@ -599,7 +582,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/foo/baz');
-        $this->setExpectedException('PHPUnit_Framework_AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertRoute('foo');
         $this->testCase->assertNotRoute('default');
     }
@@ -648,10 +631,8 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
         $viewRenderer->initView();
         $view = $viewRenderer->view;
-        $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
-        $view->dojo()->setCdnVersion('1.1.0')
-                     ->requireModule('dojo.parser')
-                     ->enable();
+        $view->addHelperPath('Zend/View/Helper/Doctype', 'Zend_View_Helper_Doctype');
+        $view->doctype()->setDoctype(\Zend_View_Helper_Doctype::XHTML11);
         $view->headTitle('Foo');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
         $response = $this->testCase->getResponse();
@@ -659,7 +640,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
 
         $view = new Zend_View();
         $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
-        $this->assertFalse($view->dojo()->isEnabled(), 'Dojo is enabled? ', $view->dojo());
+        $this->assertEquals(\Zend_View_Helper_Doctype::HTML4_LOOSE, $view->doctype()->getDoctype());
         $this->assertNotContains('Foo', $view->headTitle()->__toString(), 'Head title persisted?');
     }
 
@@ -781,7 +762,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
                : gettype($boot);
         $this->assertTrue($boot === $this->testCase->bootstrap->getBootstrap(), $type);
     }
-    
+
     /**
      * @group ZF-7496
      * @dataProvider providerRedirectWorksAsExpectedFromHookMethodsInActionController
@@ -793,7 +774,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
         $this->testCase->assertRedirectTo('/login');
         $this->assertNotEquals('action body', $this->testCase->getResponse()->getBody());
     }
-    
+
     /**
      * Data provider for testRedirectWorksAsExpectedFromHookMethodsInActionController
      * @return array
@@ -805,7 +786,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
             array('/zend-test-redirect-from-pre-dispatch/baz')
         );
     }
-    
+
     /**
      * @group ZF-7496
      * @dataProvider providerRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin
@@ -814,7 +795,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
     {
         require_once dirname(__FILE__) . "/_files/application/plugins/RedirectFrom{$pluginName}.php";
         $className = "Application_Plugin_RedirectFrom{$pluginName}";
-        
+
         $fc = $this->testCase->getFrontController();
         $fc->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers')
            ->registerPlugin(new $className());
@@ -854,7 +835,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
             'Expires', '#^[a-z-]+/[a-z-]+$#i'
         );
     }
-    
+
     /**
      * Data provider for testRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin
      * @return array
@@ -873,9 +854,4 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
 // Concrete test case class for testing purposes
 class Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete extends Zend_Test_PHPUnit_ControllerTestCase
 {
-}
-
-// Call Zend_Test_PHPUnit_ControllerTestCaseTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Test_PHPUnit_ControllerTestCaseTest::main") {
-    Zend_Test_PHPUnit_ControllerTestCaseTest::main();
 }

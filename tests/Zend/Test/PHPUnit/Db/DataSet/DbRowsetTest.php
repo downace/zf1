@@ -33,7 +33,7 @@ require_once 'Zend/Db/Table/Abstract.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends \PHPUnit\Framework\TestCase
 {
     protected function getRowSet()
     {
@@ -65,9 +65,9 @@ class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends PHPUnit_Framework_TestCa
 
     public function testRowset_ConstructWithDisconnectedRowset_NoTableName_ThrowsException()
     {
-        $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException(Zend_Test_PHPUnit_Db_Exception::class);
 
-        $rowset = $this->getMock('Zend_Db_Table_Rowset_Abstract', array(), array(), '', false);
+        $rowset = $this->createMock('Zend_Db_Table_Rowset_Abstract');
         $rowset->expects($this->once())
                ->method('getTable')
                ->will($this->returnValue(null));
@@ -79,13 +79,13 @@ class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends PHPUnit_Framework_TestCa
     {
         $columns = array("foo", "bar");
 
-        $tableMock = $this->getMock('Zend_Db_Table_Abstract', array(), array(), '', false);
+        $tableMock = $this->createMock('Zend_Db_Table_Abstract');
         $tableMock->expects($this->once())
                   ->method('info')
                   ->with($this->equalTo('cols'))
                   ->will($this->returnValue($columns));
 
-        $rowset = $this->getMock('Zend_Db_Table_Rowset_Abstract', array(), array(), '', false);
+        $rowset = $this->createMock('Zend_Db_Table_Rowset_Abstract');
         $rowset->expects($this->exactly(2))
                ->method('getTable')
                ->will($this->returnValue($tableMock));

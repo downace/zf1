@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Action_HelperBrokerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_HelperBrokerTest::main");
-}
-
 require_once 'Zend/Controller/Front.php';
 require_once 'Zend/Controller/Request/Http.php';
 require_once 'Zend/Controller/Response/Cli.php';
@@ -43,25 +38,12 @@ require_once 'Zend/Controller/Action/Helper/Redirector.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_HelperBrokerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Zend_Controller_Front
      */
     protected $front;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_HelperBrokerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function setUp()
     {
@@ -324,9 +306,6 @@ class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
 
     public function testCanLoadNamespacedHelper()
     {
-        if (version_compare(PHP_VERSION, '5.3.0') === -1) {
-            $this->markTestSkipped('Namespaces not available in PHP < 5.3.0');
-        }
         $this->front->setControllerDirectory(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . '_files')
             ->setResponse(new Zend_Controller_Response_Cli())
             ->returnResponse(true);
@@ -350,6 +329,7 @@ class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
         $test   = Zend_Controller_Action_HelperBroker::getPluginLoader();
         $this->assertNotSame($loader, $test);
         $this->assertSame($custom, $test);
+        Zend_Controller_Action_HelperBroker::setPluginLoader(null);
     }
 }
 
@@ -376,9 +356,4 @@ class Zend_Controller_Action_HelperBrokerController extends Zend_Controller_Acti
     {
         $this->_helper->getHelper('testHelper');
     }
-}
-
-// Call Zend_Controller_Action_HelperBrokerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_HelperBrokerTest::main") {
-    Zend_Controller_Action_HelperBrokerTest::main();
 }

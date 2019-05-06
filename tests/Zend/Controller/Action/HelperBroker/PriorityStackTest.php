@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Action_HelperBrokerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_HelperBrokerTest::main");
-}
-
 require_once 'Zend/Controller/Action/HelperBroker.php';
 require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
 require_once 'Zend/Controller/Action/Helper/Redirector.php';
@@ -39,7 +34,7 @@ require_once 'Zend/Controller/Action/Helper/Redirector.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_HelperBroker_PriorityStackTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_HelperBroker_PriorityStackTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

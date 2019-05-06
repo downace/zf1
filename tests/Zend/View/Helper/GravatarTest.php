@@ -20,11 +20,6 @@
  * @version    $Id: BaseUrlTest.php 20096 2010-01-06 02:05:09Z bkarwin $
  */
 
-// Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_View_Helper_GravatarTest::main');
-}
-
 /**
  * @see Zend_View_Helper_Gravatar
  */
@@ -44,7 +39,7 @@ require_once 'Zend/View.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_GravatarTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Zend_View_Helper_Gravatar
@@ -55,15 +50,6 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
      * @var Zend_View
      */
     protected $_view;
-
-    /**
-     * Main
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_GravatarTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     /**
      * Prepares the environment before running a test.
@@ -159,7 +145,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     public function testInvalidRatingParametr()
     {
         $ratingsWrong = array( 'a', 'cs', 456);
-        $this->setExpectedException('Zend_View_Exception');
+        $this->expectException(Zend_View_Exception::class);
         foreach ($ratingsWrong as $value) {
             $this->_object->setRating($value);
         }
@@ -283,9 +269,4 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
         );
         $this->_object->gravatar()->setOptions($options);
     }
-}
-
-// Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_View_Helper_BaseUrlTest::main') {
-    Zend_View_Helper_BaseUrlTest::main();
 }

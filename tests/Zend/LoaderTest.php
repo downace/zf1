@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_LoaderTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_LoaderTest::main');
-}
-
 /**
  * Zend_Loader
  */
@@ -43,19 +38,8 @@ require_once 'Zend/Loader/Autoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Loader
  */
-class Zend_LoaderTest extends PHPUnit_Framework_TestCase
+class Zend_LoaderTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_LoaderTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function setUp()
     {
@@ -136,7 +120,7 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
     {
         $dirs = array('.');
         try {
-            Zend_Loader::loadClass('Zend_Version', $dirs);
+            Zend_Loader::loadClass('Zend_Validate', $dirs);
         } catch (Zend_Exception $e) {
             $this->fail('Loading from dot should not fail');
         }
@@ -367,19 +351,6 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
         spl_autoload_unregister($function);
     }
 
-    public function testLoaderRegisterAutoloadFailsWithoutSplAutoload()
-    {
-        if (function_exists('spl_autoload_register')) {
-            $this->markTestSkipped("spl_autoload() is installed on this PHP installation; cannot test for failure");
-        }
-
-        try {
-            Zend_Loader::registerAutoload();
-            $this->fail('registerAutoload should fail without spl_autoload');
-        } catch (Zend_Exception $e) {
-        }
-    }
-
     public function testLoaderRegisterAutoloadInvalidClass()
     {
         if (!function_exists('spl_autoload_register')) {
@@ -457,9 +428,6 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadClassShouldAllowLoadingPhpNamespacedClasses()
     {
-        if (version_compare(PHP_VERSION, '5.3.0') < 0) {
-            $this->markTestSkipped('PHP < 5.3.0 does not support namespaces');
-        }
         Zend_Loader::loadClass('\Zfns\Foo', array(dirname(__FILE__) . '/Loader/_files'));
     }
 
@@ -469,10 +437,6 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testIsReadableShouldHonorStreamDefinitions()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped();
-        }
-
         $pharFile = dirname(__FILE__) . '/Loader/_files/Zend_LoaderTest.phar';
         $phar     = new Phar($pharFile, 0, 'zlt.phar');
         $incPath = 'phar://zlt.phar'
@@ -487,10 +451,6 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testIsReadableShouldNotLockWhenTestingForNonExistantFileInPhar()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped();
-        }
-
         $pharFile = dirname(__FILE__) . '/Loader/_files/Zend_LoaderTest.phar';
         $phar     = new Phar($pharFile, 0, 'zlt.phar');
         $incPath = 'phar://zlt.phar'
@@ -530,20 +490,6 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @group ZF-9263
-     * @group ZF-9166
-     * @group ZF-9306
-     */
-    public function testIsReadableShouldFailEarlyWhenProvidedInvalidWindowsAbsolutePath()
-    {
-        if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') {
-            $this->markTestSkipped('Windows-only test');
-        }
-        $path = 'C:/this/file/should/not/exist.php';
-        $this->assertFalse(Zend_Loader::isReadable($path));
-    }
-
-    /**
      * In order to play nice with spl_autoload, an autoload callback should
      * *not* emit errors (exceptions are okay). ZF-2923 requests that this
      * behavior be applied, which counters the previous request in ZF-2463.
@@ -570,9 +516,4 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(empty($output));
     }
      */
-}
-
-// Call Zend_LoaderTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === 'Zend_LoaderTest::main') {
-    Zend_LoaderTest::main();
 }

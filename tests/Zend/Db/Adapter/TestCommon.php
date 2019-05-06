@@ -730,7 +730,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'Expecting to get product_id 1');
 
         // Check that extra field ZEND_DB_ROWNUM isn't present
-        // (particulary with Db2 & Oracle)
         $this->assertArrayNotHasKey('zend_db_rownum', $result[0]);
         $this->assertArrayNotHasKey('ZEND_DB_ROWNUM', $result[0]);
     }
@@ -755,7 +754,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'Expecting to get product_id 2');
 
         // Check that extra field ZEND_DB_ROWNUM isn't present
-        // (particulary with Db2 & Oracle)
         $this->assertArrayNotHasKey('zend_db_rownum', $result[0]);
         $this->assertArrayNotHasKey('ZEND_DB_ROWNUM', $result[0]);
     }
@@ -793,8 +791,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     /**
      * Used by _testAdapterOptionCaseFoldingNatural()
-     * DB2 and Oracle return identifiers in uppercase naturally,
-     * so those test suites will override this method.
      */
     protected function _testAdapterOptionCaseFoldingNaturalIdentifier()
     {
@@ -1571,7 +1567,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         // create a second connection to the same database
         $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
         $dbConnection2->getConnection();
-              
+
         // notice the number of rows in connection 2
         $count = $dbConnection2->fetchOne("SELECT COUNT(*) FROM $bugs");
         $this->assertEquals(4, $count, 'Expecting to see 4 rows in bugs table (step 1)');
@@ -1794,7 +1790,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     /**
      * @group ZF-8597
-     * Oracle is limited to 30 characters for an identifier
      */
     public function testAdapterUpdateWithLongColumnIdentifier()
     {
@@ -1981,7 +1976,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $serialized = serialize($this->_db);
         $this->assertTrue(is_string($serialized));
-        $this->assertThat(unserialize($serialized), new PHPUnit_Framework_Constraint_IsInstanceOf('Zend_Db_Adapter_Abstract'));
+        $this->assertThat(unserialize($serialized), new \PHPUnit\Framework\Constraint\IsInstanceOf('Zend_Db_Adapter_Abstract'));
     }
 
     public function testAdapterSerializationFailsWhenNotAllowedToBeSerialized()
@@ -1991,7 +1986,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             Zend_Db::ALLOW_SERIALIZATION => false
         );
         $db = Zend_Db::factory($this->getDriver(), $params);
-        $this->setExpectedException('Zend_Db_Adapter_Exception');
+        $this->expectException(Zend_Db_Adapter_Exception::class);
         $serialized = serialize($db);
     }
 

@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Controller_Router_RewriteTest::main');
-}
-
 /** Zend_Controller_Router_Rewrite */
 require_once 'Zend/Controller/Router/Rewrite.php';
 
@@ -58,22 +54,9 @@ require_once 'Zend/Uri/Http.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Router
  */
-class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Router_RewriteTest extends \PHPUnit\Framework\TestCase
 {
     protected $_router;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Router_RewriteTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function setUp() {
         $this->_router = new Zend_Controller_Router_Rewrite();
@@ -756,13 +739,13 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
             $this->_router->assemble($params)
         );
     }
-    
+
     /**
      * @group ZF-11393
-     * @expectedException Zend_Controller_Router_Exception
      */
     public function testCallingAssembleWithNullArgumentShouldThrowException()
     {
+        $this->expectException(Zend_Controller_Router_Exception::class);
         $this->_router->assemble(null);
     }
 }
@@ -866,8 +849,4 @@ class Zend_Controller_Router_Route_Interface_Mockup implements Zend_Controller_R
     public function getRequest() {
         return $this->_request;
     }
-}
-
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_RewriteTest::main") {
-    Zend_Controller_Router_RewriteTest::main();
 }

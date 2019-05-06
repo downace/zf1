@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_View_Helper_TranslateTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_TranslateTest::main");
-}
-
 /** Zend_View_Helper_Translate */
 require_once 'Zend/View/Helper/Translate.php';
 
@@ -46,7 +41,7 @@ require_once 'Zend/Translate/Adapter/Array.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_TranslateTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_TranslateTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Zend_View_Helper_Translate
@@ -57,18 +52,6 @@ class Zend_View_Helper_TranslateTest extends PHPUnit_Framework_TestCase
      * @var string
      */
     public $basePath;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_TranslateTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function clearRegistry()
     {
@@ -261,9 +244,4 @@ class Zend_View_Helper_TranslateTest extends PHPUnit_Framework_TestCase
         $result = $this->helper->translate("test %1\$s", "100");
         $this->assertEquals('test 100', $result);
     }
-}
-
-// Call Zend_View_Helper_TranslateTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_TranslateTest::main") {
-    Zend_View_Helper_TranslateTest::main();
 }

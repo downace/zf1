@@ -20,18 +20,12 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Plugin_ErrorHandlerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD"))
-{
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_ErrorHandlerTest::main");
-    $basePath = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
-    set_include_path(
-        $basePath . DIRECTORY_SEPARATOR . 'tests'
-        . PATH_SEPARATOR . $basePath . DIRECTORY_SEPARATOR . 'library'
-        . PATH_SEPARATOR . get_include_path()
-    );
-}
-
+$basePath = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
+set_include_path(
+    $basePath . DIRECTORY_SEPARATOR . 'tests'
+    . PATH_SEPARATOR . $basePath . DIRECTORY_SEPARATOR . 'library'
+    . PATH_SEPARATOR . get_include_path()
+);
 
 require_once 'Zend/Controller/Plugin/ErrorHandler.php';
 require_once 'Zend/Controller/Request/Http.php';
@@ -54,7 +48,7 @@ require_once 'Zend/Controller/Front.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Plugin
  */
-class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Plugin_ErrorHandlerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Request object
@@ -73,19 +67,6 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
      * @var Zend_Controller_Plugin_ErrorHandler
      */
     public $plugin;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Plugin_ErrorHandlerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -274,10 +255,3 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
         $this->assertNull($this->request->getParam('error_handler'));
     }
 }
-
-// Call Zend_Controller_Plugin_ErrorHandlerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_ErrorHandlerTest::main")
-{
-    Zend_Controller_Plugin_ErrorHandlerTest::main();
-}
-

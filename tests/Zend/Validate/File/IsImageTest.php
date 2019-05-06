@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_IsImageTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_IsImageTest::main");
-}
-
 /**
  * @see Zend_Validate_File_IsImage
  */
@@ -40,19 +35,8 @@ require_once 'Zend/Validate/File/IsImage.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_IsImageTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_IsImageTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Ensures that the validator follows expected behavior
      *
@@ -174,15 +158,7 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsAtConstructor()
     {
-        if (!extension_loaded('fileinfo')) {
-            $this->markTestSkipped('This PHP Version has no finfo installed');
-        }
-
-        if (version_compare(PHP_VERSION, '5.3', '>=')) {
-            $magicFile = dirname(__FILE__) . '/_files/magic-php53.mime';
-        } else {
-            $magicFile = dirname(__FILE__) . '/_files/magic.mime';
-        }
+        $magicFile = dirname(__FILE__) . '/_files/magic.mime';
 
         $validator = new Zend_Validate_File_IsImage(array(
             'image/gif',
@@ -194,9 +170,4 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($validator->getHeaderCheck());
         $this->assertEquals('image/gif,image/jpg', $validator->getMimeType());
     }
-}
-
-// Call Zend_Validate_File_IsImage::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_IsImage::main") {
-    Zend_Validate_File_IsImage::main();
 }

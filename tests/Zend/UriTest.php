@@ -20,10 +20,6 @@
  * @version    $Id $
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_UriTest::main');
-}
-
 /**
  * Zend_Uri
  */
@@ -42,13 +38,8 @@ require_once 'Zend/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Uri
  */
-class Zend_UriTest extends PHPUnit_Framework_TestCase
+class Zend_UriTest extends \PHPUnit\Framework\TestCase
 {
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_UriTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function setUp()
     {
@@ -90,12 +81,6 @@ class Zend_UriTest extends PHPUnit_Framework_TestCase
         $this->_testValidUri('https');
     }
 
-    public function testSchemeMailto()
-    {
-        $this->markTestIncomplete('Zend_Uri_Mailto is not implemented yet');
-        $this->_testValidUri('mailto');
-    }
-
     /**
      * Tests that Zend_Uri::setConfig() allows Zend_Config
      *
@@ -121,10 +106,10 @@ class Zend_UriTest extends PHPUnit_Framework_TestCase
      * nor Zend_Config is given as first parameter
      *
      * @group ZF-5578
-     * @expectedException Zend_Uri_Exception
      */
     public function testSetConfigInvalid()
     {
+        $this->expectException(Zend_Uri_Exception::class);
         Zend_Uri::setConfig('This should cause an exception');
     }
 
@@ -194,13 +179,15 @@ class Zend_UriTest extends PHPUnit_Framework_TestCase
 
     public function testFactoryWithUnExistingClassThrowException()
     {
-        $this->setExpectedException('Zend_Uri_Exception', '"This_Is_An_Unknown_Class" not found');
+        $this->expectException(Zend_Uri_Exception::class);
+        $this->expectExceptionMessage('"This_Is_An_Unknown_Class" not found');
         Zend_Uri::factory('http://example.net', 'This_Is_An_Unknown_Class');
     }
 
     public function testFactoryWithExistingClassButNotImplementingZendUriThrowException()
     {
-        $this->setExpectedException('Zend_Uri_Exception', '"Fake_Zend_Uri" is not an instance of Zend_Uri');
+        $this->expectException(Zend_Uri_Exception::class);
+        $this->expectExceptionMessage('"Fake_Zend_Uri" is not an instance of Zend_Uri');
         Zend_Uri::factory('http://example.net', 'Fake_Zend_Uri');
     }
 
@@ -228,9 +215,4 @@ class Zend_Uri_ExceptionCausing extends Zend_Uri
 }
 class Fake_Zend_Uri
 {
-}
-
-// Call Zend_UriTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_UriTest::main") {
-    Zend_UriTest::main();
 }

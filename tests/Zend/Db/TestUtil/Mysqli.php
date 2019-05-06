@@ -42,14 +42,13 @@ class Zend_Db_TestUtil_Mysqli extends Zend_Db_TestUtil_Common
 
     public function getParams(array $constants = array())
     {
-        $constants = array(
-            'host'     => 'TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME',
-            'username' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME',
-            'password' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD',
-            'dbname'   => 'TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE',
-            'port'     => 'TESTS_ZEND_DB_ADAPTER_MYSQL_PORT'
+        return array(
+            'host'     => 'mysql',
+            'username' => 'zend',
+            'password' => 'secret',
+            'dbname'   => 'zend_db',
+            'port'     => 3306,
         );
-        return parent::getParams($constants);
     }
 
     public function getSqlType($type)

@@ -20,13 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Action_Helper_AutoCompleteTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_AutoCompleteTest::main");
-}
-
-
-require_once 'Zend/Controller/Action/Helper/AutoCompleteDojo.php';
 require_once 'Zend/Controller/Action/Helper/AutoCompleteScriptaculous.php';
 
 require_once 'Zend/Controller/Action.php';
@@ -49,20 +42,8 @@ require_once 'Zend/Layout.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_Helper_AutoCompleteTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_Helper_AutoCompleteTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -98,107 +79,8 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
 
     public function testConcreteImplementationsDeriveFromAutoCompleteBaseClass()
     {
-        $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $this->assertTrue($dojo instanceof Zend_Controller_Action_Helper_AutoComplete_Abstract);
-
         $scriptaculous = new Zend_Controller_Action_Helper_AutoCompleteScriptaculous();
         $this->assertTrue($scriptaculous instanceof Zend_Controller_Action_Helper_AutoComplete_Abstract);
-    }
-
-    public function testEncodeJsonProxiesToJsonActionHelper()
-    {
-        $dojo    = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $data    = array('foo', 'bar', 'baz');
-        $encoded = $dojo->prepareAutoCompletion($data);
-        $decoded = Zend_Json::decode($encoded);
-        $test    = array();
-        foreach ($decoded['items'] as $item) {
-            $test[] = $item['name'];
-        }
-        $this->assertSame($data, $test);
-        $this->assertFalse($this->layout->isEnabled());
-        $headers = $this->response->getHeaders();
-        $found = false;
-        foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
-                if ('application/json' == $header['value']) {
-                    $found = true;
-                }
-                break;
-            }
-        }
-        $this->assertTrue($found, "JSON content-type header not found");
-    }
-
-    public function testDojoHelperEncodesToJson()
-    {
-        $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $data = array('foo', 'bar', 'baz');
-        $encoded = $dojo->direct($data, false);
-        $decoded = Zend_Json::decode($encoded);
-        $this->assertContains('items', array_keys($decoded));
-        $this->assertContains('identifier', array_keys($decoded));
-        $this->assertEquals('name', $decoded['identifier']);
-
-        $test = array();
-        foreach ($decoded['items'] as $item) {
-            $test[] = $item['label'];
-        }
-        $this->assertEquals($data, $test);
-    }
-
-    public function testDojoHelperSendsResponseByDefault()
-    {
-        $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $dojo->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
-        $encoded = $dojo->direct($data);
-        $decoded = Zend_Json::decode($encoded);
-        $test    = array();
-        foreach ($decoded['items'] as $item) {
-            $test[] = $item['name'];
-        }
-        $this->assertSame($data, $test);
-        $body = $this->response->getBody();
-        $this->assertSame($encoded, $body);
-    }
-
-    public function testDojoHelperDisablesLayoutsAndViewRendererByDefault()
-    {
-        $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $dojo->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
-        $encoded = $dojo->direct($data);
-        $this->assertFalse($this->layout->isEnabled());
-        $this->assertTrue($this->viewRenderer->getNoRender());
-    }
-
-    public function testDojoHelperCanEnableLayoutsAndViewRenderer()
-    {
-        $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $dojo->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
-        $encoded = $dojo->direct($data, false, true);
-        $this->assertTrue($this->layout->isEnabled());
-        $this->assertFalse($this->viewRenderer->getNoRender());
-    }
-    /**
-     * @group   ZF-9126
-     */
-    public function testDojoHelperEncodesUnicodeChars()
-    {
-        $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $dojo->suppressExit = true;
-        $data = array ('garçon', 'schließen', 'Helgi Þormar Þorbjörnsson');
-        $encoded = $dojo->direct($data);
-        $body = $this->response->getBody();
-        $decoded = Zend_Json::decode($encoded);
-        $test = array ();
-        foreach ($decoded['items'] as $item) {
-            $test[] = $item['name'];
-        }
-        $this->assertSame($data, $test);
-        $this->assertSame($encoded, $body);
     }
 
     public function testScriptaculousHelperThrowsExceptionOnInvalidDataFormat()
@@ -266,9 +148,4 @@ class Zend_Controller_Action_Helper_AutoCompleteTest_LayoutOverride extends Zend
     {
         self::$_mvcInstance = null;
     }
-}
-
-// Call Zend_Controller_Action_Helper_AutoCompleteTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_AutoCompleteTest::main") {
-    Zend_Controller_Action_Helper_AutoCompleteTest::main();
 }

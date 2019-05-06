@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Translate_Adapter_ArrayTest::main');
-}
-
 /**
  * Zend_Translate_Adapter_Array
  */
@@ -37,7 +33,7 @@ require_once 'Zend/Translate/Adapter/Array.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Translate
  */
-class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
+class Zend_Translate_Adapter_ArrayTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Error flag
@@ -45,17 +41,6 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
      * @var boolean
      */
     protected $_errorOccurred = false;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Translate_Adapter_ArrayTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
 
     public function setUp()
     {
@@ -345,9 +330,4 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
     {
         $this->_errorOccurred = true;
     }
-}
-
-// Call Zend_Translate_Adapter_ArrayTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_ArrayTest::main") {
-    Zend_Translate_Adapter_ArrayTest::main();
 }

@@ -37,6 +37,8 @@ require_once "Zend/Xml/Security.php";
  *
  * @category   Zend
  * @package    Zend_Soap
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-soap instead
  */
 class Zend_Soap_Wsdl
 {
@@ -103,7 +105,7 @@ class Zend_Soap_Wsdl
         if (!$this->_dom = Zend_Xml_Security::scan($wsdl, $this->_dom)) {
             require_once 'Zend/Server/Exception.php';
             throw new Zend_Server_Exception('Unable to create DomDocument');
-        } 
+        }
         $this->_wsdl = $this->_dom->documentElement;
 
         $this->setComplexTypeStrategy($strategy);

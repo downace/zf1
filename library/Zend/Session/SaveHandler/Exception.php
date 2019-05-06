@@ -32,6 +32,8 @@ require_once 'Zend/Session/Exception.php';
  * @package    Zend_Session
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-session instead
  */
 class Zend_Session_SaveHandler_Exception extends Zend_Session_Exception
 {}

@@ -46,6 +46,8 @@ require_once 'Zend/Mail/Part/Interface.php';
  * @package    Zend_Mail
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-mail instead
  */
 class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
 {
@@ -96,10 +98,10 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
      * @var int
      */
     protected $_messageNum = 0;
-    
+
     /**
      * Class to use when creating message parts
-     * @var string 
+     * @var string
      */
     protected $_partClass;
 
@@ -138,7 +140,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
             $this->_mail       = $params['handler'];
             $this->_messageNum = $params['id'];
         }
-        
+
         if (isset($params['partclass'])) {
             $this->setPartClass($params['partclass']);
         }
@@ -162,7 +164,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
             }
         }
     }
-    
+
     /**
      * Set name pf class used to encapsulate message parts
      * @param string $class
@@ -184,14 +186,14 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
             require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception("Class '{$class}' must implement Zend_Mail_Part_Interface");
         }
-        
+
         $this->_partClass = $class;
         return $this;
     }
-    
+
     /**
      * Retrieve the class name used to encapsulate message parts
-     * @return string 
+     * @return string
      */
     public function getPartClass()
     {

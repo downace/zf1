@@ -1333,14 +1333,13 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertEquals(0, count($rowset));
     }
 
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testTableLoadsCustomRowClass()
     {
         $this->_useMyIncludePath();
-
-        if (class_exists('My_ZendDbTable_Row_TestMyRow')) {
-            $this->markTestSkipped("Cannot test loading the custom Row class because it is already loaded");
-            return;
-        }
 
         $this->assertFalse(class_exists('My_ZendDbTable_Row_TestMyRow', false),
             'Expected TestMyRow class not to be loaded (#1)');
@@ -1414,8 +1413,8 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         try {
             $bugsTable = $this->_getTable('My_ZendDbTable_TableBugs');
             $primary = $bugsTable->info(Zend_Db_Table_Abstract::PRIMARY);
-            $this->fail('Expected to catch PHPUnit_Framework_Error');
-        } catch (PHPUnit_Framework_Error $e) {
+            $this->fail('Expected to catch \PHPUnit\Framework\Error\Error');
+        } catch (\PHPUnit\Framework\Error\Error $e) {
             $this->assertEquals(E_USER_NOTICE, $e->getCode(), 'Error type not E_USER_NOTICE');
             $this->assertEquals('Failed saving metadata to metadataCache', $e->getMessage());
         }
@@ -1837,7 +1836,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
                 );
 
         $metadata = array('id' => array('PRIMARY' => true));
-        $cacheBackend = $this->getMock('Zend_Cache_Backend_BlackHole');
+        $cacheBackend = $this->createMock('Zend_Cache_Backend_BlackHole');
         $cacheBackend->expects($this->any())
                      ->method('load')
                      ->with($this->equalTo($cacheId))

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Validate_File_MimeTypeTest::main");
-}
-
 /**
  * @see Zend_Validate_File_MimeType
  */
@@ -40,19 +35,8 @@ require_once 'Zend/Validate/File/MimeType.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_MimeTypeTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_MimeTypeTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     /**
      * Ensures that the validator follows expected behavior
      *
@@ -257,10 +241,6 @@ class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
      */
     public function testDisablingTryCommonMagicFilesIgnoresCommonLocations()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Behavior is only applicable and testable for PHP 5.3+');
-        }
-
         $filetest = dirname(__FILE__) . '/_files/picture.jpg';
         $files = array(
             'name'     => 'picture.jpg',
@@ -269,29 +249,12 @@ class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
             'error'    => 0
         );
 
+        // The common magic files detected the image as application/octet-stream -- try the PHP default
+        // Note that if this  branch of code is entered then testBasic, testDualValidation,
+        // as well as Zend_Validate_File_IsCompressedTest::testBasic and Zend_Validate_File_IsImageTest::testBasic
+        // will be failing as well.
         $validator = new Zend_Validate_File_MimeType(array('image/jpeg', 'image/jpeg; charset=binary'));
-
-        $goodEnvironment = $validator->isValid($filetest, $files);
-
-        if ($goodEnvironment) {
-            /**
-             * The tester's environment has magic files that are properly read by PHP
-             * This prevents the test from being relevant in the environment
-             */
-            $this->markTestSkipped('This test environment works as expected with the common magic files, preventing this from being testable.');
-        } else {
-            // The common magic files detected the image as application/octet-stream -- try the PHP default
-            // Note that if this  branch of code is entered then testBasic, testDualValidation,
-            // as well as Zend_Validate_File_IsCompressedTest::testBasic and Zend_Validate_File_IsImageTest::testBasic
-            // will be failing as well.
-            $validator = new Zend_Validate_File_MimeType(array('image/jpeg', 'image/jpeg; charset=binary'));
-            $validator->setTryCommonMagicFilesFlag(false);
-            $this->assertTrue($validator->isValid($filetest, $files));
-        }
+        $validator->setTryCommonMagicFilesFlag(false);
+        $this->assertTrue($validator->isValid($filetest, $files));
     }
-}
-
-// Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_MimeTypeTest::main") {
-    Zend_Validate_File_MimeTypeTest::main();
 }

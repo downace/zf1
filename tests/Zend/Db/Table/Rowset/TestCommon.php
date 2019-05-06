@@ -322,7 +322,8 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $rowset = $table->fetchAll('bug_id IN (1,2,3,4)', 'bug_id ASC');
         $rowset->seek(3);
 
-        $this->setExpectedException('Zend_Db_Table_Rowset_Exception', 'Illegal index 4');
+        $this->expectException(Zend_Db_Table_Rowset_Exception::class);
+        $this->expectExceptionMessage('Illegal index 4');
         $rowset->seek(4);
     }
 
@@ -335,7 +336,8 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $rowset = $table->fetchAll('bug_id IN (1,2,3,4)', 'bug_id ASC');
         $rowset->getRow(3);
 
-        $this->setExpectedException('Zend_Db_Table_Rowset_Exception', 'No row could be found at position 4');
+        $this->expectException(Zend_Db_Table_Rowset_Exception::class);
+        $this->expectExceptionMessage('No row could be found at position 4');
         $rowset->getRow(4);
     }
 
@@ -385,24 +387,6 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertTrue($row instanceof Zend_Db_Table_Row_Abstract);
         $this->assertTrue($row->isConnected());
         $this->assertTrue($row->getTable() instanceof Zend_Db_Table_Abstract);
-    }
-
-    /**
-      * @group GH-172
-      */
-    public function testFixForRowsetContainsDisconnectedRowObjectsWhenDeserializedDoesNotBreakPaginator()
-    {
-        $table = $this->_table['bugs'];
-        $tableClass = get_class($table);
-
-        $select = $table->select();
-        $select->from('zfbugs', array('bug_id'));
-
-        require_once 'Zend/Paginator.php';
-        $paginator = Zend_Paginator::factory($select);
-        foreach ($paginator as $test) {
-            $this->assertTrue($test instanceof Zend_Db_Table_Row);
-        }
     }
 
     /**

@@ -32,6 +32,8 @@ require_once 'Zend/Cache/Core.php';
  * @subpackage Zend_Cache_Frontend
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-cache instead
  */
 class Zend_Cache_Frontend_File extends Zend_Cache_Core
 {

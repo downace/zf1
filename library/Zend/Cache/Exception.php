@@ -28,5 +28,7 @@ require_once 'Zend/Exception.php';
  * @package    Zend_Cache
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-cache instead
  */
 class Zend_Cache_Exception extends Zend_Exception {}

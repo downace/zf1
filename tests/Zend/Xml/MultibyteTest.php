@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Xml_SecurityTest::main');
-}
-
 /**
  * This is a class that overrides Zend_Xml_Security to mark the heuristicScan()
  * method as public, allowing us to test it.
@@ -43,14 +39,8 @@ require_once 'Zend/Xml/Exception.php';
  * @group      Zend_Xml
  * @group      ZF2015-06
  */
-class Zend_Xml_MultibyteTest extends PHPUnit_Framework_TestCase
+class Zend_Xml_MultibyteTest extends \PHPUnit\Framework\TestCase
 {
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
- 
     public function multibyteEncodings()
     {
         return array(
@@ -96,7 +86,8 @@ XML;
         $xml = str_replace('{ENCODING}', $encoding, $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         $this->assertNotSame(0, strncmp($xml, $bom, $bomLength));
-        $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
+        $this->expectException(Zend_Xml_Exception::class);
+        $this->expectExceptionMessage('ENTITY');
         $this->invokeHeuristicScan($xml);
     }
 
@@ -109,7 +100,8 @@ XML;
         $xml  = str_replace('{ENCODING}', $encoding, $xml);
         $orig = iconv('UTF-8', $encoding, $xml);
         $xml  = $bom . $orig;
-        $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
+        $this->expectException(Zend_Xml_Exception::class);
+        $this->expectExceptionMessage('ENTITY');
         $this->invokeHeuristicScan($xml);
     }
 
@@ -149,11 +141,8 @@ XML;
         $xml = str_replace('{ENCODING}', 'UTF-8', $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         $xml = $bom . $xml;
-        $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
+        $this->expectException(Zend_Xml_Exception::class);
+        $this->expectExceptionMessage('ENTITY');
         $this->invokeHeuristicScan($xml);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == "Zend_Xml_MultibyteTest::main") {
-    Zend_Xml_MultibyteTest::main();
 }

@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_AutoloaderTest::main');
-}
-
 /**
  * @see Zend_Loader_Autoloader
  */
@@ -42,14 +38,8 @@ require_once 'Zend/Loader/Autoloader/Interface.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Loader
  */
-class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
+class Zend_Loader_AutoloaderTest extends \PHPUnit\Framework\TestCase
 {
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         // Store original autoloaders
@@ -128,11 +118,9 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         $this->assertSame(array($this, 'autoload'), $this->autoloader->getDefaultAutoloader());
     }
 
-    /**
-     * @expectedException Zend_Loader_Exception
-     */
     public function testSpecifyingInvalidDefaultAutoloaderShouldRaiseException()
     {
+        $this->expectException(Zend_Loader_Exception::class);
         $this->autoloader->setDefaultAutoloader(uniqid());
     }
 
@@ -158,12 +146,10 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         $this->assertContains('Solar_', $namespaces);
     }
 
-    /**
-     * @expectedException Zend_Loader_Exception
-     */
     public function testRegisteringInvalidNamespaceSpecShouldRaiseException()
     {
         $o = new stdClass;
+        $this->expectException(Zend_Loader_Exception::class);
         $this->autoloader->registerNamespace($o);
     }
 
@@ -182,12 +168,10 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         $this->assertNotContains('ZendX', $namespaces);
     }
 
-    /**
-     * @expectedException Zend_Loader_Exception
-     */
     public function testUnregisteringInvalidNamespaceSpecShouldRaiseException()
     {
         $o = new stdClass;
+        $this->expectException(Zend_Loader_Exception::class);
         $this->autoloader->unregisterNamespace($o);
     }
 
@@ -382,10 +366,6 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
      */
     public function testClosuresRegisteredWithAutoloaderShouldBeUtilized()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(__METHOD__ . ' requires PHP version 5.3.0 or greater');
-        }
-
         $closure = require_once dirname(__FILE__) . '/_files/AutoloaderClosure.php';
         $this->autoloader->pushAutoloader($closure);
         $this->assertTrue(Zend_Loader_Autoloader::autoload('AutoloaderTest_AutoloaderClosure'));
@@ -456,8 +436,4 @@ class Zend_Loader_AutoloaderTest_Autoloader implements Zend_Loader_Autoloader_In
     {
         return $class;
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_AutoloaderTest::main') {
-    Zend_Loader_AutoloaderTest::main();
 }

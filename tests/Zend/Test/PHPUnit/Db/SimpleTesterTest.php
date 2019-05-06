@@ -33,11 +33,11 @@ require_once "Zend/Test/PHPUnit/Db/Exception.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Db_SimpleTesterTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetConnection()
     {
-        $testAdapter = $this->getMock('Zend_Test_DbAdapter');
+        $testAdapter = $this->createMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->any())
                     ->method('delete')
                     ->will($this->throwException(new Exception));
@@ -51,7 +51,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit_Framework_TestCase
 
     public function testSetupDatabase()
     {
-        $testAdapter = $this->getMock('Zend_Test_DbAdapter');
+        $testAdapter = $this->createMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->any())
                     ->method('delete')
                     ->will($this->throwException(new Exception));
@@ -60,21 +60,21 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit_Framework_TestCase
 
         $databaseTester = new Zend_Test_PHPUnit_Db_SimpleTester($connection);
 
-        $dataSet = $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+        $dataSet = $this->createMock('\PHPUnit\DbUnit\DataSet\IDataSet');
         $dataSet->expects($this->any())
                 ->method('getIterator')
-                ->will($this->returnValue($this->getMock('Iterator')));
+                ->will($this->returnValue($this->createMock('Iterator')));
         $dataSet->expects($this->any())
                 ->method('getReverseIterator')
-                ->will($this->returnValue($this->getMock('Iterator')));
+                ->will($this->returnValue($this->createMock('Iterator')));
         $databaseTester->setUpDatabase($dataSet);
     }
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException(Zend_Test_PHPUnit_Db_Exception::class);
 
-        $connection = $this->getMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
+        $connection = $this->createMock('\PHPUnit\DbUnit\Database\Connection');
 
         $databaseTester = new Zend_Test_PHPUnit_Db_SimpleTester($connection);
     }

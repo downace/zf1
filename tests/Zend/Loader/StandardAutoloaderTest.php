@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_StandardAutoloaderTest::main');
-}
-
 require_once 'Zend/Loader/StandardAutoloader.php';
 require_once 'Zend/Loader/TestAsset/StandardAutoloader.php';
 
@@ -35,7 +31,7 @@ require_once 'Zend/Loader/TestAsset/StandardAutoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Loader
  */
-class Zend_Loader_StandardAutoloaderTest extends PHPUnit_Framework_TestCase
+class Zend_Loader_StandardAutoloaderTest extends \PHPUnit\Framework\TestCase
 {
     public function setUp()
     {
@@ -139,9 +135,6 @@ class Zend_Loader_StandardAutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloadsNamespacedClasses()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped();
-        }
         $loader = new Zend_Loader_StandardAutoloader();
         $loader->registerNamespace('Zend\UnusualNamespace', dirname(__FILE__) . '/TestAsset');
         $loader->autoload('Zend\UnusualNamespace\NamespacedClass');
@@ -190,10 +183,6 @@ class Zend_Loader_StandardAutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloadsNamespacedClassesWithUnderscores()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Test only relevant for PHP >= 5.3.0');
-        }
-
         $loader = new Zend_Loader_StandardAutoloader();
         $loader->registerNamespace('ZendTest\UnusualNamespace', dirname(__FILE__) . '/TestAsset');
         $loader->autoload('ZendTest\UnusualNamespace\Name_Space\Namespaced_Class');
@@ -215,8 +204,4 @@ class Zend_Loader_StandardAutoloaderTest extends PHPUnit_Framework_TestCase
         $expected = array('Zend_' => dirname(dirname($file)) . DIRECTORY_SEPARATOR);
         $this->assertAttributeEquals($expected, 'prefixes', $loader);
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_StandardAutoloaderTest::main') {
-    Zend_Loader_StandardAutoloaderTest::main();
 }

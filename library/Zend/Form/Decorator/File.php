@@ -39,6 +39,8 @@ require_once 'Zend/File/Transfer/Adapter/Http.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-form instead
  */
 class Zend_Form_Decorator_File
     extends Zend_Form_Decorator_Abstract
@@ -109,12 +111,6 @@ class Zend_Form_Decorator_File
         if ($size > 0) {
             $element->setMaxFileSize(0);
             $markup[] = $view->formHidden('MAX_FILE_SIZE', $size);
-        }
-
-        if (Zend_File_Transfer_Adapter_Http::isApcAvailable()) {
-            $markup[] = $view->formHidden(ini_get('apc.rfc1867_name'), uniqid(), array('id' => 'progress_key'));
-        } else if (Zend_File_Transfer_Adapter_Http::isUploadProgressAvailable()) {
-            $markup[] = $view->formHidden('UPLOAD_IDENTIFIER', uniqid(), array('id' => 'progress_key'));
         }
 
         $helper = $element->helper;

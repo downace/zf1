@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Loader_ClassMapAutoloaderTest::main');
-}
-
 require_once 'Zend/Loader/ClassMapAutoloader.php';
 
 /**
@@ -34,14 +30,8 @@ require_once 'Zend/Loader/ClassMapAutoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Loader
  */
-class Zend_Loader_ClassMapAutoloaderTest extends PHPUnit_Framework_TestCase
+class Zend_Loader_ClassMapAutoloaderTest extends \PHPUnit\Framework\TestCase
 {
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function setUp()
     {
         // Store original autoloaders
@@ -79,13 +69,13 @@ class Zend_Loader_ClassMapAutoloaderTest extends PHPUnit_Framework_TestCase
     public function testRegisteringNonExistentAutoloadMapRaisesInvalidArgumentException()
     {
         $dir = dirname(__FILE__) . '__foobar__';
-        $this->setExpectedException('Zend_Loader_Exception_InvalidArgumentException');
+        $this->expectException(Zend_Loader_Exception_InvalidArgumentException::class);
         $this->loader->registerAutoloadMap($dir);
     }
 
     public function testValidMapFileNotReturningMapRaisesInvalidArgumentException()
     {
-        $this->setExpectedException('Zend_Loader_Exception_InvalidArgumentException');
+        $this->expectException(Zend_Loader_Exception_InvalidArgumentException::class);
         $this->loader->registerAutoloadMap(dirname(__FILE__) . '/_files/badmap.php');
     }
 
@@ -115,7 +105,7 @@ class Zend_Loader_ClassMapAutoloaderTest extends PHPUnit_Framework_TestCase
         $map = $this->loader->getAutoloadMap();
         $this->assertTrue(is_array($map));
         $this->assertEquals(2, count($map));
-        // Just to make sure nothing changes after loading the same map again 
+        // Just to make sure nothing changes after loading the same map again
         // (loadMapFromFile should just return)
         $this->loader->registerAutoloadMap(dirname(__FILE__) . '/_files/goodmap.php');
         $map = $this->loader->getAutoloadMap();
@@ -216,17 +206,9 @@ class Zend_Loader_ClassMapAutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testCanLoadNamespacedClassFromPhar()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Namespace support is valid for PHP >= 5.3.0 only');
-        }
-
         $map = 'phar://' . __DIR__ . '/_files/classmap.phar/test/.//../autoload_classmap.php';
         $this->loader->registerAutoloadMap($map);
         $this->loader->autoload('some\namespacedclass');
         $this->assertTrue(class_exists('some\namespacedclass', false));
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_ClassMapAutoloaderTest::main') {
-    Zend_Loader_ClassMapAutoloaderTest::main();
 }

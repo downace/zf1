@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-// Call Zend_Controller_Request_SimpleTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Request_SimpleTest::main");
-}
-
-
 require_once 'Zend/Controller/Request/Simple.php';
 
 /**
@@ -39,21 +33,8 @@ require_once 'Zend/Controller/Request/Simple.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Request
  */
-class Zend_Controller_Request_SimpleTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Request_SimpleTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Request_SimpleTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function testSimpleRequestIsOfAbstractRequestType()
     {
         $request = new Zend_Controller_Request_Simple();
@@ -82,9 +63,4 @@ class Zend_Controller_Request_SimpleTest extends PHPUnit_Framework_TestCase
         $this->assertNull($request->getParam('key'));
     }
 
-}
-
-// Call Zend_Controller_Request_SimpleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_SimpleTest::main") {
-    Zend_Controller_Request_SimpleTest::main();
 }

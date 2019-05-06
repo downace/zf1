@@ -32,7 +32,7 @@ require_once "Zend/Test/PHPUnit/Db/Operation/Insert.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_PHPUnit_Db_Operation_InsertTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Db_Operation_InsertTest extends \PHPUnit\Framework\TestCase
 {
     private $operation = null;
 
@@ -43,9 +43,9 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends PHPUnit_Framework_TestCa
 
     public function testInsertDataSetUsingAdapterInsert()
     {
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
+        $dataSet = new \PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
 
-        $testAdapter = $this->getMock('Zend_Test_DbAdapter');
+        $testAdapter = $this->createMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->at(0))
                     ->method('insert')
                     ->with('foo', array('foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'));
@@ -63,11 +63,11 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends PHPUnit_Framework_TestCa
 
     public function testInsertExceptionIsTransformed()
     {
-        $this->setExpectedException('PHPUnit_Extensions_Database_Operation_Exception');
+        $this->expectException('\PHPUnit\DbUnit\Operation\Exception');
 
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
+        $dataSet = new \PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
 
-        $testAdapter = $this->getMock('Zend_Test_DbAdapter');
+        $testAdapter = $this->createMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->any())->method('insert')->will($this->throwException(new Exception()));
 
         $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
@@ -76,10 +76,10 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends PHPUnit_Framework_TestCa
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException(Zend_Test_PHPUnit_Db_Exception::class);
 
-        $dataSet = $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
-        $connection = $this->getMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
+        $dataSet = $this->createMock('\PHPUnit\DbUnit\DataSet\IDataSet');
+        $connection = $this->createMock('\PHPUnit\DbUnit\Database\Connection');
 
         $this->operation->execute($connection, $dataSet);
     }

@@ -84,7 +84,7 @@ class Zend_Db_Select
     const REGEX_COLUMN_EXPR       = '/^([\w]*\s*\(([^\(\)]|(?1))*\))$/';
     const REGEX_COLUMN_EXPR_ORDER = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
     const REGEX_COLUMN_EXPR_GROUP = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
-    
+
     // @see http://stackoverflow.com/a/13823184/2028814
     const REGEX_SQL_COMMENTS      = '@
     (([\'"]).*?[^\\\]\2) # $1 : Skip single & double quoted expressions
@@ -1135,7 +1135,7 @@ class Zend_Db_Select
     {
         /*
          * If no table specified, use RDBMS-dependent solution
-         * for table-less query.  e.g. DUAL in Oracle.
+         * for table-less query.
          */
         if (empty($this->_parts[self::FROM])) {
             $this->_parts[self::FROM] = $this->_getDummyTable();

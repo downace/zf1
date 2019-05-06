@@ -36,6 +36,8 @@ require_once 'Zend/Text/MultiByte.php';
  * @package   Zend_Text_Table
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-text instead
  */
 class Zend_Text_Table_Column
 {

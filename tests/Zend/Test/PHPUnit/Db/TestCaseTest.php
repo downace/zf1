@@ -53,9 +53,9 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
     protected function getConnection()
     {
         if($this->_connectionMock == null) {
-            $this->_connectionMock = $this->getMock(
-                'Zend_Test_PHPUnit_Db_Connection', array(), array(new Zend_Test_DbAdapter(), "schema")
-            );
+            $this->_connectionMock = $this->getMockBuilder('Zend_Test_PHPUnit_Db_Connection')
+                ->setConstructorArgs(array(new Zend_Test_DbAdapter(), "schema"))
+                ->getMock();
         }
         return $this->_connectionMock;
     }
@@ -63,46 +63,50 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
     /**
      * Returns the test dataset.
      *
-     * @return PHPUnit_Extensions_Database_DataSet_IDataSet
+     * @return \PHPUnit\DbUnit\DataSet\IDataSet
      */
     protected function getDataSet()
     {
-        return new PHPUnit_Extensions_Database_DataSet_CompositeDataSet(array());
+        return new \PHPUnit\DbUnit\DataSet\CompositeDataSet(array());
     }
 
     public function testDatabaseTesterIsInitialized()
     {
-        $this->assertTrue($this->databaseTester instanceof PHPUnit_Extensions_Database_ITester);
+        $this->assertTrue($this->databaseTester instanceof \PHPUnit\DbUnit\Tester);
     }
 
     public function testDatabaseTesterNestsDefaultConnection()
     {
-        $this->assertTrue($this->databaseTester->getConnection() instanceof PHPUnit_Extensions_Database_DB_IDatabaseConnection);
+        $this->assertTrue($this->databaseTester->getConnection() instanceof \PHPUnit\DbUnit\Database\Connection);
     }
 
     public function testCheckZendDbConnectionConvenienceMethodReturnType()
     {
-        $mock = $this->getMock('Zend_Db_Adapter_Pdo_Sqlite', array('delete'), array(), "Zend_Db_Adapter_Mock", false);
+        $mock = $this->getMockBuilder('Zend_Db_Adapter_Pdo_Sqlite')
+            ->setMethods(['delete'])
+            ->setMockClassName('Zend_Db_Adapter_Mock')
+            ->disableOriginalConstructor()
+            ->getMock();
         $this->assertTrue($this->createZendDbConnection($mock, "test") instanceof Zend_Test_PHPUnit_Db_Connection);
     }
 
     public function testCreateDbTableDataSetConvenienceMethodReturnType()
     {
-        $tableMock = $this->getMock('Zend_Db_Table', array(), array(), "", false);
+        $tableMock = $this->createMock('Zend_Db_Table', array(), array(), "", false);
         $tableDataSet = $this->createDbTableDataSet(array($tableMock));
         $this->assertTrue($tableDataSet instanceof Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet);
     }
 
     public function testCreateDbTableConvenienceMethodReturnType()
     {
-        $mock = $this->getMock('Zend_Db_Table', array(), array(), "", false);
+        $mock = $this->createMock('Zend_Db_Table', array(), array(), "", false);
         $table = $this->createDbTable($mock);
         $this->assertTrue($table instanceof Zend_Test_PHPUnit_Db_DataSet_DbTable);
     }
 
     public function testCreateDbRowsetConvenienceMethodReturnType()
     {
-        $mock = $this->getMock('Zend_Db_Table_Rowset', array(), array(array()));
+        $mock = $this->createMock('Zend_Db_Table_Rowset', array(), array(array()));
         $mock->expects($this->once())->method('toArray')->will($this->returnValue(array("foo" => 1, "bar" => 1)));
 
         $rowset = $this->createDbRowset($mock, "fooTable");

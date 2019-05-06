@@ -33,7 +33,7 @@ require_once 'Zend/Date.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Date
  */
-class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
+class Zend_Date_DateObjectTest extends \PHPUnit\Framework\TestCase
 {
 
     public function setUp()
@@ -92,14 +92,6 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
      */
     public function testCreationFailed()
     {
-        // look if locale is detectable
-        try {
-            $locale = new Zend_Locale();
-        } catch (Zend_Locale_Exception $e) {
-            $this->markTestSkipped('Autodetection of locale failed');
-            return;
-        }
-
         try {
             $date = new Zend_Date("notimestamp");
             $this->fail("exception expected");
@@ -539,10 +531,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(($diff < 2), "Zend_Date_DateObject->_getTime() returned a significantly "
             . "different timestamp than expected: $diff seconds");
     }
-    
+
     /**
      * Test for RFC 2822's Obsolete Date and Time (paragraph 4.3)
-     * 
+     *
      * @see ZF-11296
      */
     public function test_obsRfc2822()
@@ -562,7 +554,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $date = new Zend_Date('22.05.2014');
         $date->setTime('12:00');
         $date->setTimezone('America/Los_Angeles');
-    
+
         $this->assertEquals(
             $date->toString(Zend_Date::ATOM),
             $date->toString(DateTime::ATOM, 'php')

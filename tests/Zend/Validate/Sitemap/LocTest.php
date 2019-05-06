@@ -32,7 +32,7 @@ require_once 'Zend/Validate/Sitemap/Loc.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_Sitemap_LocTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_Sitemap_LocTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Validator
@@ -89,7 +89,8 @@ class Zend_Validate_Sitemap_LocTest extends PHPUnit_Framework_TestCase
             '/news/',
             '#',
             'http:/example.com/',
-            'https://www.exmaple.com/?foo="bar\'&bar=<bat>'
+            // Zend_Uri query string validation is disabled (see \Zend_Uri_Http::validateQuery)
+            // 'https://www.exmaple.com/?foo="bar\'&bar=<bat>'
         );
 
         foreach ($values as $value) {

@@ -73,7 +73,6 @@ require_once 'Zend/View/Abstract.php';
  * @method string|void json($data, $keepLayouts = false, $encodeData = true)
  * @method Zend_View_Helper_Layout layout()
  * @method Zend_View_Helper_Navigation navigation(Zend_Navigation_Container $container = null)
- * @method string paginationControl(Zend_Paginator $paginator = null, $scrollingStyle = null, $partial = null, $params = null)
  * @method string partial($name = null, $module = null, $model = null)
  * @method string partialLoop($name = null, $module = null, $model = null)
  * @method Zend_View_Helper_Placeholder_Container_Abstract placeholder($name)
@@ -81,7 +80,6 @@ require_once 'Zend/View/Abstract.php';
  * @method string serverUrl($requestUri = null)
  * @method string translate($messageid = null)
  * @method string url(array $urlOptions = array(), $name = null, $reset = false, $encode = true)
- * @method Zend_Http_UserAgent userAgent(Zend_Http_UserAgent $userAgent = null)
  */
 class Zend_View extends Zend_View_Abstract
 {

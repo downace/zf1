@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Validate_AbstractTest::main');
-}
-
 /** Zend_Validate_Abstract */
 require_once 'Zend/Validate/Abstract.php';
 
@@ -41,19 +37,8 @@ require_once 'Zend/Registry.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_AbstractTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Runs this test suite
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_AbstractTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
-    }
-
     public function clearRegistry()
     {
         if (Zend_Registry::isRegistered('Zend_Translate')) {
@@ -306,8 +291,4 @@ class Zend_Validate_AbstractTest_Concrete extends Zend_Validate_Abstract
         $this->_error(self::FOO_MESSAGE);
         return false;
     }
-}
-
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_AbstractTest::main') {
-    Zend_Validate_AbstractTest::main();
 }
