@@ -43,7 +43,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 {
     public function testCreateQueryTableWithoutZendDbConnectionThrowsException()
     {
-        $connectionMock = $this->getMock('\PHPUnit\DbUnit\Database\Connection');
+        $connectionMock = $this->createMock('\PHPUnit\DbUnit\Database\Connection');
 
         $this->expectException(Zend_Test_PHPUnit_Db_Exception::class);
         $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", "SELECT * FROM foo", $connectionMock);
@@ -93,7 +93,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 
         $statementMock = new Zend_Test_DbStatement();
         $statementMock->append(array('foo' => 'bar'));
-        $adapterMock = $this->getMock('Zend_Test_DbAdapter');
+        $adapterMock = $this->createMock('Zend_Test_DbAdapter');
         $adapterMock->expects($this->once())
                     ->method('query')
                     ->with($fixtureSql)

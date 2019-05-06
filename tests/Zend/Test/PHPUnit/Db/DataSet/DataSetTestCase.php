@@ -39,7 +39,7 @@ abstract class Zend_Test_PHPUnit_Db_DataSet_DataSetTestCase extends \PHPUnit\Fra
 
     public function setUp()
     {
-        $this->connectionMock = $this->getMock('Zend_Test_PHPUnit_Db_Connection', array(), array(), '', false);
+        $this->connectionMock = $this->createMock('Zend_Test_PHPUnit_Db_Connection');
     }
 
     public function decorateConnectionMockWithZendAdapter()
