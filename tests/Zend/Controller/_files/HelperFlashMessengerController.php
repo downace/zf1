@@ -41,6 +41,7 @@ class HelperFlashMessengerController extends Zend_Controller_Action
      */
     public function indexAction()
     {
+        $this->_helper->viewRenderer->setNoRender();
         $flashmessenger = $this->_helper->FlashMessenger;
         $this->getResponse()->appendBody(get_class($flashmessenger));
 

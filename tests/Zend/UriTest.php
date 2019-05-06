@@ -81,12 +81,6 @@ class Zend_UriTest extends \PHPUnit\Framework\TestCase
         $this->_testValidUri('https');
     }
 
-    public function testSchemeMailto()
-    {
-        $this->markTestIncomplete('Zend_Uri_Mailto is not implemented yet');
-        $this->_testValidUri('mailto');
-    }
-
     /**
      * Tests that Zend_Uri::setConfig() allows Zend_Config
      *

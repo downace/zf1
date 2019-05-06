@@ -89,7 +89,8 @@ class Zend_Validate_Sitemap_LocTest extends \PHPUnit\Framework\TestCase
             '/news/',
             '#',
             'http:/example.com/',
-            'https://www.exmaple.com/?foo="bar\'&bar=<bat>'
+            // Zend_Uri query string validation is disabled (see \Zend_Uri_Http::validateQuery)
+            // 'https://www.exmaple.com/?foo="bar\'&bar=<bat>'
         );
 
         foreach ($values as $value) {

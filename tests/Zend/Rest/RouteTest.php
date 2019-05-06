@@ -36,6 +36,8 @@ require_once 'Zend/Controller/Request/HttpTestCase.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Rest
+ *
+ * @backupGlobals enabled
  */
 class Zend_Rest_RouteTest extends \PHPUnit\Framework\TestCase
 {

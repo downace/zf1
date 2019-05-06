@@ -329,6 +329,7 @@ class Zend_Controller_Action_HelperBrokerTest extends \PHPUnit\Framework\TestCas
         $test   = Zend_Controller_Action_HelperBroker::getPluginLoader();
         $this->assertNotSame($loader, $test);
         $this->assertSame($custom, $test);
+        Zend_Controller_Action_HelperBroker::setPluginLoader(null);
     }
 }
 

@@ -428,9 +428,12 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
      */
     public function testTableRelationshipCascadingUpdateUsageBasicString()
     {
-        $bug = $this->_getTable('My_ZendDbTable_TableBugsCustom')
+        $table = $this->_getTable('My_ZendDbTable_TableBugsCustom');
+        $this->_useMyIncludePath();
+        $bug = $table
                 ->find(1)
                 ->current();
+        $this->_restoreIncludePath();
         $bug_id = $this->_db->foldCase('bug_id');
 
         $this->assertEquals(

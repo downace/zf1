@@ -399,6 +399,9 @@ class Zend_Loader_PluginLoaderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @group ZF-4670
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testPluginLoaderShouldAppendIncludeCacheWhenClassIsFound()
     {

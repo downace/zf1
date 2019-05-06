@@ -1333,14 +1333,13 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertEquals(0, count($rowset));
     }
 
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testTableLoadsCustomRowClass()
     {
         $this->_useMyIncludePath();
-
-        if (class_exists('My_ZendDbTable_Row_TestMyRow')) {
-            $this->markTestSkipped("Cannot test loading the custom Row class because it is already loaded");
-            return;
-        }
 
         $this->assertFalse(class_exists('My_ZendDbTable_Row_TestMyRow', false),
             'Expected TestMyRow class not to be loaded (#1)');

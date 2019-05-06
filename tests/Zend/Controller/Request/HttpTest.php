@@ -50,6 +50,7 @@ class Zend_Controller_Request_HttpTest extends \PHPUnit\Framework\TestCase
         $_GET  = array();
         $_POST = array();
         $_SERVER = array(
+            'SCRIPT_NAME'     => __FILE__,
             'SCRIPT_FILENAME' => __FILE__,
             'PHP_SELF'        => __FILE__,
         );
