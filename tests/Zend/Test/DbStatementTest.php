@@ -127,7 +127,7 @@ class Zend_Test_DbStatementTest extends \PHPUnit\Framework\TestCase
 
     public function testFetchColumn_OutOfBounds()
     {
-        $this->setExpectedException("Zend_Db_Statement_Exception");
+        $this->expectException(Zend_Db_Statement_Exception::class);
 
         $row = array("foo" => "bar", "bar" => "baz");
 
@@ -152,7 +152,7 @@ class Zend_Test_DbStatementTest extends \PHPUnit\Framework\TestCase
 
     public function testFetchObject_ClassNotExists_ThrowsException()
     {
-        $this->setExpectedException("Zend_Db_Statement_Exception");
+        $this->expectException(Zend_Db_Statement_Exception::class);
 
         $row = array("foo" => "bar", "bar" => "baz");
 

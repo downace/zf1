@@ -1567,7 +1567,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         // create a second connection to the same database
         $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
         $dbConnection2->getConnection();
-              
+
         // notice the number of rows in connection 2
         $count = $dbConnection2->fetchOne("SELECT COUNT(*) FROM $bugs");
         $this->assertEquals(4, $count, 'Expecting to see 4 rows in bugs table (step 1)');
@@ -1986,7 +1986,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             Zend_Db::ALLOW_SERIALIZATION => false
         );
         $db = Zend_Db::factory($this->getDriver(), $params);
-        $this->setExpectedException('Zend_Db_Adapter_Exception');
+        $this->expectException(Zend_Db_Adapter_Exception::class);
         $serialized = serialize($db);
     }
 

@@ -72,7 +72,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends \PHPUnit\Framework\TestCase
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException(Zend_Test_PHPUnit_Db_Exception::class);
 
         $connection = $this->getMock('\PHPUnit\DbUnit\Database\Connection');
 

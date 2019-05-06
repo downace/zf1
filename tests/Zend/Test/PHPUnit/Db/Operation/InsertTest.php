@@ -63,7 +63,7 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends \PHPUnit\Framework\TestC
 
     public function testInsertExceptionIsTransformed()
     {
-        $this->setExpectedException('\PHPUnit\DbUnit\Operation\Exception');
+        $this->expectException('\PHPUnit\DbUnit\Operation\Exception');
 
         $dataSet = new \PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
 
@@ -76,7 +76,7 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends \PHPUnit\Framework\TestC
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException(Zend_Test_PHPUnit_Db_Exception::class);
 
         $dataSet = $this->getMock('\PHPUnit\DbUnit\DataSet\IDataSet');
         $connection = $this->getMock('\PHPUnit\DbUnit\Database\Connection');

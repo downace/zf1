@@ -208,7 +208,6 @@ class Zend_Application_Resource_TranslateTest extends \PHPUnit\Framework\TestCas
 
     /**
      * @group ZF-10352
-     * @expectedException Zend_Application_Resource_Exception
      */
     public function testToUseTheTwoKeysContentAndDataShouldThrowsException()
     {
@@ -226,6 +225,7 @@ class Zend_Application_Resource_TranslateTest extends \PHPUnit\Framework\TestCas
         );
 
         $resource = new Zend_Application_Resource_Translate($options);
+        $this->expectException(Zend_Application_Resource_Exception::class);
         $translator = $resource->init();
     }
 

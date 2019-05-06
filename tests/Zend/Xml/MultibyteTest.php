@@ -86,7 +86,8 @@ XML;
         $xml = str_replace('{ENCODING}', $encoding, $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         $this->assertNotSame(0, strncmp($xml, $bom, $bomLength));
-        $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
+        $this->expectException(Zend_Xml_Exception::class);
+        $this->expectExceptionMessage('ENTITY');
         $this->invokeHeuristicScan($xml);
     }
 
@@ -99,7 +100,8 @@ XML;
         $xml  = str_replace('{ENCODING}', $encoding, $xml);
         $orig = iconv('UTF-8', $encoding, $xml);
         $xml  = $bom . $orig;
-        $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
+        $this->expectException(Zend_Xml_Exception::class);
+        $this->expectExceptionMessage('ENTITY');
         $this->invokeHeuristicScan($xml);
     }
 
@@ -139,7 +141,8 @@ XML;
         $xml = str_replace('{ENCODING}', 'UTF-8', $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         $xml = $bom . $xml;
-        $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
+        $this->expectException(Zend_Xml_Exception::class);
+        $this->expectExceptionMessage('ENTITY');
         $this->invokeHeuristicScan($xml);
     }
 }

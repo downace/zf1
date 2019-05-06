@@ -1093,22 +1093,22 @@ class Zend_ViewTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @group ZF-8177
-     * @expectedException Zend_View_Exception
      */
     public function testRegisterHelperShouldThrowExceptionIfNotProvidedAnObject()
     {
         $view = new Zend_View();
+        $this->expectException(Zend_View_Exception::class);
         $view->registerHelper('Foo', 'foo');
     }
 
     /**
      * @group ZF-8177
-     * @expectedException Zend_View_Exception
      */
     public function testRegisterHelperShouldThrowExceptionIfProvidedANonHelperObject()
     {
         $view   = new Zend_View();
         $helper = new stdClass;
+        $this->expectException(Zend_View_Exception::class);
         $view->registerHelper($helper, 'foo');
     }
 

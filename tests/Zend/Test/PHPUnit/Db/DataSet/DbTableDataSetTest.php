@@ -65,7 +65,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends \PHPUnit\Framework
 
     public function testGetUnknownTableThrowsException()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $dataSet = new Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet();
         $dataSet->getTable('unknown');
     }

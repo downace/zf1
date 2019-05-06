@@ -388,14 +388,13 @@ class Zend_Loader_PluginLoaderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @group ZF-4670
-     * @expectedException Zend_Loader_PluginLoader_Exception
      */
     public function testPluginLoaderShouldThrowExceptionWhenPathDoesNotExist()
     {
         $cacheFile = dirname(__FILE__) . '/_filesDoNotExist/includeCache.inc.php';
         $this->testIncludeCacheShouldBeNullByDefault();
+        $this->expectException(Zend_Loader_PluginLoader_Exception::class);
         Zend_Loader_PluginLoader::setIncludeFileCache($cacheFile);
-        $this->fail('Should not allow specifying invalid cache file path');
     }
 
     /**

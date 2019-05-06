@@ -145,7 +145,7 @@ class Zend_View_Helper_GravatarTest extends \PHPUnit\Framework\TestCase
     public function testInvalidRatingParametr()
     {
         $ratingsWrong = array( 'a', 'cs', 456);
-        $this->setExpectedException('Zend_View_Exception');
+        $this->expectException(Zend_View_Exception::class);
         foreach ($ratingsWrong as $value) {
             $this->_object->setRating($value);
         }

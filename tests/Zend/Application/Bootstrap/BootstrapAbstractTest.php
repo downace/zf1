@@ -126,12 +126,10 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framewor
         $this->assertSame($bootstrap1, $bootstrap2->getApplication());
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testConstructorShouldRaiseExceptionForInvalidApplicationArgument()
     {
         require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap = new ZfAppBootstrap(new stdClass);
     }
 
@@ -248,13 +246,11 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framewor
         $this->assertEquals($resources, $test);
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testRegisterPluginResourceShouldThrowExceptionForInvalidResourceType()
     {
         require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
         $bootstrap = new ZfAppBootstrap($this->application);
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->registerPluginResource(array());
     }
 
@@ -299,14 +295,12 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framewor
         $this->assertFalse($bootstrap->hasPluginResource('view'));
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testAttemptingToUnregisterPluginResourcesUsingInvalidResourceTypeShouldThrowException()
     {
         require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
         $bootstrap = new ZfAppBootstrap($this->application);
         $bootstrap->registerPluginResource('view');
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->unregisterPluginResource(array());
     }
 
@@ -424,23 +418,19 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framewor
         $this->assertTrue($bootstrap->executedFoobarResource);
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testPassingInvalidResourceArgumentToBootstrapShouldThrowException()
     {
         require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
         $bootstrap = new ZfAppBootstrap($this->application);
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->bootstrap(new stdClass);
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testPassingUnknownResourceToBootstrapShouldThrowException()
     {
         require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
         $bootstrap = new ZfAppBootstrap($this->application);
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->bootstrap('bazbat');
     }
 
@@ -452,23 +442,19 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framewor
         $this->assertEquals(1, $bootstrap->fooExecuted);
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testCallShouldThrowExceptionForInvalidMethodCall()
     {
         require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
         $bootstrap = new ZfAppBootstrap($this->application);
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->initFoo();
     }
 
-    /**
-     * @expectedException Zend_Application_Bootstrap_Exception
-     */
     public function testDependencyTrackingShouldDetectCircularDependencies()
     {
         require_once dirname(__FILE__) . '/../_files/BootstrapBaseCircularDependency.php';
         $bootstrap = new BootstrapBaseCircularDependency($this->application);
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->bootstrap();
     }
 
@@ -707,11 +693,11 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends \PHPUnit\Framewor
 
     /**
      * @group ZF-9110
-     * @expectedException Zend_Application_Bootstrap_Exception
      */
     public function testPassingSameBootstrapAsApplicationShouldNotCauseRecursion()
     {
         $bootstrap = new Zend_Application_Bootstrap_Bootstrap($this->application);
+        $this->expectException(Zend_Application_Bootstrap_Exception::class);
         $bootstrap->setApplication($bootstrap);
     }
 

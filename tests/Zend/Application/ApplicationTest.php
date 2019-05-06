@@ -245,35 +245,27 @@ class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($bootstrap instanceof ZfAppBootstrap);
     }
 
-    /**
-     * @expectedException Zend_Application_Exception
-     */
     public function testPassingArrayBootstrapWithoutPathOptionShouldRaiseException()
     {
+        $this->expectException(Zend_Application_Exception::class);
         $this->application->setOptions(array(
             'bootstrap' => array(
                 'class' => 'ZfAppBootstrap',
             ),
         ));
-        $bootstrap = $this->application->getBootstrap();
     }
 
-    /**
-     * @expectedException Zend_Application_Exception
-     */
     public function testPassingInvalidBootstrapOptionShouldRaiseException()
     {
+        $this->expectException(Zend_Application_Exception::class);
         $this->application->setOptions(array(
             'bootstrap' => new stdClass(),
         ));
-        $bootstrap = $this->application->getBootstrap();
     }
 
-    /**
-     * @expectedException Zend_Application_Exception
-     */
     public function testPassingInvalidOptionsArgumentToConstructorShouldRaiseException()
     {
+        $this->expectException(Zend_Application_Exception::class);
         $application = new Zend_Application('testing', new stdClass());
     }
 
@@ -364,11 +356,9 @@ class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
         $this->assertNotEquals('bar', $application->getOption('foo'));
     }
 
-    /**
-     * @expectedException Zend_Application_Exception
-     */
     public function testPassingInvalidStringOptionToConstructorShouldRaiseException()
     {
+        $this->expectException(Zend_Application_Exception::class);
         $application = new Zend_Application('testing', dirname(__FILE__) . '/_files/appconfig');
     }
 
@@ -392,32 +382,26 @@ class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($application, $this->application);
     }
 
-    /**
-     * @expectedException Zend_Application_Exception
-     */
     public function testApplicationShouldRaiseExceptionIfBootstrapFileDoesNotContainBootstrapClass()
     {
+        $this->expectException(Zend_Application_Exception::class);
         $this->application->setOptions(array(
             'bootstrap' => array(
                 'path'  => dirname(__FILE__) . '/_files/ZfAppNoBootstrap.php',
                 'class' => 'ZfAppNoBootstrap',
             ),
         ));
-        $bootstrap = $this->application->getBootstrap();
     }
 
-    /**
-     * @expectedException Zend_Application_Exception
-     */
     public function testApplicationShouldRaiseExceptionWhenBootstrapClassNotOfCorrectType()
     {
+        $this->expectException(Zend_Application_Exception::class);
         $this->application->setOptions(array(
             'bootstrap' => array(
                 'path'  => dirname(__FILE__) . '/_files/ZfAppBadBootstrap.php',
                 'class' => 'ZfAppBadBootstrap',
             ),
         ));
-        $bootstrap = $this->application->getBootstrap();
     }
 
     public function testOptionsShouldRetainOriginalCase()

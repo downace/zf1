@@ -54,7 +54,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
     public function setUp()
     {
         $_SESSION = array();
-        $this->setExpectedException(null);
         $this->testCase = new Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete();
         $this->testCase->reset();
         $this->testCase->bootstrap = array($this, 'bootstrap');
@@ -532,7 +531,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
-        $this->setExpectedException('\PHPUnit\Framework\AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertModule('zend-test-php-unit-foo');
         $this->testCase->assertNotModule('default');
     }
@@ -549,7 +548,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
-        $this->setExpectedException('\PHPUnit\Framework\AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertController('baz');
         $this->testCase->assertNotController('zend-test-php-unit-foo');
     }
@@ -566,7 +565,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/foo/baz');
-        $this->setExpectedException('\PHPUnit\Framework\AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertAction('foo');
         $this->testCase->assertNotAction('baz');
     }
@@ -583,7 +582,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $this->testCase->dispatch('/foo/baz');
-        $this->setExpectedException('\PHPUnit\Framework\AssertionFailedError');
+        $this->expectException('\PHPUnit\Framework\AssertionFailedError');
         $this->testCase->assertRoute('foo');
         $this->testCase->assertNotRoute('default');
     }

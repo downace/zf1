@@ -810,6 +810,7 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends \PHPUnit\Framework\
         $body = $this->response->getBody();
         $this->assertContains('fooUseHelper invoked', $body, 'Received ' . $body);
     }
+
     /**
      * @group ZF-10725
      */
