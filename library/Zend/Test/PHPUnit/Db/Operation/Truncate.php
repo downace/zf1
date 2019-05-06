@@ -76,19 +76,6 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements Operation
         $tableName = $db->quoteIdentifier($tableName, true);
         if($db instanceof Zend_Db_Adapter_Pdo_Sqlite) {
             $db->query('DELETE FROM '.$tableName);
-        } else if($db instanceof Zend_Db_Adapter_Db2) {
-            /*if(strstr(PHP_OS, "WIN")) {
-                $file = tempnam(sys_get_temp_dir(), "zendtestdbibm_");
-                file_put_contents($file, "");
-                $db->query('IMPORT FROM '.$file.' OF DEL REPLACE INTO '.$tableName);
-                unlink($file);
-            } else {
-                $db->query('IMPORT FROM /dev/null OF DEL REPLACE INTO '.$tableName);
-            }*/
-            require_once "Zend/Exception.php";
-            throw Zend_Exception("IBM Db2 TRUNCATE not supported.");
-        } else if($this->_isMssqlOrOracle($db)) {
-            $db->query('TRUNCATE TABLE '.$tableName);
         } else if($db instanceof Zend_Db_Adapter_Pdo_Pgsql) {
             $db->query('TRUNCATE '.$tableName.' CASCADE');
         } else {
@@ -96,19 +83,4 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements Operation
         }
     }
 
-    /**
-     * Detect if an adapter is for Mssql or Oracle Databases.
-     *
-     * @param  Zend_Db_Adapter_Abstract $db
-     * @return bool
-     */
-    private function _isMssqlOrOracle($db)
-    {
-        return (
-            $db instanceof Zend_Db_Adapter_Pdo_Mssql ||
-            $db instanceof Zend_Db_Adapter_Sqlsrv ||
-            $db instanceof Zend_Db_Adapter_Pdo_Oci ||
-            $db instanceof Zend_Db_Adapter_Oracle
-        );
-    }
 }

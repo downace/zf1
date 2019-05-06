@@ -46,61 +46,8 @@ spl_autoload_register().
 The Zend_Loader changes were back ported from ZF2 by Matthew Weier
 O’Phinney
 
-Zend_EventManager
------------------
-
-Zend_EventManager is a component that allows you to attach and detach
-listeners to named events, both on a per-instance basis as well as via
-shared collections; trigger events; and interrupt execution of
-listeners.
-
-Zend_EventManager was back ported from ZF2 by Matthew Weier O’Phinney
-
-Zend_Http_UserAgent_Features_Adapter_Browscap
----------------------------------------------
-
-This class provides a features adapter that calls get_browser() in order
-to discover mobile device capabilities to inject into UserAgent device
-instances.
-
-Browscap (http://browsers.garykeith.com/) is an open project dedicated
-to collecting an disseminating a “database” of browser capabilities. PHP
-has built-in support for using these files via the get_browser()
-function. This function requires that your php.ini provides a browscap
-entry pointing to the PHP-specific php_browscap.ini file which is
-available at http://browsers.garykeith.com/stream.asp?PHP_BrowsCapINI.
-
-Zend_Http_UserAgent_Features_Adapter_Browscap was created by Matthew
-Weier O’Phinney
-
-Zend_Mobile_Push
-----------------
-
-Zend_Mobile_Push is a component for implementing push notifications for
-the 3 major push notification platforms (Apple (Apns), Google (C2dm) and
-Microsoft (Mpns).
-
-Zend_Mobile_Push was contributed by Mike Willbanks.
-
-Zend_Gdata_Analytics
---------------------
-
-Zend_Gdata_Analytics is an extension to Zend_Gdata to allow interaction
-with Google’s Analytics Data Export API. This extension does not
-encompass any major changes in the overall operation of Zend_Gdata
-components.
-
-Zend_Gdata_Analytics was contributed by Daniel Hartmann.
-
 Removed features
 ================
-
-Zend_Http_UserAgent_Features_Adapter_WurflApi
----------------------------------------------
-
-Due to the changes in licensing of WURFL, we have removed the WurflApi
-adapter. We will be providing the WurflApi adapter to ScientiaMobile so
-that users of WURFL will still have that option.
 
 Bug Fixes
 =========

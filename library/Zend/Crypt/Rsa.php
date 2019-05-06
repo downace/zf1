@@ -35,6 +35,8 @@ require_once 'Zend/Crypt/Rsa/Key/Public.php';
  * @package    Zend_Crypt
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-crypt instead
  */
 class Zend_Crypt_Rsa
 {
@@ -203,9 +205,9 @@ class Zend_Crypt_Rsa
 
     /**
      * @param  array $configargs
-     * 
+     *
      * @throws Zend_Crypt_Rsa_Exception
-     * 
+     *
      * @return ArrayObject
      */
     public function generateKeys(array $configargs = null)

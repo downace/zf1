@@ -730,7 +730,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'Expecting to get product_id 1');
 
         // Check that extra field ZEND_DB_ROWNUM isn't present
-        // (particulary with Db2 & Oracle)
         $this->assertArrayNotHasKey('zend_db_rownum', $result[0]);
         $this->assertArrayNotHasKey('ZEND_DB_ROWNUM', $result[0]);
     }
@@ -755,7 +754,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'Expecting to get product_id 2');
 
         // Check that extra field ZEND_DB_ROWNUM isn't present
-        // (particulary with Db2 & Oracle)
         $this->assertArrayNotHasKey('zend_db_rownum', $result[0]);
         $this->assertArrayNotHasKey('ZEND_DB_ROWNUM', $result[0]);
     }
@@ -793,8 +791,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     /**
      * Used by _testAdapterOptionCaseFoldingNatural()
-     * DB2 and Oracle return identifiers in uppercase naturally,
-     * so those test suites will override this method.
      */
     protected function _testAdapterOptionCaseFoldingNaturalIdentifier()
     {
@@ -1794,7 +1790,6 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     /**
      * @group ZF-8597
-     * Oracle is limited to 30 characters for an identifier
      */
     public function testAdapterUpdateWithLongColumnIdentifier()
     {

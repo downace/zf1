@@ -29,6 +29,8 @@ require_once 'Zend/Barcode/Exception.php';
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-barcode instead
  */
 class Zend_Barcode_Renderer_Exception extends Zend_Barcode_Exception
 {

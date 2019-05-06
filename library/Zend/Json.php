@@ -37,6 +37,8 @@ require_once 'Zend/Xml/Security.php';
  * @uses       Zend_Json_Expr
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-json instead (zendframework/zend-xml2json for fromXml)
  */
 class Zend_Json
 {
@@ -283,7 +285,7 @@ class Zend_Json
                 }
                 if (!empty($value)) {
                     $attributes['@text'] = $value;
-                } 
+                }
                 return array($name => $attributes);
             } else {
                return array($name => $value);
@@ -341,6 +343,8 @@ class Zend_Json
      * the xml2json conversion process.
      * @return mixed - JSON formatted string on success
      * @throws Zend_Json_Exception
+     *
+     * @deprecated Use zendframework/zend-xml2json
      */
     public static function fromXml($xmlStringContents, $ignoreXmlAttributes=true)
     {
@@ -364,7 +368,7 @@ class Zend_Json
         return($jsonStringOutput);
     }
 
-    
+
 
     /**
      * Pretty-print JSON string
@@ -428,9 +432,9 @@ class Zend_Json
                 $result .= $token . $lineBreak;
             } else {
                 $result .= ( $inLiteral ? '' : $prefix ) . $token;
-                
+
                 // Count # of unescaped double-quotes in token, subtract # of
-                // escaped double-quotes and if the result is odd then we are 
+                // escaped double-quotes and if the result is odd then we are
                 // inside a string literal
                 if ((substr_count($token, "\"")-substr_count($token, "\\\"")) % 2 != 0) {
                     $inLiteral = !$inLiteral;

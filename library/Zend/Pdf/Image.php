@@ -32,6 +32,8 @@
  * @subpackage Images
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15
  */
 abstract class Zend_Pdf_Image
 {

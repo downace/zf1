@@ -136,7 +136,7 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
     {
         $dirs = array('.');
         try {
-            Zend_Loader::loadClass('Zend_Version', $dirs);
+            Zend_Loader::loadClass('Zend_Validate', $dirs);
         } catch (Zend_Exception $e) {
             $this->fail('Loading from dot should not fail');
         }

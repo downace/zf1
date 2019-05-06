@@ -35,6 +35,8 @@ require_once 'Zend/Form/Element/Multi.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-form instead
  */
 class Zend_Form_Element_MultiCheckbox extends Zend_Form_Element_Multi
 {

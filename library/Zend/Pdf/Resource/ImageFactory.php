@@ -29,6 +29,8 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @todo       Use Zend_Mime not file extension for type determination.
+ *
+ * @deprecated Will be removed in 1.15
  */
 class Zend_Pdf_Resource_ImageFactory
 {

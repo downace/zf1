@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-
-/** Zend_Service_Abstract */
-require_once 'Zend/Service/Abstract.php';
-
 /** Zend_Rest_Client_Result */
 require_once 'Zend/Rest/Client/Result.php';
 
@@ -36,9 +32,45 @@ require_once 'Zend/Uri.php';
  * @subpackage Client
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-http instead
  */
-class Zend_Rest_Client extends Zend_Service_Abstract
+class Zend_Rest_Client
 {
+    /**
+     * HTTP Client used to query all web services
+     *
+     * @var Zend_Http_Client
+     */
+    protected static $_httpClient = null;
+
+
+    /**
+     * Sets the HTTP client object to use for retrieving the feeds.  If none
+     * is set, the default Zend_Http_Client will be used.
+     *
+     * @param Zend_Http_Client $httpClient
+     */
+    final public static function setHttpClient(Zend_Http_Client $httpClient)
+    {
+        self::$_httpClient = $httpClient;
+    }
+
+
+    /**
+     * Gets the HTTP client object.
+     *
+     * @return Zend_Http_Client
+     */
+    final public static function getHttpClient()
+    {
+        if (!self::$_httpClient instanceof Zend_Http_Client) {
+            self::$_httpClient = new Zend_Http_Client();
+        }
+
+        return self::$_httpClient;
+    }
+
     /**
      * Data for the query
      * @var array
@@ -50,7 +82,7 @@ class Zend_Rest_Client extends Zend_Service_Abstract
      * @var Zend_Uri_Http
      */
     protected $_uri = null;
-    
+
     /**
      * Flag indicating the Zend_Http_Client is fresh and needs no reset.
      * Must be set explicitly if you want to keep preset parameters.
@@ -123,21 +155,21 @@ class Zend_Rest_Client extends Zend_Service_Abstract
 
         /**
          * Get the HTTP client and configure it for the endpoint URI.  Do this each time
-         * because the Zend_Http_Client instance is shared among all Zend_Service_Abstract subclasses.
+         * because the Zend_Http_Client instance is shared among all Zend_Rest_Client's.
          */
         if ($this->_noReset) {
-            // if $_noReset we do not want to reset on this request, 
+            // if $_noReset we do not want to reset on this request,
             // but we do on any subsequent request
             $this->_noReset = false;
         } else {
             self::getHttpClient()->resetParameters();
         }
-        
+
         self::getHttpClient()->setUri($this->_uri);
     }
-    
+
     /**
-     * Tells Zend_Rest_Client not to reset all parameters on it's 
+     * Tells Zend_Rest_Client not to reset all parameters on it's
      * Zend_Http_Client. If you want no reset, this must be called explicitly
      * before every request for which you do not want to reset the parameters.
      * Parameters will accumulate between requests, but as soon as you do not

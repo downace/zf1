@@ -32,5 +32,7 @@ require_once "Zend/Rest/Client/Exception.php";
  * @subpackage Client
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-http instead
  */
 class Zend_Rest_Client_Result_Exception extends Zend_Rest_Client_Exception{}

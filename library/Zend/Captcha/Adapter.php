@@ -33,6 +33,8 @@ require_once 'Zend/Validate/Interface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-captcha instead
  */
 interface Zend_Captcha_Adapter extends Zend_Validate_Interface
 {

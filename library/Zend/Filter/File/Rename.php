@@ -29,6 +29,8 @@ require_once 'Zend/Filter/Interface.php';
  * @package    Zend_Filter
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-filter instead
  */
 class Zend_Filter_File_Rename implements Zend_Filter_Interface
 {
@@ -142,11 +144,11 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
     public function getNewName($value, $source = false)
     {
         $file = $this->_getFileName($value);
-        
+
         if (!is_array($file) || !array_key_exists('source', $file) || !array_key_exists('target', $file)) {
             return $value;
         }
-        
+
         if ($file['source'] == $file['target']) {
             return $value;
         }

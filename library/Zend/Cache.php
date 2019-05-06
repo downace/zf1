@@ -24,6 +24,8 @@
  * @package    Zend_Cache
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-cache instead
  */
 abstract class Zend_Cache
 {
@@ -40,15 +42,14 @@ abstract class Zend_Cache
      *
      * @var array
      */
-    public static $standardBackends = array('File', 'Sqlite', 'Memcached', 'Libmemcached', 'Apc', 'ZendPlatform',
-                                            'Xcache', 'TwoLevels', 'WinCache', 'ZendServer_Disk', 'ZendServer_ShMem');
+    public static $standardBackends = array('File', 'Sqlite', 'Memcached', 'Libmemcached', 'Apc', 'TwoLevels');
 
     /**
      * Standard backends which implement the ExtendedInterface
      *
      * @var array
      */
-    public static $standardExtendedBackends = array('File', 'Apc', 'TwoLevels', 'Memcached', 'Libmemcached', 'Sqlite', 'WinCache');
+    public static $standardExtendedBackends = array('File', 'Apc', 'TwoLevels', 'Memcached', 'Libmemcached', 'Sqlite');
 
     /**
      * Only for backward compatibility (may be removed in next major release)
@@ -64,7 +65,7 @@ abstract class Zend_Cache
      * @var array
      * @deprecated
      */
-    public static $availableBackends = array('File', 'Sqlite', 'Memcached', 'Libmemcached', 'Apc', 'ZendPlatform', 'Xcache', 'WinCache', 'TwoLevels');
+    public static $availableBackends = array('File', 'Sqlite', 'Memcached', 'Libmemcached', 'Apc', 'TwoLevels');
 
     /**
      * Consts for clean() method
@@ -221,9 +222,6 @@ abstract class Zend_Cache
         $name = str_replace(array('-', '_', '.'), ' ', $name);
         $name = ucwords($name);
         $name = str_replace(' ', '', $name);
-        if (stripos($name, 'ZendServer') === 0) {
-            $name = 'ZendServer_' . substr($name, strlen('ZendServer'));
-        }
 
         return $name;
     }

@@ -36,6 +36,8 @@ require_once 'Zend/Loader.php';
  * @package    Zend_Filter
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-filter instead
  */
 class Zend_Filter_Encrypt implements Zend_Filter_Interface
 {
@@ -47,7 +49,7 @@ class Zend_Filter_Encrypt implements Zend_Filter_Interface
     /**
      * Class constructor
      *
-     * @param string|array $options (Optional) Options to set, if null mcrypt is used
+     * @param string|array $options (Optional) Options to set, if null openssl is used
      */
     public function __construct($options = null)
     {
@@ -82,7 +84,7 @@ class Zend_Filter_Encrypt implements Zend_Filter_Interface
             $adapter = $options['adapter'];
             unset($options['adapter']);
         } else {
-            $adapter = 'Mcrypt';
+            $adapter = 'Openssl';
         }
 
         if (!is_array($options)) {

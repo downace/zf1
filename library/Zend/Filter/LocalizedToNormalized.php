@@ -36,6 +36,8 @@ require_once 'Zend/Locale/Format.php';
  * @package    Zend_Filter
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-filter instead
  */
 class Zend_Filter_LocalizedToNormalized implements Zend_Filter_Interface
 {

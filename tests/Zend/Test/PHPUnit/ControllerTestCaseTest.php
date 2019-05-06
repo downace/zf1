@@ -648,10 +648,8 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
         $viewRenderer->initView();
         $view = $viewRenderer->view;
-        $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
-        $view->dojo()->setCdnVersion('1.1.0')
-                     ->requireModule('dojo.parser')
-                     ->enable();
+        $view->addHelperPath('Zend/View/Helper/Doctype', 'Zend_View_Helper_Doctype');
+        $view->doctype()->setDoctype(\Zend_View_Helper_Doctype::XHTML11);
         $view->headTitle('Foo');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
         $response = $this->testCase->getResponse();
@@ -659,7 +657,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
 
         $view = new Zend_View();
         $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
-        $this->assertFalse($view->dojo()->isEnabled(), 'Dojo is enabled? ', $view->dojo());
+        $this->assertEquals(\Zend_View_Helper_Doctype::HTML4_LOOSE, $view->doctype()->getDoctype());
         $this->assertNotContains('Foo', $view->headTitle()->__toString(), 'Head title persisted?');
     }
 

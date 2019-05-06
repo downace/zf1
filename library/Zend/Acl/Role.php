@@ -31,6 +31,8 @@ require_once 'Zend/Acl/Role/Interface.php';
  * @package    Zend_Acl
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @deprecated Will be removed in 1.15, use zendframework/zend-permissions-acl instead
  */
 class Zend_Acl_Role implements Zend_Acl_Role_Interface
 {
