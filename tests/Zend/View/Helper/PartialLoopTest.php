@@ -385,7 +385,7 @@ class Zend_View_Helper_PartialLoopTest extends \PHPUnit\Framework\TestCase
     }
 }
 
-class Zend_View_Helper_PartialLoop_IteratorTest implements Iterator
+class Zend_View_Helper_PartialLoop_IteratorTest implements Iterator, Countable
 {
     public $items;
 
@@ -423,9 +423,14 @@ class Zend_View_Helper_PartialLoop_IteratorTest implements Iterator
     {
         return $this->items;
     }
+
+    public function count()
+    {
+        return count($this->items);
+    }
 }
 
-class Zend_View_Helper_PartialLoop_RecursiveIteratorTest implements Iterator
+class Zend_View_Helper_PartialLoop_RecursiveIteratorTest implements Iterator, Countable
 {
     public $items;
 
@@ -464,6 +469,11 @@ class Zend_View_Helper_PartialLoop_RecursiveIteratorTest implements Iterator
     {
         return (current($this->items) !== false);
     }
+
+    public function count()
+    {
+        return count($this->items);
+    }
 }
 
 class Zend_View_Helper_PartialLoop_BogusIteratorTest
@@ -483,7 +493,7 @@ class Zend_View_Helper_PartialLoop_ToArrayTest
     }
 }
 
-class Zend_View_Helper_PartialLoop_IteratorWithToArrayTest implements Iterator
+class Zend_View_Helper_PartialLoop_IteratorWithToArrayTest implements Iterator, Countable
 {
     public $items;
 
@@ -520,6 +530,11 @@ class Zend_View_Helper_PartialLoop_IteratorWithToArrayTest implements Iterator
     public function valid()
     {
         return (current($this->items) !== false);
+    }
+
+    public function count()
+    {
+        return count($this->items);
     }
 }
 
