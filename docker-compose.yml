@@ -25,6 +25,18 @@ services:
     volumes:
       - .:/www-data/zf1
     working_dir: /www-data/zf1
+  php73:
+    build:
+      context: ./docker/php
+      args:
+        PHP_VERSION: 7.3
+        HOST_USER: 1000:1000
+    depends_on:
+      - mysql
+      - postgres
+    volumes:
+      - .:/www-data/zf1
+    working_dir: /www-data/zf1
   mysql:
     image: mysql:5
     environment:

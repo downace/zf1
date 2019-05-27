@@ -338,7 +338,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strstr($content, $match)) {
+            if (strstr($content, (string) $match)) {
                 return false;
             }
         }
