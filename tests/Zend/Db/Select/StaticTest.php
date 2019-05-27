@@ -189,6 +189,15 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $this->assertEquals('SELECT "p"."product_name" FROM "zfproducts" AS "p"', $sql);
     }
 
+    public function testSelectColumnWithColonQuotedParameter()
+    {
+        $stmt = $select = $this->_selectColumnWithColonQuotedParameter()
+            ->query();
+        $result = $stmt->fetchAll();
+        // Static adapter returns null
+        $this->assertNull($result);
+    }
+
     public function testSelectFromForUpdate()
     {
         $select = $this->_db->select()

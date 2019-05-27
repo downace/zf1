@@ -48,7 +48,7 @@ class Zend_Test_DbStatementTest extends \PHPUnit\Framework\TestCase
 
     public function testCreateSelectStatementWithRows()
     {
-        $rows = array("foo", "bar");
+        $rows = array(["foo"], ["bar"]);
 
         $stmt = Zend_Test_DbStatement::createSelectStatement($rows);
 
