@@ -1,5 +1,5 @@
 ARG PHP_VERSION
-FROM php:${PHP_VERSION}-cli-stretch
+FROM php:${PHP_VERSION}-cli
 
 ARG HOST_USER
 
