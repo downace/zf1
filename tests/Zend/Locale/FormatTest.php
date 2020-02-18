@@ -230,6 +230,7 @@ class Zend_Locale_FormatTest extends \PHPUnit\Framework\TestCase
      */
     public function testIsFloat()
     {
+        Zend_Locale_Format::setOptions(['locale' => 'en']);
         $this->assertTrue( Zend_Locale_Format::isFloat('-1.234.567,12345',  array('locale' => 'de_AT')));
         $this->assertFalse(Zend_Locale_Format::isFloat('textwithoutnumber', array('locale' => 'de_AT')));
         $this->assertFalse(Zend_Locale_Format::isFloat(''));
