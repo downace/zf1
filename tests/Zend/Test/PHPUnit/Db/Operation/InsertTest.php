@@ -36,7 +36,7 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends \PHPUnit\Framework\TestC
 {
     private $operation = null;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->operation = new Zend_Test_PHPUnit_Db_Operation_Insert();
     }
@@ -63,7 +63,7 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends \PHPUnit\Framework\TestC
 
     public function testInsertExceptionIsTransformed()
     {
-        $this->expectException('\PHPUnit\DbUnit\Operation\Exception');
+        $this->expectException(\PHPUnit\DbUnit\Operation\Exception::class);
 
         $dataSet = new \PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
 

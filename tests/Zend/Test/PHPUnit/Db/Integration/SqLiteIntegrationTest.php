@@ -32,7 +32,7 @@ require_once "AbstractTestCase.php";
  */
 class Zend_Test_PHPUnit_Db_Integration_SqLiteIntegrationTest extends Zend_Test_PHPUnit_Db_Integration_AbstractTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->dbAdapter = Zend_Db::factory('pdo_sqlite', array('dbname' => ':memory:'));
         $this->dbAdapter->query(

@@ -46,7 +46,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $_FILES = array(
             'txt' => array(
@@ -64,14 +64,14 @@ class Zend_File_Transfer_Adapter_HttpTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
     public function testEmptyAdapter()
     {
         $files = $this->adapter->getFileName();
-        $this->assertContains('test.txt', $files);
+        $this->assertStringContainsString('test.txt', $files);
     }
 
     public function testAutoSetUploadValidator()
@@ -124,7 +124,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends \PHPUnit\Framework\TestCase
         try {
             $this->assertFalse($this->adapter->receive('unknownFile'));
         } catch (Zend_File_Transfer_Exception $e) {
-            $this->assertContains('not find', $e->getMessage());
+            $this->assertStringContainsString('not find', $e->getMessage());
         }
     }
 
@@ -215,7 +215,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends \PHPUnit\Framework\TestCase
         $_FILES = array();
         $adapter = new Zend_File_Transfer_Adapter_HttpTest_MockAdapter();
         $this->assertFalse($adapter->isValidParent());
-        $this->assertContains('exceeds the defined ini size', current($adapter->getMessages()));
+        $this->assertStringContainsString('exceeds the defined ini size', current($adapter->getMessages()));
     }
 }
 

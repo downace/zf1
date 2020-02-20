@@ -43,7 +43,7 @@ class Zend_View_Helper_FormResetTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
@@ -60,7 +60,7 @@ class Zend_View_Helper_FormResetTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->helper, $this->view);
     }
@@ -90,13 +90,13 @@ class Zend_View_Helper_FormResetTest extends \PHPUnit\Framework\TestCase
     public function testShouldRenderAsHtmlByDefault()
     {
         $test = $this->helper->formReset('foo', 'bar');
-        $this->assertNotContains(' />', $test);
+        $this->assertStringNotContainsString(' />', $test);
     }
 
     public function testShouldAllowRenderingAsXHtml()
     {
         $this->view->doctype('XHTML1_STRICT');
         $test = $this->helper->formReset('foo', 'bar');
-        $this->assertContains(' />', $test);
+        $this->assertStringContainsString(' />', $test);
     }
 }

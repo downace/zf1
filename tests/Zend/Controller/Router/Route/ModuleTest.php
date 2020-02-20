@@ -42,7 +42,7 @@ class Zend_Controller_Router_Route_ModuleTest extends \PHPUnit\Framework\TestCas
     protected $_dispatcher;
     protected $route;
 
-    public function setUp()
+    public function setUp(): void
     {
         $front = Zend_Controller_Front::getInstance();
         $front->resetInstance();
@@ -463,6 +463,6 @@ class Zend_Controller_Router_Route_ModuleTest extends \PHPUnit\Framework\TestCas
             'module' => 'default',
         );
         $url = $this->route->assemble($params);
-        $this->assertNotContains('"><script>alert(11639)<', $url);
+        $this->assertStringNotContainsString('"><script>alert(11639)<', $url);
     }
 }

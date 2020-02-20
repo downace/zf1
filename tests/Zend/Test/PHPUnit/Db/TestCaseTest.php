@@ -83,7 +83,7 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
     public function testCheckZendDbConnectionConvenienceMethodReturnType()
     {
         $mock = $this->getMockBuilder('Zend_Db_Adapter_Pdo_Sqlite')
-            ->setMethods(['delete'])
+            ->addMethods(['delete'])
             ->setMockClassName('Zend_Db_Adapter_Mock')
             ->disableOriginalConstructor()
             ->getMock();

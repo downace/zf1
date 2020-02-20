@@ -218,6 +218,14 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
     }
 
     /**
+     * @return array
+     */
+    public function getPrefixes()
+    {
+        return $this->prefixes;
+    }
+
+    /**
      * Defined by Autoloadable; autoload a class
      *
      * @param  string $class

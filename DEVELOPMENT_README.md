@@ -39,8 +39,8 @@ and specify your UID:GID there:
 
 ### 5. Enter container interactive shell
 
-    docker-compose run --rm php71 bash # for PHP 7.1
-    docker-compose run --rm php72 bash # for PHP 7.2
+    docker-compose run --rm php71 bash # for PHP 7.3
+    docker-compose run --rm php72 bash # for PHP 7.4
 
 > PHP 7.0 is not supported
 

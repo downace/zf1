@@ -37,11 +37,6 @@ require_once 'Zend/Measure/Volume.php';
 class Zend_Measure_VolumeTest extends \PHPUnit\Framework\TestCase
 {
 
-    public function setUp()
-    {
-    }
-
-
     /**
      * test for Volume initialisation
      * expected instance

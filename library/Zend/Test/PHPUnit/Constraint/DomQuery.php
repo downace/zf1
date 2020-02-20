@@ -147,7 +147,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
      *     public function evaluate($other, $description = '', $returnResult = FALSE)
      * We use the new interface for PHP-strict checking, but emulate the old one
      */
-    public function evaluate($content, $assertType = '', $match = FALSE)
+    public function evaluate($content, $assertType = '', $match = FALSE): ?bool
     {
         if (strstr($assertType, 'Not')) {
             $this->setNegate(true);

@@ -69,7 +69,7 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends \PHPUnit\Framewor
      */
     public $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         Zend_Session::start();
 

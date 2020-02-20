@@ -39,13 +39,13 @@ class Zend_Controller_Response_HttpTest extends \PHPUnit\Framework\TestCase
      */
     protected $_response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->_response = new Zend_Controller_Response_Http();
         $this->_response->headersSentThrowsException = false;
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->_response);
     }
@@ -282,7 +282,7 @@ class Zend_Controller_Response_HttpTest extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->_response->sendResponse();
         $string = ob_get_clean();
-        $this->assertContains('Test exception rendering', $string);
+        $this->assertStringContainsString('Test exception rendering', $string);
     }
 
     public function testSetResponseCodeThrowsExceptionWithBadCode()

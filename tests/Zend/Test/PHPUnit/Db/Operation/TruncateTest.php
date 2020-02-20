@@ -36,7 +36,7 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends \PHPUnit\Framework\Tes
 {
     private $operation = null;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->operation = new Zend_Test_PHPUnit_Db_Operation_Truncate();
     }
@@ -66,7 +66,7 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends \PHPUnit\Framework\Tes
 
     public function testTruncateTableInvalidQueryTransformsException()
     {
-        $this->expectException('\PHPUnit\DbUnit\Operation\Exception');
+        $this->expectException(\PHPUnit\DbUnit\Operation\Exception::class);
 
         $dataSet = new \PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
 
@@ -104,7 +104,7 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends \PHPUnit\Framework\Tes
         $queries = $profiler->getQueryProfiles();
 
         $this->assertEquals(2, count($queries));
-        $this->assertContains('bar', $queries[0]->getQuery());
-        $this->assertContains('foo', $queries[1]->getQuery());
+        $this->assertStringContainsString('bar', $queries[0]->getQuery());
+        $this->assertStringContainsString('foo', $queries[1]->getQuery());
     }
 }

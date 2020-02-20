@@ -42,7 +42,7 @@ class Zend_View_Helper_FieldsetTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_Fieldset();
@@ -56,7 +56,7 @@ class Zend_View_Helper_FieldsetTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         ob_end_clean();
     }
@@ -65,8 +65,8 @@ class Zend_View_Helper_FieldsetTest extends \PHPUnit\Framework\TestCase
     {
         $html = $this->helper->fieldset('foo', 'foobar');
         $this->assertRegexp('#<fieldset[^>]+id="foo".*?>#', $html);
-        $this->assertContains('</fieldset>', $html);
-        $this->assertContains('foobar', $html);
+        $this->assertStringContainsString('</fieldset>', $html);
+        $this->assertStringContainsString('foobar', $html);
     }
 
     public function testProvidingLegendOptionToFieldsetCreatesLegendTag()
@@ -82,7 +82,7 @@ class Zend_View_Helper_FieldsetTest extends \PHPUnit\Framework\TestCase
     {
         foreach (array(null, '', ' ', false) as $legend) {
             $html = $this->helper->fieldset('foo', 'foobar', array('legend' => $legend));
-            $this->assertNotContains('<legend>', $html, 'Failed with value ' . var_export($legend, 1) . ': ' . $html);
+            $this->assertStringNotContainsString('<legend>', $html, 'Failed with value ' . var_export($legend, 1) . ': ' . $html);
         }
     }
 

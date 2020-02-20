@@ -42,7 +42,7 @@ class Zend_View_Helper_FormImageTest extends \PHPUnit\Framework\TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->view = new Zend_View();
         $this->view->doctype('HTML4_LOOSE');  // Reset doctype to default
@@ -57,7 +57,7 @@ class Zend_View_Helper_FormImageTest extends \PHPUnit\Framework\TestCase
      *
      * @access protected
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -86,7 +86,7 @@ class Zend_View_Helper_FormImageTest extends \PHPUnit\Framework\TestCase
         $test = $this->helper->formImage(array(
             'name' => 'foo',
         ));
-        $this->assertNotContains(' />', $test);
+        $this->assertStringNotContainsString(' />', $test);
     }
 
     /**
@@ -98,6 +98,6 @@ class Zend_View_Helper_FormImageTest extends \PHPUnit\Framework\TestCase
         $test = $this->helper->formImage(array(
             'name' => 'foo',
         ));
-        $this->assertContains(' />', $test);
+        $this->assertStringContainsString(' />', $test);
     }
 }
