@@ -166,7 +166,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $childRows = $table->fetchAll("$bug_id = 1");
         $childRow1 = $childRows->current();
 
-        $this->expectException(\PHPUnit\Framework\Error\Error::class);
+        $this->expectException(\PHPUnit\Framework\Exception::class);
         $parentRow = $childRow1->findParentRow('nonexistant_class');
     }
 
@@ -267,7 +267,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $originRows = $table->find(1);
         $originRow1 = $originRows->current();
 
-        $this->expectException(\PHPUnit\Framework\Error\Error::class);
+        $this->expectException(\PHPUnit\Framework\Exception::class);
         // Use nonexistant class for destination table
         $destRows = $originRow1->findManyToManyRowset('nonexistant_class', 'My_ZendDbTable_TableBugsProducts');
 
@@ -280,7 +280,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $originRows = $table->find(1);
         $originRow1 = $originRows->current();
 
-        $this->expectException(\PHPUnit\Framework\Error\Error::class);
+        $this->expectException(\PHPUnit\Framework\Exception::class);
         // Use nonexistant class for intersection table
         $destRows = $originRow1->findManyToManyRowset('My_ZendDbTable_TableProducts', 'nonexistant_class');
     }
@@ -417,7 +417,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $parentRows = $table->find(1);
         $parentRow1 = $parentRows->current();
 
-        $this->expectException(\PHPUnit\Framework\Error\Error::class);
+        $this->expectException(\PHPUnit\Framework\Exception::class);
         $childRows = $parentRow1->findDependentRowset('nonexistant_class');
     }
 

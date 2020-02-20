@@ -1707,7 +1707,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $colname = $this->_db->quoteIdentifier('colname');
 
         $s = $this->_db->select()->from('A')->joinUsing('B', $colname);
-        $this->assertContains("JOIN {$table_B} ON {$table_B}.{$colname} = {$table_A}.{$colname}", $s->assemble());
+        $this->assertStringContainsString("JOIN {$table_B} ON {$table_B}.{$colname} = {$table_A}.{$colname}", $s->assemble());
     }
 
     /**
@@ -1721,7 +1721,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $colTwo  = $this->_db->quoteIdentifier('colTwo');
 
         $s = $this->_db->select()->from('A')->joinUsing('B', array($colOne,$colTwo));
-        $this->assertContains(
+        $this->assertStringContainsString(
             "JOIN {$table_B} ON {$table_B}.{$colOne} = {$table_A}.{$colOne}"
             . " AND {$table_B}.{$colTwo} = {$table_A}.{$colTwo}",
             $s->assemble()

@@ -43,7 +43,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
@@ -61,7 +61,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         ob_end_clean();
     }
@@ -83,10 +83,10 @@ class Zend_View_Helper_FormMultiCheckboxTest extends \PHPUnit\Framework\TestCase
             if (!preg_match($pattern, $html, $matches)) {
                 $this->fail('Failed to match ' . $pattern . ': ' . $html);
             }
-            $this->assertContains($value, $matches[5], var_export($matches, 1));
-            $this->assertContains('type="checkbox"', $matches[3], var_export($matches, 1));
-            $this->assertContains('name="foo[]"', $matches[3], var_export($matches, 1));
-            $this->assertContains('value="' . $key . '"', $matches[3], var_export($matches, 1));
+            $this->assertStringContainsString($value, $matches[5], var_export($matches, 1));
+            $this->assertStringContainsString('type="checkbox"', $matches[3], var_export($matches, 1));
+            $this->assertStringContainsString('name="foo[]"', $matches[3], var_export($matches, 1));
+            $this->assertStringContainsString('value="' . $key . '"', $matches[3], var_export($matches, 1));
         }
     }
 
@@ -107,7 +107,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends \PHPUnit\Framework\TestCase
             if (!preg_match($pattern, $html, $matches)) {
                 $this->fail('Failed to match ' . $pattern . ': ' . $html);
             }
-            $this->assertNotContains(' />', $matches[1]);
+            $this->assertStringNotContainsString(' />', $matches[1]);
         }
     }
 
@@ -129,7 +129,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends \PHPUnit\Framework\TestCase
             if (!preg_match($pattern, $html, $matches)) {
                 $this->fail('Failed to match ' . $pattern . ': ' . $html);
             }
-            $this->assertContains(' />', $matches[1]);
+            $this->assertStringContainsString(' />', $matches[1]);
         }
     }
 }

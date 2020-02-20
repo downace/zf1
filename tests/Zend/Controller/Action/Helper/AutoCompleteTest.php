@@ -51,7 +51,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends \PHPUnit\Framework\
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         Zend_Controller_Action_Helper_AutoCompleteTest_LayoutOverride::resetMvcInstance();
         Zend_Controller_Action_HelperBroker::resetHelpers();
@@ -73,7 +73,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends \PHPUnit\Framework\
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -94,7 +94,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends \PHPUnit\Framework\
             $encoded = $scriptaculous->encodeJson($data);
             $this->fail('Objects should be considered invalid');
         } catch (Zend_Controller_Action_Exception $e) {
-            $this->assertContains('Invalid data', $e->getMessage());
+            $this->assertStringContainsString('Invalid data', $e->getMessage());
         }
     }
 
@@ -104,11 +104,11 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends \PHPUnit\Framework\
         $scriptaculous->suppressExit = true;
         $data = array('foo', 'bar', 'baz');
         $formatted = $scriptaculous->direct($data);
-        $this->assertContains('<ul>', $formatted);
+        $this->assertStringContainsString('<ul>', $formatted);
         foreach ($data as $value) {
-            $this->assertContains('<li>' . $value . '</li>', $formatted);
+            $this->assertStringContainsString('<li>' . $value . '</li>', $formatted);
         }
-        $this->assertContains('</ul>', $formatted);
+        $this->assertStringContainsString('</ul>', $formatted);
     }
 
     public function testScriptaculousHelperSendsResponseByDefault()

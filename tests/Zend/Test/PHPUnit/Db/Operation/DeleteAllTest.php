@@ -36,7 +36,7 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends \PHPUnit\Framework\Te
 {
     private $operation = null;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->operation = new Zend_Test_PHPUnit_Db_Operation_DeleteAll();
     }
@@ -60,7 +60,7 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends \PHPUnit\Framework\Te
 
     public function testDeleteQueryErrorTransformsException()
     {
-        $this->expectException('\PHPUnit\DbUnit\Operation\Exception');
+        $this->expectException(\PHPUnit\DbUnit\Operation\Exception::class);
 
         $dataSet = new \PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
 

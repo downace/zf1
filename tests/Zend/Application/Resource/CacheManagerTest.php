@@ -55,7 +55,7 @@ require_once 'Zend/Cache/Core.php';
  */
 class Zend_Application_Resource_CacheManagerTest extends \PHPUnit\Framework\TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -74,7 +74,7 @@ class Zend_Application_Resource_CacheManagerTest extends \PHPUnit\Framework\Test
         $this->bootstrap = new ZfAppBootstrap($this->application);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -229,7 +229,7 @@ class Zend_Application_Resource_CacheManagerTest extends \PHPUnit\Framework\Test
 
         $this->assertTrue(is_array($event));
         $this->assertTrue(array_key_exists('message', $event));
-        $this->assertContains('Zend_Cache_Backend_Static', $event['message']);
+        $this->assertStringContainsString('Zend_Cache_Backend_Static', $event['message']);
     }
 }
 

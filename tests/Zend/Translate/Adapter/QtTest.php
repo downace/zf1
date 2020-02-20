@@ -44,14 +44,14 @@ class Zend_Translate_Adapter_QtTest extends \PHPUnit\Framework\TestCase
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/nofile.ts', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('is not readable', $e->getMessage());
+            $this->assertStringContainsString('is not readable', $e->getMessage());
         }
 
         try {
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/failed.ts', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('Mismatched tag at line', $e->getMessage());
+            $this->assertStringContainsString('Mismatched tag at line', $e->getMessage());
         }
     }
 
@@ -64,7 +64,7 @@ class Zend_Translate_Adapter_QtTest extends \PHPUnit\Framework\TestCase
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/nofile.ts', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('nofile.ts', $e->getMessage());
+            $this->assertStringContainsString('nofile.ts', $e->getMessage());
         }
     }
 
@@ -107,7 +107,7 @@ class Zend_Translate_Adapter_QtTest extends \PHPUnit\Framework\TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ts', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ts', 'de', array('clear' => true));
@@ -165,7 +165,7 @@ class Zend_Translate_Adapter_QtTest extends \PHPUnit\Framework\TestCase
             $adapter->setLocale('nolocale');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));

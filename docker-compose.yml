@@ -1,32 +1,6 @@
 version: "3"
 
 services:
-  php71:
-    build:
-      context: ./docker/php
-      args:
-        PHP_VERSION: 7.1
-        HOST_USER: 1000:1000
-    depends_on:
-      - mysql
-      - postgres
-    volumes:
-      - .:/www-data/zf1
-      - composer-cache:/var/www/.composer/cache/
-    working_dir: /www-data/zf1
-  php72:
-    build:
-      context: ./docker/php
-      args:
-        PHP_VERSION: 7.2
-        HOST_USER: 1000:1000
-    depends_on:
-      - mysql
-      - postgres
-    volumes:
-      - .:/www-data/zf1
-      - composer-cache:/var/www/.composer/cache/
-    working_dir: /www-data/zf1
   php73:
     build:
       context: ./docker/php

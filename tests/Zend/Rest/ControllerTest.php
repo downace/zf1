@@ -83,7 +83,7 @@ class Zend_Rest_ControllerTest extends \PHPUnit\Framework\TestCase
 {
     protected $_testController;
 
-    public function setUp()
+    public function setUp(): void
     {
         $request = new Zend_Controller_Request_HttpTestCase();
         $response = new Zend_Controller_Response_HttpTestCase();

@@ -45,7 +45,7 @@ class Zend_View_Helper_JsonTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         Zend_View_Helper_JsonTest_Layout::resetMvcInstance();
 
@@ -65,7 +65,7 @@ class Zend_View_Helper_JsonTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 

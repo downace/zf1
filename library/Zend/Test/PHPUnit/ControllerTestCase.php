@@ -122,7 +122,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends TestCase
      *
      * Calls {@link bootstrap()} by default
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->bootstrap();
     }

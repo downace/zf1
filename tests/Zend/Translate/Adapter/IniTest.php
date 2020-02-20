@@ -44,7 +44,7 @@ class Zend_Translate_Adapter_IniTest extends \PHPUnit\Framework\TestCase
             $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/nofile.ini', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('not found', $e->getMessage());
+            $this->assertStringContainsString('not found', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
@@ -91,7 +91,7 @@ class Zend_Translate_Adapter_IniTest extends \PHPUnit\Framework\TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ini', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('The given Language', $e->getMessage());
+            $this->assertStringContainsString('The given Language', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ini', 'de', array('clear' => true));
@@ -149,7 +149,7 @@ class Zend_Translate_Adapter_IniTest extends \PHPUnit\Framework\TestCase
             $adapter->setLocale('nolocale');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('The given Language', $e->getMessage());
+            $this->assertStringContainsString('The given Language', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));

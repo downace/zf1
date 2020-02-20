@@ -46,7 +46,7 @@ class Zend_Rest_RouteTest extends \PHPUnit\Framework\TestCase
     protected $_request;
     protected $_dispatcher;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->_front = Zend_Controller_Front::getInstance();
         $this->_front->resetInstance();

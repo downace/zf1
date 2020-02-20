@@ -36,7 +36,7 @@ require_once 'Zend/Application.php';
  */
 class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -57,7 +57,7 @@ class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
         $this->iniOptions = array();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -176,7 +176,7 @@ class Zend_Application_ApplicationTest extends \PHPUnit\Framework\TestCase
             ),
         ));
         $test = get_include_path();
-        $this->assertContains($expected, $test);
+        $this->assertStringContainsString($expected, $test);
     }
 
     public function testPassingPhpSettingsSetsIniValues()

@@ -42,7 +42,7 @@ class Zend_View_Helper_FormTest extends \PHPUnit\Framework\TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_Form();
@@ -55,7 +55,7 @@ class Zend_View_Helper_FormTest extends \PHPUnit\Framework\TestCase
      *
      * @access protected
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -70,7 +70,7 @@ class Zend_View_Helper_FormTest extends \PHPUnit\Framework\TestCase
     public function testFormWithInputNeedingEscapesUsesViewEscaping()
     {
         $form = $this->helper->form('<&foo');
-        $this->assertContains($this->view->escape('<&foo'), $form);
+        $this->assertStringContainsString($this->view->escape('<&foo'), $form);
     }
 
     /**

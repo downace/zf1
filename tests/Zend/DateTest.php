@@ -44,7 +44,7 @@ class Zend_DateTest extends \PHPUnit\Framework\TestCase
     private $_cache = null;
     private $_orig  = array();
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->originalTimezone = date_default_timezone_get();
         date_default_timezone_set('Asia/Karachi');
@@ -60,7 +60,7 @@ class Zend_DateTest extends \PHPUnit\Framework\TestCase
         Zend_Date::setOptions(array('format_type' => 'iso'));
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Zend_Date::setOptions($this->_orig);
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
