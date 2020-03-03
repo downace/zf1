@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/PHPUnit/Db/SimpleTester.php";
-require_once "Zend/Test/PHPUnit/Db/Connection.php";
-require_once "Zend/Test/DbAdapter.php";
-require_once "Zend/Test/PHPUnit/Db/Exception.php";
-
 /**
  * @category   Zend
  * @package    Zend_Test

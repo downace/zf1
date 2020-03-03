@@ -23,8 +23,6 @@
 /**
  * @see Zend_Soap_Wsdl_Strategy_Interface
  */
-require_once "Zend/Soap/Wsdl/Strategy/Interface.php";
-
 /**
  * Zend_Soap_Wsdl_Strategy_Composite
  *
@@ -88,7 +86,6 @@ class Zend_Soap_Wsdl_Strategy_Composite implements Zend_Soap_Wsdl_Strategy_Inter
             /**
              * @see Zend_Soap_Wsdl_Exception
              */
-            require_once "Zend/Soap/Wsdl/Exception.php";
             throw new Zend_Soap_Wsdl_Exception("Invalid type given to Composite Type Map.");
         }
         $this->_typeMap[$type] = $strategy;
@@ -112,7 +109,6 @@ class Zend_Soap_Wsdl_Strategy_Composite implements Zend_Soap_Wsdl_Strategy_Inter
             /**
              * @see Zend_Soap_Wsdl_Exception
              */
-            require_once "Zend/Soap/Wsdl/Exception.php";
             throw new Zend_Soap_Wsdl_Exception(
                 "Default Strategy for Complex Types is not a valid strategy object."
             );
@@ -141,7 +137,6 @@ class Zend_Soap_Wsdl_Strategy_Composite implements Zend_Soap_Wsdl_Strategy_Inter
                 /**
                  * @see Zend_Soap_Wsdl_Exception
                  */
-                require_once "Zend/Soap/Wsdl/Exception.php";
                 throw new Zend_Soap_Wsdl_Exception(
                     "Strategy for Complex Type '".$type."' is not a valid strategy object."
                 );
@@ -177,7 +172,6 @@ class Zend_Soap_Wsdl_Strategy_Composite implements Zend_Soap_Wsdl_Strategy_Inter
             /**
              * @see Zend_Soap_Wsdl_Exception
              */
-            require_once "Zend/Soap/Wsdl/Exception.php";
             throw new Zend_Soap_Wsdl_Exception(
                 "Cannot add complex type '".$type."', no context is set for this composite strategy."
             );

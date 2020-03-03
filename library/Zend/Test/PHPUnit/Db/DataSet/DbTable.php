@@ -26,8 +26,6 @@ use PHPUnit\DbUnit\DataSet\QueryTable;
 /**
  * @see Zend_Db_Table_Abstract
  */
-require_once "Zend/Db/Table/Abstract.php";
-
 /**
  * Use a Zend_Db_Table for assertions with other PHPUnit Database Extension table types.
  *

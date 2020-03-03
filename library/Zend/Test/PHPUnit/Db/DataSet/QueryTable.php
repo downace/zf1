@@ -47,7 +47,6 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTable extends QueryTable
     public function __construct($tableName, $query, Connection $databaseConnection)
     {
         if( !($databaseConnection instanceof Zend_Test_PHPUnit_Db_Connection) ) {
-            require_once "Zend/Test/PHPUnit/Db/Exception.php";
             throw new Zend_Test_PHPUnit_Db_Exception("Zend_Test_PHPUnit_Db_DataSet_QueryTable only works with Zend_Test_PHPUnit_Db_Connection connections-");
         }
         parent::__construct($tableName, $query, $databaseConnection);

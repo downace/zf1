@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_Sha1
  */
-require_once 'Zend/Validate/File/Sha1.php';
-
 /**
  * Sha1 testbed
  *

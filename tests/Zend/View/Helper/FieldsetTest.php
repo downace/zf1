@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View/Helper/Fieldset.php';
-require_once 'Zend/View.php';
-
 /**
  * Test class for Zend_View_Helper_Fieldset
  *

@@ -28,15 +28,6 @@ set_include_path(
     . PATH_SEPARATOR . get_include_path()
 );
 
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Request/Http.php';
-require_once 'Zend/Controller/Response/Cli.php';
-require_once 'Zend/Controller/Dispatcher/Standard.php';
-require_once 'Zend/Controller/Router/Rewrite.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Controller/Action/Helper/Url.php';
-require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
-
 /**
  * @category   Zend
  * @package    Zend_Controller

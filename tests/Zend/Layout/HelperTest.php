@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Layout/Controller/Action/Helper/Layout.php';
-require_once 'Zend/Layout.php';
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-
 /**
  * Test class for Zend_Layout_Controller_Action_Helper_Layout
  *

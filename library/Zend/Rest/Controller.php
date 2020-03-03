@@ -20,8 +20,6 @@
  */
 
 /** Zend_Controller_Action */
-require_once 'Zend/Controller/Action.php';
-
 /**
  * An abstract class to guide implementation of action controllers for use with
  * Zend_Rest_Route.

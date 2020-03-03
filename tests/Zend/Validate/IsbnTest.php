@@ -22,9 +22,6 @@
 /**
  * @see Zend_Validate_Isbn
  */
-require_once 'Zend/Validate/Isbn.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Validate

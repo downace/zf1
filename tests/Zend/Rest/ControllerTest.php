@@ -21,14 +21,8 @@
  */
 
 /** Zend_Rest_Controller */
-require_once 'Zend/Rest/Controller.php';
-
 /** Zend_Controller_Request_HttpTestCase */
-require_once 'Zend/Controller/Request/HttpTestCase.php';
-
 /** Zend_Controller_Response_HttpTestCase */
-require_once 'Zend/Controller/Response/HttpTestCase.php';
-
 /**
  * @category   Zend
  * @package    Zend_Rest

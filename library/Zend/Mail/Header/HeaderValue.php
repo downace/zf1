@@ -131,7 +131,6 @@ final class Zend_Mail_Header_HeaderValue
     public static function assertValid($value)
     {
         if (! self::isValid($value)) {
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Invalid header value detected');
         }
     }

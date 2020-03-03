@@ -23,13 +23,9 @@
 /**
  * @see Zend_Application_Bootstrap_Bootstrapper
  */
-require_once 'Zend/Application/Bootstrap/Bootstrapper.php';
-
 /**
  * @see Zend_Application_Bootstrap_ResourceBootstrapper
  */
-require_once 'Zend/Application/Bootstrap/ResourceBootstrapper.php';
-
 /**
  * Abstract base class for bootstrap classes
  *
@@ -416,8 +412,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
     {
         if ($this->_pluginLoader === null) {
             $options = array(
-                'Zend_Application_Resource'  => 'Zend/Application/Resource',
-                'ZendX_Application_Resource' => 'ZendX/Application/Resource'
+                'Zend_Application_Resource' => __DIR__ . '/../Resource',
             );
 
             $this->_pluginLoader = new Zend_Loader_PluginLoader($options);

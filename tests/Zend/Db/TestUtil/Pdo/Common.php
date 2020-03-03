@@ -24,11 +24,6 @@
 /**
  * @see Zend_Db_TestUtil_Common
  */
-require_once 'Zend/Db/TestUtil/Common.php';
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db
@@ -44,7 +39,6 @@ abstract class Zend_Db_TestUtil_Pdo_Common extends Zend_Db_TestUtil_Common
         $retval = $conn->query($sql);
         if (!$retval) {
             $e = $conn->error;
-            require_once 'Zend/Db/Exception.php';
             throw new Zend_Db_Exception("SQL error for \"$sql\": $e");
         }
     }

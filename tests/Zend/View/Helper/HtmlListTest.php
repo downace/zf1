@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/HtmlList.php';
-
 /**
  * @category   Zend
  * @package    Zend_View

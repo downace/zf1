@@ -24,12 +24,6 @@
 /**
  * @see Zend_Db_Table_Select_TestCommon
  */
-require_once 'Zend/Db/Table/Select/TestCommon.php';
-
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

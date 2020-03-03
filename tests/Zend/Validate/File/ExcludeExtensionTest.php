@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_ExcludeExtension
  */
-require_once 'Zend/Validate/File/ExcludeExtension.php';
-
 /**
  * ExcludeExtension testbed
  *

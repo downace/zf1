@@ -23,9 +23,6 @@
 /**
  * @see Zend_Acl_Role_Interface
  */
-require_once 'Zend/Acl/Role/Interface.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Acl

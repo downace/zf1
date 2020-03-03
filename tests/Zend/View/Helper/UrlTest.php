@@ -20,14 +20,7 @@
  * @version $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/Url.php';
-
 /* Test dependency on Front Controller because there is no way to get the Controller out of View instance dynamically */
-require_once 'Zend/Controller/Front.php';
-
-require_once 'Zend/Controller/Request/Http.php';
-
 /**
  * Zend_View_Helper_UrlTest
  *

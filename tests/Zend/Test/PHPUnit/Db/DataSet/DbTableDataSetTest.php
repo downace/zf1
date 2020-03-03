@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Db/Table.php";
-require_once "Zend/Test/PHPUnit/Db/DataSet/DbTableDataSet.php";
-
 /**
  * @category   Zend
  * @package    Zend_Test

@@ -23,19 +23,12 @@
 /**
  * @see Zend_Db
  */
-require_once 'Zend/Db.php';
-
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
-
 /**
  * @see Zend_Db_Adapter_Static
  */
-require_once 'Zend/Db/Adapter/Static.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

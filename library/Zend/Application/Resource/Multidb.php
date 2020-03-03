@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
-
-require_once 'Zend/Db/Table.php';
-
 /**
  */
 

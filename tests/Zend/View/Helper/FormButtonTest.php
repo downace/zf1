@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/FormButton.php';
-
 /**
  * Test class for Zend_View_Helper_FormButton.
  *

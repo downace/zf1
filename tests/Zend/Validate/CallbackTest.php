@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_Callback
  */
-require_once 'Zend/Validate/Callback.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate

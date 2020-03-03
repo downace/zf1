@@ -23,11 +23,6 @@
 /**
  * Zend_Date
  */
-require_once 'Zend/Loader.php';
-require_once 'Zend/Date.php';
-require_once 'Zend/Locale.php';
-require_once 'Zend/Date/Cities.php';
-
 // echo "BCMATH is ", Zend_Locale_Math::isBcmathDisabled() ? 'disabled':'not disabled', "\n";
 
 /**
@@ -48,7 +43,6 @@ class Zend_DateTest extends \PHPUnit\Framework\TestCase
     {
         $this->originalTimezone = date_default_timezone_get();
         date_default_timezone_set('Asia/Karachi');
-        require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
                  array('cache_dir' => dirname(__FILE__) . '/_files/'));
@@ -5136,7 +5130,6 @@ class Zend_DateTest extends \PHPUnit\Framework\TestCase
             // success
         }
 
-        require_once 'Zend/Cache.php';
         $cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
                  array('cache_dir' => dirname(__FILE__) . '/_files/'));
@@ -5232,7 +5225,6 @@ class Zend_DateTest extends \PHPUnit\Framework\TestCase
     public function testZF3677()
     {
         $locale = new Zend_Locale('de_AT');
-        require_once 'Zend/Registry.php';
         Zend_Registry::set('Zend_Locale', $locale);
 
         $date   = new Zend_Date('13',null,$locale);

@@ -23,21 +23,13 @@
 /**
  * @see Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
 /**
  * @see Zend_Application_Module_Autoloader
  */
-require_once 'Zend/Loader/Autoloader/Resource.php';
-
 /**
  * @see Zend_Loader_Autoloader_Interface
  */
-require_once 'Zend/Loader/Autoloader/Interface.php';
-
 /** Zend_Config */
-require_once 'Zend/Config.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application

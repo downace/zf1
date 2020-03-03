@@ -26,10 +26,6 @@
  *
  * @see Zend_Xml_Security
  */
-require_once 'Zend/Xml/TestAsset/Security.php';
-
-require_once 'Zend/Xml/Exception.php';
-
 /**
  * @category   Zend
  * @package    Zend_Xml_Security

@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Request/Http.php';
-
 /**
  * @category   Zend
  * @package    Zend_Controller
@@ -332,7 +330,6 @@ class Zend_Controller_Request_HttpTest extends \PHPUnit\Framework\TestCase
 
     public function testGetRawBodyReturnsFalseWithNoPost()
     {
-        require_once 'Zend/AllTests/StreamWrapper/PhpInput.php';
         Zend_AllTests_StreamWrapper_PhpInput::mockInput('');
         $this->assertFalse($this->_request->getRawBody());
         stream_wrapper_restore('php');
@@ -859,7 +856,6 @@ class Zend_Controller_Request_HttpTest extends \PHPUnit\Framework\TestCase
      */
     public function testCallingGetRawBodyMultipleTimesShouldReturnSameValue()
     {
-        require_once 'Zend/AllTests/StreamWrapper/PhpInput.php';
         Zend_AllTests_StreamWrapper_PhpInput::mockInput('foobar');
         $request = new Zend_Controller_Request_Http();
         $first = $request->getRawBody();

@@ -22,13 +22,9 @@
 /**
  * @see Zend_Config_Writer
  */
-require_once 'Zend/Config/Writer/FileAbstract.php';
-
 /**
  * @see Zend_Config_Yaml
  */
-require_once 'Zend/Config/Yaml.php';
-
 /**
  * @category   Zend
  * @package    Zend_Config
@@ -65,7 +61,6 @@ class Zend_Config_Writer_Yaml extends Zend_Config_Writer_FileAbstract
     public function setYamlEncoder($yamlEncoder)
     {
         if (!is_callable($yamlEncoder)) {
-            require_once 'Zend/Config/Exception.php';
             throw new Zend_Config_Exception('Invalid parameter to setYamlEncoder - must be callable');
         }
 

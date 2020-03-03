@@ -23,13 +23,9 @@
  * @see Zend_Filter
  * @see Zend_Filter_Interface
  */
-require_once 'Zend/Filter.php';
-
 /**
  * @see Zend_Loader_PluginLoader
  */
-require_once 'Zend/Loader/PluginLoader.php';
-
 /**
  * Filter chain for string inflection
  *
@@ -110,7 +106,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
     public function getPluginLoader()
     {
         if (!$this->_pluginLoader instanceof Zend_Loader_PluginLoader_Interface) {
-            $this->_pluginLoader = new Zend_Loader_PluginLoader(array('Zend_Filter_' => 'Zend/Filter/'), __CLASS__);
+            $this->_pluginLoader = new Zend_Loader_PluginLoader(array('Zend_Filter_' => __DIR__ . '/'), __CLASS__);
         }
 
         return $this->_pluginLoader;
@@ -485,7 +481,6 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
         $inflectedTarget = preg_replace(array_keys($processedParts), array_values($processedParts), $this->_target);
 
         if ($this->_throwTargetExceptionsOn && (preg_match('#(?='.$pregQuotedTargetReplacementIdentifier.'[A-Za-z]{1})#', $inflectedTarget) == true)) {
-            require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('A replacement identifier ' . $this->_targetReplacementIdentifier . ' was found inside the inflected target, perhaps a rule was not satisfied with a target source?  Unsatisfied inflected target: ' . $inflectedTarget);
         }
 
@@ -520,7 +515,6 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
         $className  = $this->getPluginLoader()->load($rule);
         $ruleObject = new $className();
         if (!$ruleObject instanceof Zend_Filter_Interface) {
-            require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('No class named ' . $rule . ' implementing Zend_Filter_Interface could be found');
         }
 

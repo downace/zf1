@@ -25,8 +25,6 @@
 /**
  * Zend_Service_Exception
  */
-require_once 'Zend/Service/Exception.php';
-
 /**
  * @category   Zend
  * @package    Zend_Service_Console

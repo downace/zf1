@@ -24,12 +24,6 @@
 /**
  * @see Zend_Db_Table_TestCommon
  */
-require_once 'Zend/Db/Table/TestCommon.php';
-
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

@@ -21,8 +21,6 @@
  */
 
 /** Zend_Validate_Identical */
-require_once 'Zend/Validate/Identical.php';
-
 /**
  * Zend_Validate_Identical
  *

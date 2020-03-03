@@ -21,8 +21,6 @@
  */
 
 require_once dirname(__FILE__) . '/TestAbstract.php';
-require_once 'Zend/View/Helper/Navigation.php';
-
 /**
  * Tests Zend_View_Helper_Navigation
  *
@@ -408,7 +406,7 @@ class Zend_View_Helper_Navigation_NavigationTest
         
         $expected = array(
             'Zend_View_Helper_' => array(
-                'Zend/View/Helper/',
+                __DIR__ . '/../../../../../library/Zend/View/Helper/',
             ),
             'My_View_Helper_Navigation_' => array(
                 $this->_files . '/helpers/',

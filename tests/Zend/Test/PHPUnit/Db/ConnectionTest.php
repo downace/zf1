@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/DbAdapter.php";
-require_once "Zend/Test/PHPUnit/Db/Connection.php";
-
 /**
  * @category   Zend
  * @package    Zend_Test

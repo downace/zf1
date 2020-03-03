@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_IsCompressed
  */
-require_once 'Zend/Validate/File/IsCompressed.php';
-
 /**
  * IsCompressed testbed
  *

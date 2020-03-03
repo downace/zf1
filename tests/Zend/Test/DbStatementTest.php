@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/DbAdapter.php";
-require_once "Zend/Test/DbStatement.php";
-
 /**
  * @category   Zend
  * @package    Zend_Test

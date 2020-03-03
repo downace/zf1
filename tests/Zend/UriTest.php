@@ -23,13 +23,9 @@
 /**
  * Zend_Uri
  */
-require_once 'Zend/Uri.php';
-
 /**
  * Zend_Config
  */
-require_once 'Zend/Config.php';
-
 /**
  * @category   Zend
  * @package    Zend_Uri

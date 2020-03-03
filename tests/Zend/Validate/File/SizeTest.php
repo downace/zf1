@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_Size
  */
-require_once 'Zend/Validate/File/Size.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate_File

@@ -21,17 +21,9 @@
  */
 
 /** Zend_Test_PHPUnit_ControllerTestCase */
-require_once 'Zend/Test/PHPUnit/ControllerTestCase.php';
-
 /** Zend_Registry */
-require_once 'Zend/Registry.php';
-
 /** Zend_Session */
-require_once 'Zend/Session.php';
-
 /** Zend_Controller_Action */
-require_once 'Zend/Controller/Action.php';
-
 /**
  * Test class for Zend_Test_PHPUnit_ControllerTestCase.
  *
@@ -180,10 +172,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
 
     public function testResetShouldResetMvcState()
     {
-        require_once 'Zend/Controller/Action/HelperBroker.php';
-        require_once 'Zend/Controller/Dispatcher/Standard.php';
-        require_once 'Zend/Controller/Plugin/ErrorHandler.php';
-        require_once 'Zend/Controller/Router/Rewrite.php';
         $request    = $this->testCase->getRequest();
         $response   = $this->testCase->getResponse();
         $router     = new Zend_Controller_Router_Rewrite();
@@ -243,12 +231,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
 
     public function bootstrapCallback()
     {
-        require_once 'Zend/Controller/Action/HelperBroker.php';
-        require_once 'Zend/Controller/Dispatcher/Standard.php';
-        require_once 'Zend/Controller/Front.php';
-        require_once 'Zend/Controller/Plugin/ErrorHandler.php';
-        require_once 'Zend/Controller/Router/Rewrite.php';
-        require_once 'Zend/Registry.php';
         $router     = new Zend_Controller_Router_Rewrite();
         $dispatcher = new Zend_Controller_Dispatcher_Standard();
         $plugin     = new Zend_Controller_Plugin_ErrorHandler();
@@ -631,7 +613,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
         $viewRenderer->initView();
         $view = $viewRenderer->view;
-        $view->addHelperPath('Zend/View/Helper/Doctype', 'Zend_View_Helper_Doctype');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper/Doctype', 'Zend_View_Helper_Doctype');
         $view->doctype()->setDoctype(\Zend_View_Helper_Doctype::XHTML11);
         $view->headTitle('Foo');
         $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
@@ -639,7 +621,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
         $this->testCase->resetResponse();
 
         $view = new Zend_View();
-        $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
         $this->assertEquals(\Zend_View_Helper_Doctype::HTML4_LOOSE, $view->doctype()->getDoctype());
         $this->assertStringNotContainsString('Foo', $view->headTitle()->__toString(), 'Head title persisted?');
     }
@@ -723,7 +705,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
      */
     public function testTestCaseShouldAllowUsingApplicationObjectAsBootstrap()
     {
-        require_once 'Zend/Application.php';
         $application = new Zend_Application('testing', array(
             'resources' => array(
                 'frontcontroller' => array(
@@ -744,7 +725,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends \PHPUnit\Framework\TestCa
      */
     public function testWhenApplicationObjectUsedAsBootstrapTestCaseShouldExecuteBootstrapRunMethod()
     {
-        require_once 'Zend/Application.php';
         $application = new Zend_Application('testing', array(
             'resources' => array(
                 'frontcontroller' => array(

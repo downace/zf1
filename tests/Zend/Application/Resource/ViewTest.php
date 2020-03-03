@@ -23,10 +23,6 @@
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
-require_once 'Zend/Application/Resource/View.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application
@@ -95,7 +91,6 @@ class Zend_Application_Resource_ViewTest extends \PHPUnit\Framework\TestCase
         $options = array(
             'scriptPath' => dirname(__FILE__),
         );
-        require_once 'Zend/Application/Resource/View.php';
         $resource = new Zend_Application_Resource_View($options);
         $resource->init();
         $view  = $resource->getView();

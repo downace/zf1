@@ -22,8 +22,6 @@
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
-
 /**
  * Base class for all protocols supporting file transfers
  *
@@ -64,7 +62,7 @@ class Zend_File_Transfer
      */
     public function setAdapter($adapter, $direction = false, $options = array())
     {
-        if (Zend_Loader::isReadable('Zend/File/Transfer/Adapter/' . ucfirst($adapter). '.php')) {
+        if (Zend_Loader::isReadable(__DIR__ . '/Transfer/Adapter/' . ucfirst($adapter). '.php')) {
             $adapter = 'Zend_File_Transfer_Adapter_' . ucfirst($adapter);
         }
 
@@ -75,7 +73,6 @@ class Zend_File_Transfer
         $direction = (integer) $direction;
         $this->_adapter[$direction] = new $adapter($options);
         if (!$this->_adapter[$direction] instanceof Zend_File_Transfer_Adapter_Abstract) {
-            require_once 'Zend/File/Transfer/Exception.php';
             throw new Zend_File_Transfer_Exception("Adapter " . $adapter . " does not extend Zend_File_Transfer_Adapter_Abstract");
         }
 
@@ -119,7 +116,6 @@ class Zend_File_Transfer
             return call_user_func_array(array($this->_adapter[$direction], $method), $options);
         }
 
-        require_once 'Zend/File/Transfer/Exception.php';
         throw new Zend_File_Transfer_Exception("Unknown method '" . $method . "' called!");
     }
 }

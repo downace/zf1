@@ -23,13 +23,9 @@
 /**
  * Zend_Loader
  */
-require_once 'Zend/Loader.php';
-
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
 /**
  * @category   Zend
  * @package    Zend_Loader
@@ -232,9 +228,6 @@ class Zend_LoaderTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertTrue(Zend_Loader::isReadable(__FILE__));
         $this->assertFalse(Zend_Loader::isReadable(__FILE__ . '.foobaar'));
-
-        // test that a file in include_path gets loaded, see ZF-2985
-        $this->assertTrue(Zend_Loader::isReadable('Zend/Controller/Front.php'), get_include_path());
     }
 
     /**

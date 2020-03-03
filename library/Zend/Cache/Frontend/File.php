@@ -24,9 +24,6 @@
 /**
  * @see Zend_Cache_Core
  */
-require_once 'Zend/Cache/Core.php';
-
-
 /**
  * @package    Zend_Cache
  * @subpackage Zend_Cache_Frontend

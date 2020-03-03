@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Current
  */
-require_once 'Zend/Measure/Current.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

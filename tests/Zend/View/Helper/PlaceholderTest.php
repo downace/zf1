@@ -21,14 +21,8 @@
  */
 
 /** Zend_View_Helper_Placeholder */
-require_once 'Zend/View/Helper/Placeholder.php';
-
 /** Zend_View_Helper_Placeholder_Registry */
-require_once 'Zend/View/Helper/Placeholder/Registry.php';
-
 /** Zend_Registry */
-require_once 'Zend/Registry.php';
-
 /**
  * Test class for Zend_View_Helper_Placeholder.
  *
@@ -95,7 +89,6 @@ class Zend_View_Helper_PlaceholderTest extends \PHPUnit\Framework\TestCase
      */
     public function testSetView()
     {
-        include_once 'Zend/View.php';
         $view = new Zend_View();
         $this->placeholder->setView($view);
         $this->assertSame($view, $this->placeholder->view);

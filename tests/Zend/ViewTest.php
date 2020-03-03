@@ -23,18 +23,12 @@
 /**
  * Zend_View
  */
-require_once 'Zend/View.php';
-
 /**
  * Zend_View_Interface
  */
-require_once 'Zend/View/Interface.php';
-
 /**
  * Zend_Loader
  */
-require_once 'Zend/Loader.php';
-
 /**
  * @category   Zend
  * @package    Zend_View
@@ -569,11 +563,11 @@ class Zend_ViewTest extends \PHPUnit\Framework\TestCase
     public function testHelperPathWithPrefixAndRelativePath()
     {
         $view = new Zend_View();
-        $status = $view->addHelperPath('Zend/View/_stubs/HelperDir1/', 'My_View_Helper');
+        $status = $view->addHelperPath(__DIR__ . '/View/_stubs/HelperDir1/', 'My_View_Helper');
         $this->assertSame($view, $status);
         $helperPaths = $view->getHelperPaths();
         $this->assertTrue(array_key_exists('My_View_Helper_', $helperPaths));
-        $this->assertStringContainsString($this->_filterPath('Zend/View/_stubs/HelperDir1/'), $this->_filterPath(current($helperPaths['My_View_Helper_'])));
+        $this->assertStringContainsString($this->_filterPath(__DIR__ . '/View/_stubs/HelperDir1/'), $this->_filterPath(current($helperPaths['My_View_Helper_'])));
     }
 
     public function testFilterPathWithPrefix()
@@ -835,7 +829,6 @@ class Zend_ViewTest extends \PHPUnit\Framework\TestCase
     public function testGetHelper()
     {
         // require so we can do type hinting
-        require_once 'Zend/View/Helper/DeclareVars.php';
         $view = new Zend_View();
         $view->declareVars();
         $helper = $view->getHelper('declareVars');
@@ -844,7 +837,6 @@ class Zend_ViewTest extends \PHPUnit\Framework\TestCase
 
     public function testGetHelperPath()
     {
-        require_once 'Zend/View/Helper/DeclareVars.php';
         $reflection = new ReflectionClass('Zend_View_Helper_DeclareVars');
         $expected   = $reflection->getFileName();
 
@@ -1117,7 +1109,6 @@ class Zend_ViewTest extends \PHPUnit\Framework\TestCase
      */
     public function testRegisterHelperShouldRegisterViewObjectWithHelper()
     {
-    	require_once 'Zend/View/Helper/Doctype.php';
     	$view = new Zend_View();
     	$helper = new Zend_View_Helper_Doctype();
     	$view->registerHelper($helper, 'doctype');

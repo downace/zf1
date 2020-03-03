@@ -23,13 +23,9 @@
 /**
  * @see Zend_View_Helper_Gravatar
  */
-require_once 'Zend/View/Helper/Gravatar.php';
-
 /**
  * @see Zend_View
  */
-require_once 'Zend/View.php';
-
 /**
  * @category   Zend
  * @package    Zend_View

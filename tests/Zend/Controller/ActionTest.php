@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Action.php';
-require_once 'Zend/Controller/Action/Helper/Redirector.php';
-require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
-require_once 'Zend/Controller/Request/Http.php';
-require_once 'Zend/Controller/Response/Cli.php';
-
 /**
  * @category   Zend
  * @package    Zend_Controller

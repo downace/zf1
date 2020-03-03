@@ -24,14 +24,9 @@
 /**
  * @see Zend_Cache_Backend_ExtendedInterface
  */
-require_once 'Zend/Cache/Backend/ExtendedInterface.php';
-
 /**
  * @see Zend_Cache_Backend
  */
-require_once 'Zend/Cache/Backend.php';
-
-
 /**
  * @package    Zend_Cache
  * @subpackage Zend_Cache_Backend
@@ -137,8 +132,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
             $this->_slowBackend = Zend_Cache::_makeBackend(
                 $this->_options['slow_backend'],
                 $this->_options['slow_backend_options'],
-                $this->_options['slow_backend_custom_naming'],
-                $this->_options['slow_backend_autoload']
+                $this->_options['slow_backend_custom_naming']
             );
             if (!in_array('Zend_Cache_Backend_ExtendedInterface', class_implements($this->_slowBackend))) {
                 Zend_Cache::throwException('slow_backend must implement the Zend_Cache_Backend_ExtendedInterface interface');
@@ -153,8 +147,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
             $this->_fastBackend = Zend_Cache::_makeBackend(
                 $this->_options['fast_backend'],
                 $this->_options['fast_backend_options'],
-                $this->_options['fast_backend_custom_naming'],
-                $this->_options['fast_backend_autoload']
+                $this->_options['fast_backend_custom_naming']
             );
             if (!in_array('Zend_Cache_Backend_ExtendedInterface', class_implements($this->_fastBackend))) {
                 Zend_Cache::throwException('fast_backend must implement the Zend_Cache_Backend_ExtendedInterface interface');

@@ -23,11 +23,6 @@
 /**
  * @see Zend_Db_TestUtil_Pdo_Common
  */
-require_once 'Zend/Db/TestUtil/Pdo/Common.php';
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

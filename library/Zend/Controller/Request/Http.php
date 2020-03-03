@@ -20,11 +20,7 @@
  */
 
 /** @see Zend_Controller_Request_Abstract */
-require_once 'Zend/Controller/Request/Abstract.php';
-
 /** @see Zend_Uri */
-require_once 'Zend/Uri.php';
-
 /**
  * Zend_Controller_Request_Http
  *
@@ -121,7 +117,6 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
                 $this->setRequestUri($path);
             } else {
-                require_once 'Zend/Controller/Request/Exception.php';
                 throw new Zend_Controller_Request_Exception('Invalid URI provided to constructor');
             }
         } else {
@@ -186,7 +181,6 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function __set($key, $value)
     {
-        require_once 'Zend/Controller/Request/Exception.php';
         throw new Zend_Controller_Request_Exception('Setting values in superglobals not allowed; please use setParam()');
     }
 
@@ -249,7 +243,6 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
     public function setQuery($spec, $value = null)
     {
         if ((null === $value) && !is_array($spec)) {
-            require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception('Invalid value passed to setQuery(); must be either array of values or key/value pair');
         }
         if ((null === $value) && is_array($spec)) {
@@ -291,7 +284,6 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
     public function setPost($spec, $value = null)
     {
         if ((null === $value) && !is_array($spec)) {
-            require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception('Invalid value passed to setPost(); must be either array of values or key/value pair');
         }
         if ((null === $value) && is_array($spec)) {
@@ -995,7 +987,6 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
     public function getHeader($header)
     {
         if (empty($header)) {
-            require_once 'Zend/Controller/Request/Exception.php';
             throw new Zend_Controller_Request_Exception('An HTTP header name is required');
         }
 

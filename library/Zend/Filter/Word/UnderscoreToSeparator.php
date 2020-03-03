@@ -22,8 +22,6 @@
 /**
  * @see Zend_Filter_PregReplace
  */
-require_once 'Zend/Filter/Word/SeparatorToSeparator.php';
-
 /**
  * @category   Zend
  * @package    Zend_Filter

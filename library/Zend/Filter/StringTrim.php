@@ -22,8 +22,6 @@
 /**
  * @see Zend_Filter_Interface
  */
-require_once 'Zend/Filter/Interface.php';
-
 /**
  * @category   Zend
  * @package    Zend_Filter

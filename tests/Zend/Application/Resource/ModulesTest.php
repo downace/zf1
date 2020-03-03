@@ -23,8 +23,6 @@
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application
@@ -75,8 +73,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
 
     public function testInitializationTriggersNothingIfNoModulesRegistered()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array());
         $resource = new Zend_Application_Resource_Modules(array());
         $resource->setBootstrap($this->bootstrap);
@@ -92,8 +88,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
      */
     public function testInitializationTriggersDefaultModuleBootstrapWhenDiffersFromApplicationBootstrap()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
             'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
         ));
@@ -105,8 +99,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
 
     public function testInitializationShouldTriggerModuleBootstrapsWhenTheyExist()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
             'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
         ));
@@ -123,8 +115,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
      */
     public function testInitializationShouldSkipModulesWithoutBootstraps()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
             'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
         ));
@@ -145,8 +135,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
      */
     public function testShouldReturnExecutedBootstrapsWhenComplete()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
             'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
         ));
@@ -162,8 +150,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
 
     public function testBootstrapBootstrapsIsOwnMethod()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
             'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
         ));
@@ -178,8 +164,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetExecutedBootstrapsShouldReturnArrayObject()
     {
-        require_once 'Zend/Application/Resource/Modules.php';
-
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
             'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
         ));
@@ -191,7 +175,6 @@ class Zend_Application_Resource_ModulesTest extends \PHPUnit\Framework\TestCase
     }
 }
 
-require_once 'Zend/Application/Resource/Modules.php';
 class ZendTest_Application_Resource_ModulesHalf
     extends Zend_Application_Resource_Modules
 {

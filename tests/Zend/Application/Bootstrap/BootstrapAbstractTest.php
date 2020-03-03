@@ -23,33 +23,21 @@
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
 /**
  * Zend_Application_Resource_ResourceAbstract
  */
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
-
 /**
  * Zend_Application_Bootstrap_Bootstrapper
  */
-require_once 'Zend/Application/Bootstrap/Bootstrapper.php';
-
 /**
  * Zend_Application_Bootstrap_ResourceBootstrapper
  */
-require_once 'Zend/Application/Bootstrap/ResourceBootstrapper.php';
-
 /**
  * Zend_Application_Bootstrap_BootstrapAbstract
  */
-require_once 'Zend/Application/Bootstrap/BootstrapAbstract.php';
-
 /**
  * Zend_Application_Bootstrap_Bootstrap
  */
-require_once 'Zend/Application/Bootstrap/Bootstrap.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application

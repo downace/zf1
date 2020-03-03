@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Flow_Mass
  */
-require_once 'Zend/Measure/Flow/Mass.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

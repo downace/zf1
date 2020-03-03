@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_Hash
  */
-require_once 'Zend/Validate/File/Hash.php';
-
 /**
  * Hash testbed
  *

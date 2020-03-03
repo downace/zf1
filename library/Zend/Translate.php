@@ -22,14 +22,9 @@
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
-
 /**
  * @see Zend_Translate_Adapter
  */
-require_once 'Zend/Translate/Adapter.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Translate
@@ -127,7 +122,7 @@ class Zend_Translate {
             $options = array('adapter' => $options);
         }
 
-        if (Zend_Loader::isReadable('Zend/Translate/Adapter/' . ucfirst($options['adapter']). '.php')) {
+        if (Zend_Loader::isReadable(__DIR__ . '/Translate/Adapter/' . ucfirst($options['adapter']). '.php')) {
             $options['adapter'] = 'Zend_Translate_Adapter_' . ucfirst($options['adapter']);
         }
 
@@ -143,7 +138,6 @@ class Zend_Translate {
         unset($options['adapter']);
         $this->_adapter = new $adapter($options);
         if (!$this->_adapter instanceof Zend_Translate_Adapter) {
-            require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception("Adapter " . $adapter . " does not extend Zend_Translate_Adapter");
         }
     }
@@ -218,7 +212,6 @@ class Zend_Translate {
         if (method_exists($this->_adapter, $method)) {
             return call_user_func_array(array($this->_adapter, $method), $options);
         }
-        require_once 'Zend/Translate/Exception.php';
         throw new Zend_Translate_Exception("Unknown method '" . $method . "' called!");
     }
 }

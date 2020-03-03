@@ -85,14 +85,13 @@ abstract class Zend_Cache
      * @param array  $backendOptions  associative array of options for the corresponding backend constructor
      * @param boolean $customFrontendNaming if true, the frontend argument is used as a complete class name ; if false, the frontend argument is used as the end of "Zend_Cache_Frontend_[...]" class name
      * @param boolean $customBackendNaming if true, the backend argument is used as a complete class name ; if false, the backend argument is used as the end of "Zend_Cache_Backend_[...]" class name
-     * @param boolean $autoload if true, there will no require_once for backend and frontend (useful only for custom backends/frontends)
      * @throws Zend_Cache_Exception
      * @return Zend_Cache_Core|Zend_Cache_Frontend
      */
-    public static function factory($frontend, $backend, $frontendOptions = array(), $backendOptions = array(), $customFrontendNaming = false, $customBackendNaming = false, $autoload = false)
+    public static function factory($frontend, $backend, $frontendOptions = array(), $backendOptions = array(), $customFrontendNaming = false, $customBackendNaming = false)
     {
         if (is_string($backend)) {
-            $backendObject = self::_makeBackend($backend, $backendOptions, $customBackendNaming, $autoload);
+            $backendObject = self::_makeBackend($backend, $backendOptions, $customBackendNaming);
         } else {
             if ((is_object($backend)) && (in_array('Zend_Cache_Backend_Interface', class_implements($backend)))) {
                 $backendObject = $backend;
@@ -101,7 +100,7 @@ abstract class Zend_Cache
             }
         }
         if (is_string($frontend)) {
-            $frontendObject = self::_makeFrontend($frontend, $frontendOptions, $customFrontendNaming, $autoload);
+            $frontendObject = self::_makeFrontend($frontend, $frontendOptions, $customFrontendNaming);
         } else {
             if (is_object($frontend)) {
                 $frontendObject = $frontend;
@@ -122,7 +121,7 @@ abstract class Zend_Cache
      * @param boolean $autoload
      * @return Zend_Cache_Backend
      */
-    public static function _makeBackend($backend, $backendOptions, $customBackendNaming = false, $autoload = false)
+    public static function _makeBackend($backend, $backendOptions, $customBackendNaming = false)
     {
         if (!$customBackendNaming) {
             $backend  = self::_normalizeName($backend);
@@ -130,8 +129,6 @@ abstract class Zend_Cache
         if (in_array($backend, Zend_Cache::$standardBackends)) {
             // we use a standard backend
             $backendClass = 'Zend_Cache_Backend_' . $backend;
-            // security controls are explicit
-            require_once str_replace('_', DIRECTORY_SEPARATOR, $backendClass) . '.php';
         } else {
             // we use a custom backend
             if (!preg_match('~^[\w\\\\]+$~D', $backend)) {
@@ -142,13 +139,6 @@ abstract class Zend_Cache
                 $backendClass = 'Zend_Cache_Backend_' . $backend;
             } else {
                 $backendClass = $backend;
-            }
-            if (!$autoload) {
-                $file = str_replace('_', DIRECTORY_SEPARATOR, $backendClass) . '.php';
-                if (!(self::_isReadable($file))) {
-                    self::throwException("file $file not found in include_path");
-                }
-                require_once $file;
             }
         }
         return new $backendClass($backendOptions);
@@ -163,7 +153,7 @@ abstract class Zend_Cache
      * @param boolean $autoload
      * @return Zend_Cache_Core|Zend_Cache_Frontend
      */
-    public static function _makeFrontend($frontend, $frontendOptions = array(), $customFrontendNaming = false, $autoload = false)
+    public static function _makeFrontend($frontend, $frontendOptions = array(), $customFrontendNaming = false)
     {
         if (!$customFrontendNaming) {
             $frontend = self::_normalizeName($frontend);
@@ -172,8 +162,6 @@ abstract class Zend_Cache
             // we use a standard frontend
             // For perfs reasons, with frontend == 'Core', we can interact with the Core itself
             $frontendClass = 'Zend_Cache_' . ($frontend != 'Core' ? 'Frontend_' : '') . $frontend;
-            // security controls are explicit
-            require_once str_replace('_', DIRECTORY_SEPARATOR, $frontendClass) . '.php';
         } else {
             // we use a custom frontend
             if (!preg_match('~^[\w\\\\]+$~D', $frontend)) {
@@ -184,13 +172,6 @@ abstract class Zend_Cache
                 $frontendClass = 'Zend_Cache_Frontend_' . $frontend;
             } else {
                 $frontendClass = $frontend;
-            }
-            if (!$autoload) {
-                $file = str_replace('_', DIRECTORY_SEPARATOR, $frontendClass) . '.php';
-                if (!(self::_isReadable($file))) {
-                    self::throwException("file $file not found in include_path");
-                }
-                require_once $file;
             }
         }
         return new $frontendClass($frontendOptions);
@@ -206,7 +187,6 @@ abstract class Zend_Cache
     public static function throwException($msg, Exception $e = null)
     {
         // For perfs reasons, we use this dynamic inclusion
-        require_once 'Zend/Cache/Exception.php';
         throw new Zend_Cache_Exception($msg, 0, $e);
     }
 
