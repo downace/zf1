@@ -23,9 +23,6 @@
 /**
  * @see Zend_Application_Resource_ResourceAbstract
  */
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
-
-
 /**
  * Module bootstrapping resource
  *

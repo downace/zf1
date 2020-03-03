@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_EmailAddress
  */
-require_once 'Zend/Validate/EmailAddress.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate
@@ -394,9 +392,7 @@ class Zend_Validate_EmailAddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testHostnameValidatorMessagesShouldBeTranslated()
     {
-        require_once 'Zend/Validate/Hostname.php';
         $hostnameValidator = new Zend_Validate_Hostname();
-        require_once 'Zend/Translate.php';
         $translations = array(
             'hostnameIpAddressNotAllowed' => 'hostnameIpAddressNotAllowed translation',
             'hostnameUnknownTld' => 'hostnameUnknownTld translation',

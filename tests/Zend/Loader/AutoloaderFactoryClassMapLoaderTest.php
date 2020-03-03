@@ -19,8 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Loader/AutoloaderFactory.php';
-
 /**
  * @package    Zend_Loader
  * @subpackage UnitTests

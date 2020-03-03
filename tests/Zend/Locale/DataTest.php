@@ -23,9 +23,6 @@
 /**
  * Zend_Locale_Data
  */
-require_once 'Zend/Locale/Data.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Locale
@@ -41,7 +38,6 @@ class Zend_Locale_DataTest extends \PHPUnit\Framework\TestCase
 
     public function setUp(): void
     {
-        require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 1, 'automatic_serialization' => true),
                  array('cache_dir' => dirname(__FILE__) . '/../_files/'));

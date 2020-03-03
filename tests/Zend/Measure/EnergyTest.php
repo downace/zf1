@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Energy
  */
-require_once 'Zend/Measure/Energy.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

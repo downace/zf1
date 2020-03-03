@@ -23,23 +23,15 @@
 /**
  * @see Zend_Session
  */
-require_once 'Zend/Session.php';
-
 /**
  * @see Zend_Db_Table_Abstract
  */
-require_once 'Zend/Db/Table/Abstract.php';
-
 /**
  * @see Zend_Db_Table_Row_Abstract
  */
-require_once 'Zend/Db/Table/Row/Abstract.php';
-
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
-
 /**
  * Zend_Session_SaveHandler_DbTable
  *
@@ -170,8 +162,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception(
                 '$config must be an instance of Zend_Config or array of key/value pairs containing '
               . 'configuration options for Zend_Session_SaveHandler_DbTable and Zend_Db_Table_Abstract.');
@@ -234,7 +224,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
             throw new Zend_Session_SaveHandler_Exception();
         } else if (empty($lifetime)) {
             $this->_lifetime = (int) ini_get('session.gc_maxlifetime');
@@ -422,8 +411,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception('session.save_path is a path and not a table name.');
         }
 
@@ -454,8 +441,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception(
                 "Value for configuration option '" . self::PRIMARY_ASSIGNMENT . "' must have an assignment "
               . "for each session table primary key.");
@@ -463,8 +448,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception(
                 "Value for configuration option '" . self::PRIMARY_ASSIGNMENT . "' must have an assignment "
               . "for the session id ('" . self::PRIMARY_ASSIGNMENT_SESSION_ID . "').");
@@ -483,8 +466,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception(
                 "Configuration must define '" . self::MODIFIED_COLUMN . "' which names the "
               . "session table last modification time column.");
@@ -492,8 +473,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception(
                 "Configuration must define '" . self::LIFETIME_COLUMN . "' which names the "
               . "session table lifetime column.");
@@ -501,8 +480,6 @@ class Zend_Session_SaveHandler_DbTable
             /**
              * @see Zend_Session_SaveHandler_Exception
              */
-            require_once 'Zend/Session/SaveHandler/Exception.php';
-
             throw new Zend_Session_SaveHandler_Exception(
                 "Configuration must define '" . self::DATA_COLUMN . "' which names the "
               . "session table data column.");

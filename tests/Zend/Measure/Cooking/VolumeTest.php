@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Cooking_Volume
  */
-require_once 'Zend/Measure/Cooking/Volume.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

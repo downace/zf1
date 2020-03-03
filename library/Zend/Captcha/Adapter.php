@@ -20,8 +20,6 @@
  */
 
 /** @see Zend_Validate_Interface */
-require_once 'Zend/Validate/Interface.php';
-
 /**
  * Generic Captcha adapter interface
  *

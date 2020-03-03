@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_CreditCard
  */
-require_once 'Zend/Validate/CreditCard.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate
@@ -213,7 +211,6 @@ class Zend_Validate_CreditCardTest extends \PHPUnit\Framework\TestCase
      */
     public function testConfigObject()
     {
-        require_once 'Zend/Config.php';
         $options = array('type' => 'Visa');
         $config = new Zend_Config($options, false);
 
@@ -228,7 +225,6 @@ class Zend_Validate_CreditCardTest extends \PHPUnit\Framework\TestCase
      */
     public function testOptionalConstructorParameterByConfigObject()
     {
-        require_once 'Zend/Config.php';
         $config = new Zend_Config(array('type' => 'Visa', 'service' => array('Zend_Validate_CreditCardTest', 'staticCallback')));
 
         $validator = new Zend_Validate_CreditCard($config);

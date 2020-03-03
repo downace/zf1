@@ -22,8 +22,6 @@
 /**
  * @see Zend_Config_Writer
  */
-require_once 'Zend/Config/Writer/FileAbstract.php';
-
 /**
  * @category   Zend
  * @package    Zend_Config

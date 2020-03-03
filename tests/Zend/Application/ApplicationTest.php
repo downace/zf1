@@ -21,11 +21,7 @@
  */
 
 /** Zend_Loader_Autoloader */
-require_once 'Zend/Loader/Autoloader.php';
-
 /** Zend_Application */
-require_once 'Zend/Application.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application

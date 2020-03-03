@@ -20,8 +20,6 @@
  */
 
 /** Zend_Memory_Container */
-require_once 'Zend/Memory/Container.php';
-
 /**
  * Memory value container
  *

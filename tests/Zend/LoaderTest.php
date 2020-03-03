@@ -23,13 +23,9 @@
 /**
  * Zend_Loader
  */
-require_once 'Zend/Loader.php';
-
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
 /**
  * @category   Zend
  * @package    Zend_Loader

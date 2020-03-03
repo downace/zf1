@@ -23,9 +23,6 @@
 /**
  * @see Zend_Validate_Ccnum
  */
-require_once 'Zend/Validate/Ccnum.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Validate

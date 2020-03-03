@@ -24,8 +24,6 @@
 /**
  * Zend_Measure_Number
  */
-require_once 'Zend/Measure/Number.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

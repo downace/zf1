@@ -24,12 +24,6 @@
 /**
  * @see Zend_Db_Expr
  */
-require_once 'Zend/Db/Expr.php';
-
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

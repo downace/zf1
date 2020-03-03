@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_PostCode
  */
-require_once 'Zend/Validate/PostCode.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate

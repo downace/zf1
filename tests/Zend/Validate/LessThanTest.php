@@ -23,9 +23,6 @@
 /**
  * @see Zend_Validate_LessThan
  */
-require_once 'Zend/Validate/LessThan.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Validate

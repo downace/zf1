@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Capacitance
  */
-require_once 'Zend/Measure/Capacitance.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

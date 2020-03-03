@@ -21,8 +21,6 @@
 
 
 /** Zend_Pdf_Resource */
-require_once 'Zend/Pdf/Resource.php';
-
 /**
  * Unified resource.
  *

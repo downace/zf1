@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View/Helper/Abstract.php';
-
 /**
  * @category   Zend
  * @package    Zend_Controller

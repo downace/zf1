@@ -23,9 +23,6 @@
 /**
  * @see Zend_Validate_Hex
  */
-require_once 'Zend/Validate/Hex.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Validate

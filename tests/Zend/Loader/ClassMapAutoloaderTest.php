@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Loader/ClassMapAutoloader.php';
-
 /**
  * @category   Zend
  * @package    Loader

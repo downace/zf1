@@ -21,9 +21,6 @@
  */
 
 /** Zend_Pdf_Action */
-require_once 'Zend/Pdf/Action.php';
-
-
 /**
  * PDF 'Set an annotation’s Hidden flag' action
  * PDF 1.2+ feature

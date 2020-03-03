@@ -20,11 +20,6 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Db/Table/Row/TestCommon.php';
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

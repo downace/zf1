@@ -24,12 +24,6 @@
 /**
  * @see Zend_Db_TestSetup
  */
-require_once 'Zend/Db/TestSetup.php';
-
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

@@ -24,8 +24,6 @@
 /**
  * Zend_Measure_Weight
  */
-require_once 'Zend/Measure/Weight.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

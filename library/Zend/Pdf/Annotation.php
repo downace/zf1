@@ -21,8 +21,6 @@
  */
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-
 /**
  * Abstract PDF annotation representation class
  *
@@ -170,8 +168,6 @@ abstract class Zend_Pdf_Annotation
      * @return Zend_Pdf_Annotation
      */
     public function setText($text) {
-        require_once 'Zend/Pdf/Element/String.php';
-
         if ($this->_annotationDictionary->Contents === null) {
             $this->_annotationDictionary->touch();
             $this->_annotationDictionary->Contents = new Zend_Pdf_Element_String($text);
@@ -191,7 +187,6 @@ abstract class Zend_Pdf_Annotation
     public function __construct(Zend_Pdf_Element $annotationDictionary)
     {
         if ($annotationDictionary->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Annotation dictionary resource has to be a dictionary.');
         }
 
@@ -199,12 +194,10 @@ abstract class Zend_Pdf_Annotation
 
         if ($this->_annotationDictionary->Type !== null  &&
             $this->_annotationDictionary->Type->value != 'Annot') {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Wrong resource type. \'Annot\' expected.');
         }
 
         if ($this->_annotationDictionary->Rect === null) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('\'Rect\' dictionary entry is required.');
         }
 
@@ -213,7 +206,6 @@ abstract class Zend_Pdf_Annotation
             $this->_annotationDictionary->Rect->items[1]->getType() != Zend_Pdf_Element::TYPE_NUMERIC ||
             $this->_annotationDictionary->Rect->items[2]->getType() != Zend_Pdf_Element::TYPE_NUMERIC ||
             $this->_annotationDictionary->Rect->items[3]->getType() != Zend_Pdf_Element::TYPE_NUMERIC ) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('\'Rect\' dictionary entry must be an array of four numeric elements.');
         }
     }

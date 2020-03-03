@@ -22,8 +22,6 @@
 /**
  * @see Zend_Filter_Compress_CompressInterface
  */
-require_once 'Zend/Filter/Compress/CompressInterface.php';
-
 /**
  * Compression adapter for Lzf
  *
@@ -42,7 +40,6 @@ class Zend_Filter_Compress_Lzf implements Zend_Filter_Compress_CompressInterface
     public function __construct()
     {
         if (!extension_loaded('lzf')) {
-            require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('This filter needs the lzf extension');
         }
     }
@@ -57,7 +54,6 @@ class Zend_Filter_Compress_Lzf implements Zend_Filter_Compress_CompressInterface
     {
         $compressed = lzf_compress($content);
         if (!$compressed) {
-            require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('Error during compression');
         }
 
@@ -74,7 +70,6 @@ class Zend_Filter_Compress_Lzf implements Zend_Filter_Compress_CompressInterface
     {
         $compressed = lzf_decompress($content);
         if (!$compressed) {
-            require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('Error during compression');
         }
 

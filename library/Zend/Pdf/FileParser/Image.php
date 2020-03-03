@@ -24,12 +24,7 @@
 /** Internally used classes */
 
 /** Zend_Pdf_Image */
-require_once 'Zend/Pdf/Image.php';
-
-
 /** Zend_Pdf_FileParser */
-require_once 'Zend/Pdf/FileParser.php';
-
 /**
  * FileParser for Zend_Pdf_Image subclasses.
  *

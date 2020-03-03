@@ -23,8 +23,6 @@
 
 
 
-require_once 'Zend/Controller/Action.php';
-
 /**
  * Mock file for testbed
  *

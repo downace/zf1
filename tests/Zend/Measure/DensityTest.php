@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Density
  */
-require_once 'Zend/Measure/Density.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

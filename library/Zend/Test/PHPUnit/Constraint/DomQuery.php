@@ -21,8 +21,6 @@
  */
 
 /** @see Zend_Dom_Query */
-require_once 'Zend/Dom/Query.php';
-
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\ExpectationFailedException;
 
@@ -160,7 +158,6 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
         }
 
         if (!in_array($assertType, $this->_assertTypes)) {
-            require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
             throw new Zend_Test_PHPUnit_Constraint_Exception(sprintf('Invalid assertion type "%s" provided to %s constraint', $assertType, __CLASS__));
         }
 
@@ -174,7 +171,6 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
         switch ($assertType) {
             case self::ASSERT_CONTENT_CONTAINS:
                 if (!$match) {
-                    require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
                     throw new Zend_Test_PHPUnit_Constraint_Exception('No content provided against which to match');
                 }
                 $this->_content = $match;
@@ -183,7 +179,6 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
                     : $this->_matchContent($result, $match);
             case self::ASSERT_CONTENT_REGEX:
                 if (!$match) {
-                    require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
                     throw new Zend_Test_PHPUnit_Constraint_Exception('No pattern provided against which to match');
                 }
                 $this->_content = $match;
@@ -194,7 +189,6 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
             case self::ASSERT_CONTENT_COUNT_MIN:
             case self::ASSERT_CONTENT_COUNT_MAX:
                 if ($match === false) {
-                    require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
                     throw new Zend_Test_PHPUnit_Constraint_Exception('No count provided against which to compare');
                 }
                 $this->_content = $match;
@@ -229,7 +223,6 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends Constraint
      */
     public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL): void
     {
-        require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {
             case self::ASSERT_CONTENT_CONTAINS:
                 $failure = 'Failed asserting node denoted by %s CONTAINS content "%s"';

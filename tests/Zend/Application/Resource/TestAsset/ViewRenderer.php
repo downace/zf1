@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application

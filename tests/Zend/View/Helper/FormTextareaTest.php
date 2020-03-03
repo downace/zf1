@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/FormTextarea.php';
-
 /**
  * Zend_View_Helper_FormTextareaTest
  *

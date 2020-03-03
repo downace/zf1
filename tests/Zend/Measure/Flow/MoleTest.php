@@ -23,8 +23,6 @@
 /**
  * Zend_Measure_Flow_Mole
  */
-require_once 'Zend/Measure/Flow/Mole.php';
-
 /**
  * @category   Zend
  * @package    Zend_Measure

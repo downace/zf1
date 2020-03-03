@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_Iban
  */
-require_once 'Zend/Validate/Iban.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate

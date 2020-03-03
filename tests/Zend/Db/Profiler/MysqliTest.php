@@ -24,13 +24,6 @@
 /**
  * @see Zend_Db_Profiler_TestCommon
  */
-require_once 'Zend/Db/Profiler/TestCommon.php';
-
-
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db

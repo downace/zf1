@@ -24,9 +24,6 @@
 /**
  * @see Zend_Mime
  */
-require_once 'Zend/Mime.php';
-
-
 /**
  * Abstract for sending eMails through different
  * ways of transport
@@ -186,7 +183,6 @@ abstract class Zend_Mail_Transport_Abstract
             /**
              * @see Zend_Mail_Transport_Exception
              */
-            require_once 'Zend/Mail/Transport/Exception.php';
             throw new Zend_Mail_Transport_Exception('Missing Zend_Mail object in _mail property');
         }
 
@@ -215,7 +211,6 @@ abstract class Zend_Mail_Transport_Abstract
             /**
              * @see Zend_Mail_Transport_Exception
              */
-            require_once 'Zend/Mail/Transport/Exception.php';
             throw new Zend_Mail_Exception('At least one mail header line is too long');
         }
     }
@@ -282,7 +277,6 @@ abstract class Zend_Mail_Transport_Abstract
             /**
              * @see Zend_Mail_Transport_Exception
              */
-            require_once 'Zend/Mail/Transport/Exception.php';
             throw new Zend_Mail_Transport_Exception('No body specified');
         }
 
@@ -321,7 +315,6 @@ abstract class Zend_Mail_Transport_Abstract
             /**
              * @see Zend_Mail_Transport_Exception
              */
-            require_once 'Zend/Mail/Transport/Exception.php';
             throw new Zend_Mail_Transport_Exception('Empty mail cannot be sent');
         }
 

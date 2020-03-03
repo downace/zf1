@@ -24,9 +24,6 @@
 /**
  * @see Zend_Auth_Result
  */
-require_once 'Zend/Auth/Result.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Auth

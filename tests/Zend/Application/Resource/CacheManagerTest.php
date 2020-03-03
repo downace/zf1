@@ -23,28 +23,18 @@
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
-
 /**
  * Zend_Controller_Front
  */
-require_once 'Zend/Controller/Front.php';
-
 /**
  * Zend_Application_Resource_Cachemanager
  */
-require_once 'Zend/Application/Resource/Cachemanager.php';
-
 /**
  * Zend_Cache_Backend
  */
-require_once 'Zend/Cache/Backend.php';
-
 /**
  * Zend_Cache_Core
  */
-require_once 'Zend/Cache/Core.php';
-
 /**
  * @category   Zend
  * @package    Zend_Application

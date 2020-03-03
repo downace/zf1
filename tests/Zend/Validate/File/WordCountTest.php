@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_WordCount
  */
-require_once 'Zend/Validate/File/WordCount.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate_File

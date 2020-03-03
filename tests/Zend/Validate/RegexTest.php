@@ -23,9 +23,6 @@
 /**
  * @see Zend_Validate_Regex
  */
-require_once 'Zend/Validate/Regex.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Validate

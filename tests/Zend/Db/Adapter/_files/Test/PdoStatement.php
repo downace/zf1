@@ -27,8 +27,6 @@
 /**
  * @see Zend_Db_Statement_Pdo
  */
-require_once 'Zend/Db/Statement/Pdo.php';
-
 /**
  * Test Class for extending base Zend_Db_Statements
  *

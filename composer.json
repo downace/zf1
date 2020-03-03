@@ -19,9 +19,11 @@
             "Zend_": "library/"
         }
     },
-    "include-path": [
-        "library/"
-    ],
+    "autoload-dev": {
+        "psr-0": {
+            "Zend_": "tests/"
+        }
+    },
     "config": {
         "bin-dir": "bin"
     },

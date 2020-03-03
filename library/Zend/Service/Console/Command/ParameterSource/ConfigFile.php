@@ -25,8 +25,6 @@
 /**
 * @see Zend_Service_Console_Command_ParameterSource_ParameterSourceInterface
 */
-require_once 'Zend/Service/Console/Command/ParameterSource/ParameterSourceInterface.php';
-
 /**
  * @category   Zend
  * @package    Zend_Service_Console
@@ -58,7 +56,6 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 
 			if (strtolower($parameterInput[0]) == '--configfile' || strtolower($parameterInput[0]) == '-f') {
 				if (!isset($parameterInput[1])) {
-					require_once 'Zend/Service/Console/Exception.php';
 					throw new Zend_Service_Console_Exception("No path to a configuration file is given. Specify the path using the --ConfigFile or -F switch.");
 				}
 				$configurationFilePath = $parameterInput[1];
@@ -71,7 +68,6 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 			return null;
 		}
 		if (!file_exists($configurationFilePath)) {
-			require_once 'Zend/Service/Console/Exception.php';
 			throw new Zend_Service_Console_Exception("Invalid configuration file given. Specify the correct path using the --ConfigFile or -F switch.");
 		}
 

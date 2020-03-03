@@ -21,8 +21,6 @@
 
 
 /** Zend_Pdf_Filter_Interface */
-require_once 'Zend/Pdf/Filter/Interface.php';
-
 /**
  * ASCII85 stream filter
  *
@@ -77,7 +75,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             if ($predictor != 1   &&  $predictor != 2   &&
                 $predictor != 10  &&  $predictor != 11  &&   $predictor != 12  &&
                 $predictor != 13  &&  $predictor != 14  &&   $predictor != 15) {
-                require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Invalid value of \'Predictor\' decode param - ' . $predictor . '.' );
             }
             return $predictor;
@@ -99,7 +96,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             $colors = $params['Colors'];
 
             if ($colors != 1  &&  $colors != 2  &&  $colors != 3  &&  $colors != 4) {
-                require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Invalid value of \'Color\' decode param - ' . $colors . '.' );
             }
             return $colors;
@@ -123,7 +119,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             if ($bitsPerComponent != 1  &&  $bitsPerComponent != 2  &&
                 $bitsPerComponent != 4  &&  $bitsPerComponent != 8  &&
                 $bitsPerComponent != 16 ) {
-                require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Invalid value of \'BitsPerComponent\' decode param - ' . $bitsPerComponent . '.' );
             }
             return $bitsPerComponent;
@@ -169,7 +164,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
 
         /** TIFF Predictor 2 */
         if ($predictor == 2) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Not implemented yet' );
         }
 
@@ -189,7 +183,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             $predictor -= 10;
 
             if($bitsPerComponent == 16) {
-                require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception("PNG Prediction with bit depth greater than 8 not yet supported.");
             }
 
@@ -201,7 +194,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             $offset         = 0;
 
             if (!is_integer($rows)) {
-                require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Wrong data length.');
             }
 
@@ -280,7 +272,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             return $output;
         }
 
-        require_once 'Zend/Pdf/Exception.php';
         throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.' );
     }
 
@@ -304,7 +295,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
 
         /** TIFF Predictor 2 */
         if ($predictor == 2) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Not implemented yet' );
         }
 
@@ -380,14 +370,12 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
                         break;
 
                     default:
-                        require_once 'Zend/Pdf/Exception.php';
                         throw new Zend_Pdf_Exception('Unknown prediction tag.');
                 }
             }
             return $output;
         }
 
-        require_once 'Zend/Pdf/Exception.php';
         throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.' );
     }
 }

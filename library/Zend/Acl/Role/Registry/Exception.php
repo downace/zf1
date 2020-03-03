@@ -23,9 +23,6 @@
 /**
  * @see Zend_Acl_Exception
  */
-require_once 'Zend/Acl/Exception.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Acl

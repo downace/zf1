@@ -23,8 +23,6 @@
 /**
  * @see Zend_Version
  */
-require_once 'Zend/Version.php';
-
 /**
  * @category   Zend
  * @package    Zend_Version

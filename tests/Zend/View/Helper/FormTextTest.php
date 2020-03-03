@@ -20,10 +20,6 @@
  * @version $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/FormText.php';
-require_once 'Zend/Registry.php';
-
 /**
  * Zend_View_Helper_FormTextTest
  *

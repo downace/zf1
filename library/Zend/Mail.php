@@ -23,24 +23,15 @@
 /**
  * @see Zend_Mail_Transport_Abstract
  */
-require_once 'Zend/Mail/Transport/Abstract.php';
-
 /**
  * @see Zend_Mime
  */
-require_once 'Zend/Mime.php';
-
 /**
  * @see Zend_Mime_Message
  */
-require_once 'Zend/Mime/Message.php';
-
 /**
  * @see Zend_Mime_Part
  */
-require_once 'Zend/Mime/Part.php';
-
-
 /**
  * Class for sending an email.
  *
@@ -249,7 +240,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Invalid content type "' . $type . '"');
         }
 
@@ -345,7 +335,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Invalid encoding "' . $encoding . '"');
         }
         $this->_headerEncoding = $encoding;
@@ -682,7 +671,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('From Header set twice');
         }
 
@@ -708,7 +696,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Reply-To Header set twice');
         }
 
@@ -807,7 +794,6 @@ class Zend_Mail extends Zend_Mime_Message
     public function setFromToDefaultFrom() {
         $from = self::getDefaultFrom();
         if($from === null) {
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception(
                 'No default From Address set to use');
         }
@@ -858,7 +844,6 @@ class Zend_Mail extends Zend_Mime_Message
     public function setReplyToFromDefault() {
         $replyTo = self::getDefaultReplyTo();
         if($replyTo === null) {
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception(
                 'No default Reply-To Address set to use');
         }
@@ -885,7 +870,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Return-Path Header set twice');
         }
         return $this;
@@ -937,7 +921,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Subject set twice');
         }
         return $this;
@@ -987,7 +970,6 @@ class Zend_Mail extends Zend_Mime_Message
                     /**
                      * @see Zend_Mail_Exception
                      */
-                    require_once 'Zend/Mail/Exception.php';
                     throw new Zend_Mail_Exception('String representations of Date Header must be ' .
                                                   'strtotime()-compatible');
                 }
@@ -998,7 +980,6 @@ class Zend_Mail extends Zend_Mime_Message
                 /**
                  * @see Zend_Mail_Exception
                  */
-                require_once 'Zend/Mail/Exception.php';
                 throw new Zend_Mail_Exception(__METHOD__ . ' only accepts UNIX timestamps, Zend_Date objects, ' .
                                               ' and strtotime()-compatible strings');
             }
@@ -1008,7 +989,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Date Header set twice');
         }
         return $this;
@@ -1064,7 +1044,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Message-ID set twice');
         }
 
@@ -1148,7 +1127,6 @@ class Zend_Mail extends Zend_Mime_Message
             /**
              * @see Zend_Mail_Exception
              */
-            require_once 'Zend/Mail/Exception.php';
             throw new Zend_Mail_Exception('Cannot set standard header from addHeader()');
         }
 
@@ -1181,7 +1159,6 @@ class Zend_Mail extends Zend_Mime_Message
     {
         if ($transport === null) {
             if (! self::$_defaultTransport instanceof Zend_Mail_Transport_Abstract) {
-                require_once 'Zend/Mail/Transport/Sendmail.php';
                 $transport = new Zend_Mail_Transport_Sendmail();
             } else {
                 $transport = self::$_defaultTransport;

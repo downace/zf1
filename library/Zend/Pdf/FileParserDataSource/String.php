@@ -21,8 +21,6 @@
  */
 
 /** Zend_Pdf_FileParserDataSource */
-require_once 'Zend/Pdf/FileParserDataSource.php';
-
 /**
  * Concrete subclass of {@link Zend_Pdf_FileParserDataSource} that provides an
  * interface to binary strings.
@@ -62,7 +60,6 @@ class Zend_Pdf_FileParserDataSource_String extends Zend_Pdf_FileParserDataSource
     public function __construct($string)
     {
         if (empty($string)) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('String is empty',
                                          Zend_Pdf_Exception::PARAMETER_VALUE_OUT_OF_RANGE);
         }
@@ -94,7 +91,6 @@ class Zend_Pdf_FileParserDataSource_String extends Zend_Pdf_FileParserDataSource
     public function readBytes($byteCount)
     {
         if (($this->_offset + $byteCount) > $this->_size) {
-            require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception("Insufficient data to read $byteCount bytes",
                                          Zend_Pdf_Exception::INSUFFICIENT_DATA);
         }

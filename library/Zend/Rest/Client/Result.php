@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Xml/Security.php';
-
 /**
  * @category   Zend
  * @package    Zend_Rest

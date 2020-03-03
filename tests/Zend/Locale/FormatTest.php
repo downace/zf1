@@ -23,8 +23,6 @@
 /**
  * Zend_Locale_Format
  */
-require_once 'Zend/Locale/Format.php';
-
 /**
  * @category   Zend
  * @package    Zend_Locale

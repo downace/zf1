@@ -23,9 +23,6 @@
 /**
  * @see Zend_Validate_InArray
  */
-require_once 'Zend/Validate/InArray.php';
-
-
 /**
  * @category   Zend
  * @package    Zend_Validate

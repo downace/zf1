@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_Count
  */
-require_once 'Zend/Validate/File/Count.php';
-
 /**
  * @category   Zend
  * @package    Zend_Validate_File

@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Test/PHPUnit/ControllerTestCase.php';
-
-require_once 'Zend/Controller/Plugin/ErrorHandler.php';
-
 /**
  * @category   Zend
  * @package    Zend_Layout

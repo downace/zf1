@@ -21,17 +21,9 @@
  */
 
 /** Zend_View_Helper_HeadMeta */
-require_once 'Zend/View/Helper/HeadMeta.php';
-
 /** Zend_View_Helper_Placeholder_Registry */
-require_once 'Zend/View/Helper/Placeholder/Registry.php';
-
 /** Zend_Registry */
-require_once 'Zend/Registry.php';
-
 /** Zend_View */
-require_once 'Zend/View.php';
-
 /**
  * Test class for Zend_View_Helper_HeadMeta.
  *

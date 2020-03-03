@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Response/Http.php';
-require_once 'Zend/Controller/Response/Exception.php';
-
 /**
  * @category   Zend
  * @package    Zend_Controller
@@ -626,6 +623,5 @@ class Zend_Controller_Response_HttpTest extends \PHPUnit\Framework\TestCase
     }
 }
 
-require_once 'Zend/Controller/Action.php';
 class Zend_Controller_Response_HttpTest_Action extends Zend_Controller_Action
 {}

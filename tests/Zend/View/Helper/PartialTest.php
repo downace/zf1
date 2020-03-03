@@ -21,14 +21,8 @@
  */
 
 /** Zend_View_Helper_Partial */
-require_once 'Zend/View/Helper/Partial.php';
-
 /** Zend_View */
-require_once 'Zend/View.php';
-
 /** Zend_Controller_Front */
-require_once 'Zend/Controller/Front.php';
-
 /**
  * Test class for Zend_View_Helper_Partial.
  *

@@ -23,8 +23,6 @@
 /**
  * @see Zend_Registry
  */
-require_once 'Zend/Registry.php';
-
 /**
  * @category   Zend
  * @package    Zend_Registry

@@ -23,8 +23,6 @@
 /**
  * @see Zend_Validate_File_Extension
  */
-require_once 'Zend/Validate/File/Extension.php';
-
 /**
  * Extension testbed
  *
