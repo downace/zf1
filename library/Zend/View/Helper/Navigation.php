@@ -164,7 +164,7 @@ class Zend_View_Helper_Navigation
             $this->view->setHelperPath(null);
             
             $this->view->addHelperPath(
-                    str_replace('_', '/', self::NS),
+                    __DIR__ . '/Navigation',
                     self::NS);
             
             foreach ($paths as $ns => $path) {
