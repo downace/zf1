@@ -51,6 +51,12 @@ class Zend_Loader
      */
     public static function loadClass($class, $dirs = null)
     {
+        // Don't rely on include_path, rely on autoloading instead.
+        // But still load file from $dirs if it's specified.
+        if ($dirs === null) {
+            return;
+        }
+
         if (class_exists($class, false) || interface_exists($class, false)) {
             return;
         }
