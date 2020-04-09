@@ -131,12 +131,6 @@ abstract class Zend_Uri
             }
         }
 
-        try {
-            Zend_Loader::loadClass($className);
-        } catch (Exception $e) {
-            throw new Zend_Uri_Exception("\"$className\" not found");
-        }
-
         $schemeHandler = new $className($scheme, $schemeSpecific);
 
         if (! $schemeHandler instanceof Zend_Uri) {
