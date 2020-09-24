@@ -179,6 +179,50 @@ class Zend_Validate_AbstractTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString('******', $message);
     }
 
+    public function dataProvider_testCompositeValue()
+    {
+        return [
+            'Simple string' => [
+                'Value' => 'foobar',
+                'Expected message' => 'foobar was passed'
+            ],
+            'Object with __toString method' => [
+                'Value' => Zend_Uri_Http::fromString('https://framework.zend.com/'),
+                'Expected message' => 'https://framework.zend.com/ was passed'
+            ],
+            'Object without __toString method' => [
+                'Value' => new DateTime(),
+                'Expected message' => 'DateTime object was passed'
+            ],
+            'Array' => [
+                'Value' => ['a', 'b', 'c', 'd'],
+                'Expected message' => 'a, b, c, d was passed'
+            ],
+            'Array with objects' => [
+                'Value' => [
+                    'a',
+                    Zend_Uri_Http::fromString('https://framework.zend.com/'),
+                    new DateTime(),
+                    'd',
+                ],
+                'Expected message' => 'a, https://framework.zend.com/, DateTime object, d was passed'
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider_testCompositeValue
+     *
+     * @param mixed  $value
+     * @param string $expectedMessage
+     */
+    public function testCompositeValue($value, string $expectedMessage)
+    {
+        $this->assertFalse($this->validator->isValid($value));
+        $messages = $this->validator->getMessages();
+        $this->assertEquals($expectedMessage, $messages['fooMessage']);
+    }
+
     /**
      * @group ZF-4463
      */

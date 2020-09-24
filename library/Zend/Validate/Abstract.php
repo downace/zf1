@@ -219,17 +219,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
             }
         }
 
-        if (is_object($value)) {
-            if (!in_array('__toString', get_class_methods($value))) {
-                $value = get_class($value) . ' object';
-            } else {
-                $value = $value->__toString();
-            }
-        } elseif (is_array($value)) {
-            $value = $this->_implodeRecursive($value);
-        } else {
-            $value = implode((array) $value);
-        }
+        $value = $this->_valueToString($value);
 
         if ($this->getObscureValue()) {
             $value = str_repeat('*', strlen($value));
@@ -252,6 +242,23 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
         return $message;
     }
 
+    protected function _valueToString($value): string
+    {
+        if (is_object($value)) {
+            if (method_exists($value, '__toString')) {
+                return $value->__toString();
+            }
+
+            return get_class($value) . ' object';
+        }
+
+        if (is_array($value)) {
+            return $this->_implodeRecursive($value);
+        }
+
+        return implode((array) $value);
+    }
+
     /**
      * Joins elements of a multidimensional array
      *
@@ -265,7 +272,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
             if (is_array($item)) {
                 $values[] = $this->_implodeRecursive($item);
             } else {
-                $values[] = $item;
+                $values[] = $this->_valueToString($item);
             }
         }
 
