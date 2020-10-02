@@ -48,7 +48,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-form instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-form instead
  */
 class Zend_Form_Decorator_ViewScript extends Zend_Form_Decorator_Abstract
 {

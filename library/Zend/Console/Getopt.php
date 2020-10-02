@@ -124,7 +124,7 @@
  * @todo  Feature request to implement callbacks.
  *        e.g. if -a is specified, run function 'handleOptionA'().
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-console instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-console instead
  */
 class Zend_Console_Getopt
 {

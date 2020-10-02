@@ -33,7 +33,7 @@
  * @copyright  Copyright (c) 2009 - 2011, RealDolmen (http://www.realdolmen.com)
  * @license    http://phpazure.codeplex.com/license
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-console instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-console instead
  */
 class Zend_Service_Console_Exception extends Zend_Service_Exception
 {}

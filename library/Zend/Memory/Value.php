@@ -32,7 +32,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @todo       also implement Countable for PHP 5.1 but not yet to stay 5.0 compatible
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-memory instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-memory instead
  */
 class Zend_Memory_Value implements ArrayAccess {
     /**

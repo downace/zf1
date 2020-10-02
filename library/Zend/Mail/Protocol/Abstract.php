@@ -41,7 +41,7 @@
  * @version    $Id$
  * @todo Implement proxy settings
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-mail instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-mail instead
  */
 abstract class Zend_Mail_Protocol_Abstract
 {

@@ -36,7 +36,7 @@ if (extension_loaded('soap')) {
  * @package    Zend_Soap
  * @subpackage Client
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-soap instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-soap instead
  */
 class Zend_Soap_Client_DotNet extends Zend_Soap_Client
 {

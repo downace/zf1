@@ -34,7 +34,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-authentication instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-authentication instead
  */
 class Zend_Auth_Storage_Session implements Zend_Auth_Storage_Interface
 {

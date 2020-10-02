@@ -44,7 +44,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version $Id$
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-server instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-server instead
  */
 abstract class Zend_Server_Reflection_Function_Abstract
 {

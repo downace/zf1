@@ -30,7 +30,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @todo       Use Zend_Mime not file extension for type determination.
  *
- * @deprecated Will be removed in 1.15
+ * @deprecated Will be removed in 1.16
  */
 class Zend_Pdf_Resource_ImageFactory
 {

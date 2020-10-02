@@ -27,7 +27,7 @@
  * @package    Zend_Soap
  * @subpackage AutoDiscover
  *
- * @deprecated Will be removed in 1.15, use zendframework/zend-soap instead
+ * @deprecated Will be removed in 1.16, use zendframework/zend-soap instead
  */
 class Zend_Soap_AutoDiscover_Exception extends Zend_Exception
 {
