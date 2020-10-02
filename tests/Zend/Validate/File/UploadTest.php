@@ -99,51 +99,51 @@ class Zend_Validate_File_UploadTest extends \PHPUnit\Framework\TestCase
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test'));
-        $this->assertTrue(array_key_exists('fileUploadErrorAttack', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorAttack'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test2'));
-        $this->assertTrue(array_key_exists('fileUploadErrorIniSize', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorIniSize'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test3'));
-        $this->assertTrue(array_key_exists('fileUploadErrorFormSize', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorFormSize'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test4'));
-        $this->assertTrue(array_key_exists('fileUploadErrorPartial', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorPartial'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test5'));
-        $this->assertTrue(array_key_exists('fileUploadErrorNoFile', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorNoFile'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test6'));
-        $this->assertTrue(array_key_exists('fileUploadErrorUnknown', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorUnknown'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test7'));
-        $this->assertTrue(array_key_exists('fileUploadErrorNoTmpDir', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorNoTmpDir'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test8'));
-        $this->assertTrue(array_key_exists('fileUploadErrorCantWrite', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorCantWrite'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test9'));
-        $this->assertTrue(array_key_exists('fileUploadErrorExtension', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorExtension'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test1'));
-        $this->assertTrue(array_key_exists('fileUploadErrorAttack', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorAttack'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('tmp_test1'));
-        $this->assertTrue(array_key_exists('fileUploadErrorAttack', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorAttack'));
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertFalse($validator->isValid('test000'));
-        $this->assertTrue(array_key_exists('fileUploadErrorFileNotFound', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileUploadErrorFileNotFound'));
     }
 
     /**
@@ -276,9 +276,9 @@ class Zend_Validate_File_UploadTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             array(
-                 'fileUploadErrorCantWrite' => "File 'bar' can't be written",
+                 'fileUploadErrorCantWrite' => [ "File 'bar' can't be written" ],
             ),
-            $validator->getMessages()
+            $validator->getMessagesIndexed()
         );
     }
 

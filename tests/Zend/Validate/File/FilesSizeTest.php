@@ -76,7 +76,7 @@ class Zend_Validate_File_FilesSizeTest extends \PHPUnit\Framework\TestCase
 
         $validator = new Zend_Validate_File_FilesSize(array('min' => 0, 'max' => 200));
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo'));
-        $this->assertTrue(array_key_exists('fileFilesSizeNotReadable', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileFilesSizeNotReadable'));
 
         $validator = new Zend_Validate_File_FilesSize(array('min' => 0, 'max' => 500000));
         $this->assertEquals(true, $validator->isValid(array(

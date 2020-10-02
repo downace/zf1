@@ -119,9 +119,9 @@ class Zend_Validate_AlnumTest extends \PHPUnit\Framework\TestCase
     public function testEmptyStringValueResultsInProperValidationFailureMessages()
     {
         $this->assertFalse($this->_validator->isValid(''));
-        $messages = $this->_validator->getMessages();
+        $messages = $this->_validator->getMessagesIndexed();
         $arrayExpected = array(
-            Zend_Validate_Alnum::STRING_EMPTY => '\'\' is an empty string'
+            Zend_Validate_Alnum::STRING_EMPTY => [ '\'\' is an empty string' ]
             );
         $this->assertThat($messages, $this->identicalTo($arrayExpected));
     }
@@ -146,9 +146,9 @@ class Zend_Validate_AlnumTest extends \PHPUnit\Framework\TestCase
     public function testInvalidValueResultsInProperValidationFailureMessages()
     {
         $this->assertFalse($this->_validator->isValid('#'));
-        $messages = $this->_validator->getMessages();
+        $messages = $this->_validator->getMessagesIndexed();
         $arrayExpected = array(
-            Zend_Validate_Alnum::NOT_ALNUM => '\'#\' contains characters which are non alphabetic and no digits'
+            Zend_Validate_Alnum::NOT_ALNUM => [ '\'#\' contains characters which are non alphabetic and no digits' ]
             );
         $this->assertThat($messages, $this->identicalTo($arrayExpected));
     }

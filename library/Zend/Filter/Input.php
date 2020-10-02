@@ -1025,7 +1025,7 @@ class Zend_Filter_Input
                     }
 
                     if (!$notEmptyValidator->isValid($field)) {
-                        foreach ($notEmptyValidator->getMessages() as $messageKey => $message) {
+                        foreach ($notEmptyValidator->getMessagesIndexed() as $messageKey => [ $message ]) {
                             if (!isset($messages[$messageKey])) {
                                 $messages[$messageKey] = $message;
                             } else {

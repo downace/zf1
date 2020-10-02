@@ -62,7 +62,7 @@ class Zend_Validate_File_ExtensionTest extends \PHPUnit\Framework\TestCase
 
         $validator = new Zend_Validate_File_Extension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo'));
-        $this->assertTrue(array_key_exists('fileExtensionNotFound', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileExtensionNotFound'));
 
         $files = array(
             'name'     => 'test1',
@@ -73,7 +73,7 @@ class Zend_Validate_File_ExtensionTest extends \PHPUnit\Framework\TestCase
         );
         $validator = new Zend_Validate_File_Extension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo', $files));
-        $this->assertTrue(array_key_exists('fileExtensionNotFound', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileExtensionNotFound'));
 
         $files = array(
             'name'     => 'testsize.mo',
@@ -94,7 +94,7 @@ class Zend_Validate_File_ExtensionTest extends \PHPUnit\Framework\TestCase
         );
         $validator = new Zend_Validate_File_Extension('gif');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo', $files));
-        $this->assertTrue(array_key_exists('fileExtensionFalse', $validator->getMessages()));
+        $this->assertTrue($validator->hasMessages('fileExtensionFalse'));
     }
 
     /**

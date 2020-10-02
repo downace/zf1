@@ -546,9 +546,9 @@ class Zend_Validate_NotEmptyTest extends \PHPUnit\Framework\TestCase
         $valid = new Zend_Validate_NotEmpty(Zend_Validate_NotEmpty::STRING);
 
         $this->assertFalse($valid->isValid(''));
-        $messages = $valid->getMessages();
-        $this->assertTrue(array_key_exists('isEmpty', $messages));
-        $this->assertStringContainsString("can't be empty", $messages['isEmpty']);
+        $messages = $valid->getMessagesIndexed();
+        $this->assertTrue($valid->hasMessages('isEmpty'));
+        $this->assertStringContainsString("can't be empty", $messages['isEmpty'][0]);
     }
 
     /**

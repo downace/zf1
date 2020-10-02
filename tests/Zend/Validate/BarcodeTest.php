@@ -50,7 +50,7 @@ class Zend_Validate_BarcodeTest extends \PHPUnit\Framework\TestCase
         try {
             $barcode = new Zend_Validate_Barcode('Zend_Validate_BarcodeTest_NonExistentClassName');
             $this->fail("'Zend_Validate_BarcodeTest_NonExistentClassName' is not a valid barcode type'");
-        } catch (Exception $e) {
+        } catch (Error $e) {
             $this->assertRegExp('#not found|No such file#', $e->getMessage());
         }
     }
@@ -83,7 +83,7 @@ class Zend_Validate_BarcodeTest extends \PHPUnit\Framework\TestCase
         require_once dirname(__FILE__) . "/_files/MyBarcode1.php";
         $barcode = new Zend_Validate_Barcode('MyBarcode1');
         $this->assertFalse($barcode->isValid('0000000'));
-        $this->assertTrue(array_key_exists('barcodeFailed', $barcode->getMessages()));
+        $this->assertTrue($barcode->hasMessages('barcodeFailed'));
         $this->assertFalse($barcode->getAdapter()->checksum('0000000'));
     }
 
@@ -432,8 +432,8 @@ class Zend_Validate_BarcodeTest extends \PHPUnit\Framework\TestCase
     {
         $barcode = new Zend_Validate_Barcode('ean8');
         $this->assertFalse($barcode->isValid('123'));
-        $message = $barcode->getMessages();
-        $this->assertTrue(array_key_exists('barcodeInvalidLength', $message));
-        $this->assertStringContainsString("length of 7/8 characters", $message['barcodeInvalidLength']);
+        $message = $barcode->getMessagesIndexed();
+        $this->assertTrue($barcode->hasMessages('barcodeInvalidLength'));
+        $this->assertStringContainsString("length of 7/8 characters", $message['barcodeInvalidLength'][0]);
     }
 }

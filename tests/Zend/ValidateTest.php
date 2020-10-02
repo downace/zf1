@@ -262,7 +262,7 @@ class Zend_ValidateTest_False extends Zend_Validate_Abstract
 {
     public function isValid($value)
     {
-        $this->_messages = array('error' => 'validation failed');
+        $this->_messages = array('error' => ['validation failed']);
         return false;
     }
 }

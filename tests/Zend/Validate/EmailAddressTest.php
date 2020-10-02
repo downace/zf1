@@ -407,11 +407,11 @@ class Zend_Validate_EmailAddressTest extends \PHPUnit\Framework\TestCase
         $this->_validator->setTranslator($translator)->setHostnameValidator($hostnameValidator);
 
         $this->_validator->isValid('_XX.!!3xx@0.239,512.777');
-        $messages = $hostnameValidator->getMessages();
+        $messages = $hostnameValidator->getMessagesIndexed();
         $found = false;
         foreach ($messages as $code => $message) {
             if (array_key_exists($code, $translations)) {
-                $this->assertEquals($translations[$code], $message);
+                $this->assertEquals($translations[$code], $message[0]);
                 $found = true;
                 break;
             }
@@ -459,9 +459,9 @@ class Zend_Validate_EmailAddressTest extends \PHPUnit\Framework\TestCase
 
         $this->_validator->setMessages($translations);
         $this->_validator->isValid('_XX.!!3xx@0.239,512.777');
-        $messages = $this->_validator->getMessages();
+        $messages = $this->_validator->getMessagesIndexed();
         $found = false;
-        foreach ($messages as $code => $message) {
+        foreach ($messages as $code => [ $message ]) {
             if (array_key_exists($code, $translations)) {
                 $this->assertEquals($translations[$code], $message);
                 $found = true;

@@ -289,9 +289,9 @@ class Zend_Validate_HostnameTest extends \PHPUnit\Framework\TestCase
         $this->_validator->setTranslator($translator);
 
         $this->_validator->isValid('0.239,512.777');
-        $messages = $this->_validator->getMessages();
+        $messages = $this->_validator->getMessagesIndexed();
         $found = false;
-        foreach ($messages as $code => $message) {
+        foreach ($messages as $code => [ $message ]) {
             if (array_key_exists($code, $translations)) {
                 $found = true;
                 break;

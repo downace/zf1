@@ -150,8 +150,7 @@ class Zend_Validate_File_IsImageTest extends \PHPUnit\Framework\TestCase
         $validator = new Zend_Validate_File_IsImage('test/notype');
         $validator->enableHeaderCheck();
         $this->assertFalse($validator->isValid(dirname(__FILE__) . '/_files/picture.jpg', $files));
-        $error = $validator->getMessages();
-        $this->assertTrue(array_key_exists('fileIsImageFalseType', $error));
+        $this->assertTrue($validator->hasMessages('fileIsImageFalseType'));
     }
 
     public function testOptionsAtConstructor()

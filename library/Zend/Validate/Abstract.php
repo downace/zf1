@@ -99,13 +99,33 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
     protected static $_messageLength = -1;
 
     /**
-     * Returns array of validation failure messages
+     * Returns flat array of validation failure messages
      *
-     * @return array
+     * @return string[]
      */
     public function getMessages()
     {
+        return array_merge(...array_values($this->_messages));
+    }
+
+    /**
+     * Returns associative array of validation failure messages
+     *
+     * @return array
+     */
+    public function getMessagesIndexed()
+    {
         return $this->_messages;
+    }
+
+    public function getMessagesAsString($delimiter = ', ')
+    {
+        return implode($delimiter, $this->getMessages());
+    }
+
+    public function hasMessages($key = null)
+    {
+        return $key ? array_key_exists($key, $this->_messages) : count($this->_messages) > 0;
     }
 
     /**
@@ -293,8 +313,9 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
         if ($value === null) {
             $value = $this->_value;
         }
-        $this->_errors[]              = $messageKey;
-        $this->_messages[$messageKey] = $this->_createMessage($messageKey, $value);
+        $this->_errors[]                = $messageKey;
+        $this->_messages[$messageKey]   = $this->_messages[$messageKey] ?? [];
+        $this->_messages[$messageKey][] = $this->_createMessage($messageKey, $value);
     }
 
     /**

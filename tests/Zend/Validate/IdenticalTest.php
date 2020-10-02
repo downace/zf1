@@ -70,8 +70,7 @@ class Zend_Validate_IdenticalTest extends \PHPUnit\Framework\TestCase
     public function testValidatingWhenTokenNullSetsMissingTokenMessage()
     {
         $this->testValidatingWhenTokenNullReturnsFalse();
-        $messages = $this->validator->getMessages();
-        $this->assertTrue(array_key_exists('missingToken', $messages));
+        $this->assertTrue($this->validator->hasMessages('missingToken'));
     }
 
     public function testValidatingAgainstTokenWithNonMatchingValueReturnsFalse()
@@ -83,8 +82,7 @@ class Zend_Validate_IdenticalTest extends \PHPUnit\Framework\TestCase
     public function testValidatingAgainstTokenWithNonMatchingValueSetsNotSameMessage()
     {
         $this->testValidatingAgainstTokenWithNonMatchingValueReturnsFalse();
-        $messages = $this->validator->getMessages();
-        $this->assertTrue(array_key_exists('notSame', $messages));
+        $this->assertTrue($this->validator->hasMessages('notSame'));
     }
 
     public function testValidatingAgainstTokenWithMatchingValueReturnsTrue()

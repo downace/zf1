@@ -498,8 +498,9 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
             $this->_error(self::INVALID_HOSTNAME);
 
             // Get messages and errors from hostnameValidator
-            foreach ($this->_options['hostname']->getMessages() as $code => $message) {
-                $this->_messages[$code] = $message;
+            foreach ($this->_options['hostname']->getMessagesIndexed() as $code => [ $message ]) {
+                $this->_messages[$code] = $this->_messages[$code] ?? [];
+                $this->_messages[$code][] = $message;
             }
 
             foreach ($this->_options['hostname']->getErrors() as $error) {

@@ -162,8 +162,7 @@ class Zend_Validate_File_IsCompressedTest extends \PHPUnit\Framework\TestCase
         $validator = new Zend_Validate_File_IsCompressed('test/notype');
         $validator->enableHeaderCheck();
         $this->assertFalse($validator->isValid(dirname(__FILE__) . '/_files/picture.jpg', $files));
-        $error = $validator->getMessages();
-        $this->assertTrue(array_key_exists('fileIsCompressedFalseType', $error));
+        $this->assertTrue($validator->hasMessages('fileIsCompressedFalseType'));
     }
 
     public function testOptionsAtConstructor()

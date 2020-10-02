@@ -159,7 +159,7 @@ class Zend_Validate_PostCodeTest extends \PHPUnit\Framework\TestCase
     public function testErrorMessageText()
     {
         $this->assertFalse($this->_validator->isValid('hello'));
-        $message = $this->_validator->getMessages();
-        $this->assertStringContainsString('not appear to be a postal code', $message['postcodeNoMatch']);
+        $message = $this->_validator->getMessagesIndexed();
+        $this->assertStringContainsString('not appear to be a postal code', $message['postcodeNoMatch'][0]);
     }
 }
